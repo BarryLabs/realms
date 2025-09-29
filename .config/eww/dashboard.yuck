@@ -1,0 +1,13 @@
+(defwindow profile
+  :monitor 0
+  :namespace "dashboard"
+  :geometry (geometry
+              :height "450px"
+              :width "300px"
+              :anchor "center")
+  (profile))
+
+(defwidget profile []
+  (box
+    :class "profile_box"
+  )

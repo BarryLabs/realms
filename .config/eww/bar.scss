@@ -1,0 +1,116 @@
+$bg: rgba($color: #0a0a09,
+        $alpha: 0.4,
+    );
+
+// Top Bar
+.top-bar {
+    padding: 10px;
+    background-color: #1e1e2e;
+    border-radius: 15px 15px 15px 15px;
+}
+
+.center_boxes {
+    background-color: #11111b;
+    border-radius: 3px 3px 3px 3px;
+}
+
+.center_labels {
+    color: #f38ba8;
+}
+
+.center_revealers {
+    color: #a6e3a1;
+}
+
+// Menu Module
+.home_menu {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 1rem;
+    background-color: #11111b;
+    border-radius: 1rem;
+}
+
+.left_menu_box button:hover {
+    background-color: #a6e3a1;
+}
+
+// Workspace Module
+
+.workspace-entry {
+    padding: 0 0.5rem;
+
+    &.empty {
+        color: #45475a;
+    }
+
+    &.occupied {
+        color: #74c7ec;
+    }
+
+    &.current {
+        color: #a6e3a1;
+    }
+
+    &.urgent {
+        color: #f38ba8;
+    }
+}
+
+// Clock Module
+.time {
+    color: #f38ba8;
+}
+
+.date {
+    color: #f38ba8;
+
+}
+
+.cal_box {
+    font-size: 18px;
+    background-color: #1e1e2e;
+    border: 3px solid #fab387;
+    border-radius: 20 20 20 20;
+    padding: 10px;
+}
+
+// Disk Module
+.disk {
+    background-color: #11111b;
+}
+
+.disk_box {
+    color: #f38ba8;
+}
+
+.window_title {
+    color: #f38ba8;
+}
+
+.window_title_box {
+    background-color: #11111b;
+    border-radius: 3px 3px 3px 3px;
+}
+
+// Power Menu
+.powermenu-box {
+    //margin: 7px 7px 7px 0px;
+    background: inherit;
+
+    .powermenu-button {
+        border-radius: 1rem;
+        background: $bg;
+        color: #74c7ec;
+        font-size: 1rem;
+        padding: 0 0.5rem;
+
+        &:hover {
+            background-color: #0a0a09;
+        }
+
+        &:active {
+            background-color: #0a0a09;
+        }
+    }
+}

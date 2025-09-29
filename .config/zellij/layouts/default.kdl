@@ -1,0 +1,88 @@
+copy_command "wl-copy"
+copy_on_select true
+theme "catppuccin-mocha"
+themes {
+  catppuccin-mocha {
+    bg "#585b70"
+    black "#181825"
+    blue "#89b4fa"
+    cyan "#89dceb"
+    fg "#cdd6f4"
+    green "#a6e3a1"
+    magenta "#f5c2e7"
+    orange "#fab387"
+    red "#f38ba8"
+    white "#cdd6f4"
+    yellow "#f9e2af"
+  }
+}
+
+layout {
+  tab name="Main" {
+    pane {
+      pane
+    }
+    floating_panes {
+      pane command="htop" {
+        x "5%"
+        y "5%"
+        width "75%"
+        height "75%"
+      }
+      pane {
+        x "75%"
+        y "75%"
+        width "75%"
+        height "75%"
+      }
+    }
+    pane size=1 borderless=true {
+      plugin location="zellij:compact-bar"
+    }
+  } 
+  tab name="Symphony" {
+    floating_panes {
+      pane command="htop" {
+        x "5%"
+        y "5%"
+        width "75%"
+        height "75%"
+      }
+      pane {
+        x "75%"
+        y "75%"
+        width "75%"
+        height "75%"
+      }
+    }
+    pane split_direction="horizontal" {
+      pane cwd="~/Projects" size="65%"
+      pane split_direction="vertical" size="35%"{
+        pane cwd="~/Projects"
+        pane cwd="~/Projects"
+      }
+    }
+    pane size=1 borderless=true {
+      plugin location="zellij:compact-bar"
+    }
+  }
+  tab name="Orchestra" {
+    pane {
+      pane split_direction="horizontal" {
+        pane split_direction="vertical" {
+          pane
+          pane
+        }
+      }
+      pane split_direction="horizontal" {
+        pane split_direction="vertical" {
+          pane
+          pane
+        }
+      }
+    }
+    pane size=1 borderless=true {
+      plugin location="zellij:compact-bar"
+    }
+  }
+}

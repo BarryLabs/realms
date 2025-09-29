@@ -1,0 +1,11 @@
+#!/run/current-system/sw/bin/bash
+
+USER="chandler"
+EWW_BIN="/etc/profiles/per-user/${USER}/bin/eww"
+
+if pidof .eww-wrapped > /dev/null; then
+  pkill .eww-wrapped
+else
+  ${EWW_BIN} daemon
+  ${EWW_BIN} open bar0 bar1
+fi

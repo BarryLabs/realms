@@ -1,0 +1,7 @@
+#!/run/current-system/sw/bin/bash
+
+pkill eww
+eww daemon
+eww open bar1
+eww open bar0
+eww open dashboard
