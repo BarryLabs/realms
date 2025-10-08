@@ -68,12 +68,24 @@ in
         backend = "podman";
         containers = {
           "Filebrowser" = {
-            image = "";
+            image = "gtstef/filebrowser";
             log-driver = "journald";
+            environmentFiles = [
+              /run/secrets/services/filebrowser/admin_pass
+            ];
             extraOptions = [
+              "--hostname=filebrowser"
               "--network-alias=filebrowser"
               "--network=filebrowser_Filebrowser"
               "--security-opt=no-new-privileges"
+            ];
+            ports = [
+              "80:80/tcp"
+            ];
+            volumes = [
+              "/sata/.container/filebrowser/folder:/folder"
+              "/sata/.container/filebrowser/data:/home/filebrowser/data:rw"
+              "/sata/.container/filebrowser/config.yaml:/home/filebrowser/config.yaml:ro"
             ];
           };
         };

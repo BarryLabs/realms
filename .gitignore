@@ -1,5 +1,2 @@
 modules/system/services/borg
-modules/system/oci/immich
-modules/system/oci/nextcloud
-modules/system/oci/paperless
 modules/system/oci/torrent

@@ -119,6 +119,7 @@
           modules = [
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
+            impermanence.nixosModules.impermanence
             ./machines/asgard
           ];
         };

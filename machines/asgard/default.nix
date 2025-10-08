@@ -9,36 +9,40 @@
   ];
 
   augs = {
-    borg.asgard.enable = false;
-    sync.asgard.enable = false;
+    borg.asgard.enable = true;
     com = {
       bash.enable = true;
       bootGRUB.enable = true;
-      docs.enable = true;
       environment.enable = true;
-      kernel.enable = true;
+      fstrim.enable = true;
+      impermanence.enable = false;
       locale.enable = true;
       network.enable = true;
+      nh.enable = true;
       nix.enable = true;
       nixpkgs.enable = true;
       openssh.enable = true;
       qemuguest.enable = true;
-      sops.enable = false;
+      sops.enable = true;
       state.enable = true;
+      sudo-rs.enable = true;
       timezone.enable = true;
       users.enable = true;
       zfs.enable = true;
+      zram.enable = true;
     };
     services = {
-      promtail.enable = false;
-      node-exporter.enable = false;
-      database.enable = false;
-      gitea.enable = false;
-      nextcloud.enable = false;
+      node-exporter.enable = true;
+      promtail.enable = true;
     };
     oci = {
-      immich.enable = false;
-      paperless.enable = false;
+      filebrowser.enable = true;
+      firefly.enable = true;
+      forgejo.enable = true;
+      immich.enable = true;
+      paperless.enable = true;
+      pgadmin.enable = false;
+      syncthing.enable = true;
     };
   };
 
@@ -48,23 +52,10 @@
     };
   };
 
-  networking = {
-    firewall = {
-      allowedTCPPorts = [
-        80
-        2283
-        3000
-        8000
-        8384
-      ];
-    };
-  };
-
   hardware = {
     graphics = {
       enable = true;
       extraPackages = with pkgs; [
-        intel-media-sdk
         intel-media-driver
         intel-vaapi-driver
         intel-compute-runtime
@@ -74,44 +65,107 @@
     };
   };
 
-  # sops = {
-  #   secrets = {
-  #     localVoidEncKey = {
-  #       mode = "0440";
-  #     };
-  #     remoteVoidEncKey = {
-  #       mode = "0440";
-  #     };
-  #     pgAdminKey = {
-  #       mode = "0440";
-  #       owner = config.users.users.pgadmin.name;
-  #       group = config.users.users.pgadmin.group;
-  #       restartUnits = ["pgadmin.service"];
-  #     };
-  #     GiteaDBKey = {
-  #       mode = "0440";
-  #       owner = config.users.users.gitea.name;
-  #       group = config.users.users.gitea.group;
-  #       restartUnits = ["gitea.service"];
-  #     };
-  #     NextcloudAdminKey = {
-  #       mode = "0440";
-  #       owner = "nextcloud";
-  #       group = "nextcloud";
-  #       restartUnits = ["nextcloud-cron.timer" "nextcloud-update-db.service" "redis-nextcloud.service" "nginx.service" "phpfpm-nextcloud.service" "system-phpfpm.slice"];
-  #     };
-  #     NextcloudDBKey = {
-  #       mode = "0440";
-  #       owner = "nextcloud";
-  #       group = "nextcloud";
-  #       restartUnits = ["nextcloud-cron.timer" "nextcloud-update-db.service" "redis-nextcloud.service" "nginx.service" "phpfpm-nextcloud.service" "system-phpfpm.slice"];
-  #     };
-  #     SyncthingAdminKey = {
-  #       mode = "0440";
-  #       owner = "syncthing";
-  #       group = "syncthing";
-  #       restartUnits = ["syncthing-init.service" "syncthing.service"];
-  #     };
-  #   };
-  # };
+  sops = {
+    secrets = {
+      "services/pgadmin/default_email" = {
+        mode = "0400";
+      };
+      "services/pgadmin/default_pass" = {
+        mode = "0400";
+      };
+      "services/firefly/owner" = {
+        mode = "0400";
+      };
+      "services/firefly/app_key" = {
+        mode = "0400";
+      };
+      "services/firefly/db_port" = {
+        mode = "0400";
+      };
+      "services/firefly/db_name" = {
+        mode = "0400";
+      };
+      "services/firefly/db_user" = {
+        mode = "0400";
+      };
+      "services/firefly/db_pass" = {
+        mode = "0400";
+      };
+      "services/firefly_db/db_name" = {
+        mode = "0400";
+      };
+      "services/firefly_db/db_user" = {
+        mode = "0400";
+      };
+      "services/firefly_db/db_pass" = {
+        mode = "0400";
+      };
+      "services/filebrowser/config" = {
+        mode = "0400";
+      };
+      "services/filebrowser/admin_pass" = {
+        mode = "0400";
+      };
+      "services/paperless/admin_user" = {
+        mode = "0400";
+      };
+      "services/paperless/admin_pass" = {
+        mode = "0400";
+      };
+      "services/paperless/db_host" = {
+        mode = "0400";
+      };
+      "services/paperless/db_pass" = {
+        mode = "0400";
+      };
+      "services/paperless/db_user" = {
+        mode = "0400";
+      };
+      "services/paperless_db/db_name" = {
+        mode = "0400";
+      };
+      "services/paperless_db/db_user" = {
+        mode = "0400";
+      };
+      "services/paperless_db/db_password" = {
+        mode = "0400";
+      };
+      "services/immich/db_name" = {
+        mode = "0400";
+      };
+      "services/immich/db_user" = {
+        mode = "0400";
+      };
+      "services/immich/db_pass" = {
+        mode = "0400";
+      };
+      "services/immich_db/db_name" = {
+        mode = "0400";        
+      };
+      "services/immich_db/db_user" = {
+        mode = "0400";
+      };
+      "services/immich_db/db_pass" = {
+        mode = "0400";
+      };
+      "backup/ssh/local" = {
+        mode = "0400";
+      };
+      "backup/ssh/remote" = {
+        mode = "0400";
+      };
+      "backup/repo/local" = {
+        mode = "0400";
+      };
+      "backup/repo/remote" = {
+        mode = "0400";
+      };
+      "backup/key/local" = {
+        mode = "0400";
+      };
+      "backup/key/remote" = {
+        mode = "0400";
+      };
+    };
+  };
 }

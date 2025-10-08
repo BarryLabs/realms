@@ -68,13 +68,23 @@ in
         backend = "podman";
         containers = {
           "Jellyfin" = {
-            image = "";
+            image = "lscr.io/linuxserver/jellyfin:latest";
             log-driver = "journald";
             extraOptions = [
               "--device=/dev/dri:/dev/dri:rwm"
-              "--network-alias=*"
-              "--network=*_*"
+              "--network-alias=theater"
+              "--network=media_Media"
               "--security-opt=no-new-privileges"
+            ];
+            ports = [
+              "8096:8096/tcp"
+            ];
+            volumes = [
+              ""
+              ""
+              ""
+              ""
+              ""
             ];
           };
         };

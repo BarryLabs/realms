@@ -70,7 +70,10 @@ in
           "Syncthing" = {
             image = "lscr.io/linuxserver/syncthing:latest";
             log-driver = "journald";
-            environmentFiles = [ /path/to/.env ];
+            environment = {
+              PUID = "1000";
+              PGID = "1000";
+            };
             extraOptions = [
               "--network-alias=Sync"
               "--network=syncthing_Syncthing"
@@ -83,8 +86,8 @@ in
               "21027:21027/udp"
             ];
             volumes = [
-              "/var/lib/syncthing/config:/config"
-              "/var/lib/syncthing/Syncthing:/Syncthing"
+              "/sata/.container/syncthing/config:/config"
+              "/sata/.container/syncthing/data:/Syncthing"
             ];
           };
         };

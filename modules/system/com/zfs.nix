@@ -17,7 +17,7 @@ in
           else lib.mkDefault true;
         extraPools = (
           if config.networking.hostName == "asgard"
-          then lib.mkDefault [ "void" ]
+          then lib.mkDefault [ "asgard" ]
           else lib.mkDefault [ ]
         );
       };
@@ -30,15 +30,11 @@ in
         autoScrub = {
           enable = lib.mkDefault true;
           interval = lib.mkDefault "monthly";
+          randomizedDelaySec = lib.mkDefault "12h";
           pools =
             [
-            ]
-            ++ (
-              if config.networking.hostName == "asgard"
-              then lib.mkDefault [ "void" ]
-              else lib.mkDefault [ ]
-            );
-          randomizedDelaySec = lib.mkDefault "12h";
+              "asgard"
+            ];
         };
         autoSnapshot = {
           enable = lib.mkDefault true;

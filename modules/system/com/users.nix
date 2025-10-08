@@ -15,7 +15,7 @@ in
           isNormalUser = true;
           createHome = true;
           home = config.var.home;
-          shell = pkgs.zsh;
+          shell = if config.augs.com.zsh.enable then pkgs.zsh else pkgs.bash;
           description = config.var.desc;
           initialPassword = config.var.iniPass;
           extraGroups =

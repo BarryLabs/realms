@@ -51,8 +51,13 @@
     ./com/zram.nix
     ./com/zsh.nix
 
+    ./oci/filebrowser/filebrowser.nix
+    ./oci/firefly/firefly.nix
+    ./oci/forgejo/forgejo.nix
     ./oci/immich/immich.nix
     ./oci/paperless/paperless.nix
+    ./oci/pgadmin/pgadmin.nix
+    ./oci/syncthing/syncthing.nix
     ./oci/torrent/torrent.nix
     ./oci/transcode/transcode.nix
 

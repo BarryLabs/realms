@@ -9,19 +9,10 @@ in
 {
   options.augs.com.impermanence.enable = mkEnableOption "Impermanence Module for Realms";
   config = mkIf cfg.enable {
-    # fileSystems = {
-    #   "/" = {
-    #     device = "/dev/hda2";
-    #     fsType = "ext3";
-    #     options = [ "data=journal" ];
-    #   };
-    #   "/boot" = {};
-    #   "/home" = {};
-    #   "/nix" = {};
-    # };
+    fileSystems."/persist".neededForBoot = true;
     environment.persistence =
       if config.networking.hostName == "abyss" then { } else if config.networking.hostName == "yggdrasil" then {
-        "/persist" = {
+        "/persist/system" = {
           hideMounts = true;
           directories = [
             "/etc/nixos"
@@ -39,7 +30,7 @@ in
             "/root/.config/sops/age/keys.txt"
           ];
           users.${config.var.user} = {
-            directores = [
+            directories = [
 
               ".config/OpenRGB"
               ".config/Yubico"
@@ -71,6 +62,23 @@ in
               ".zshrc"
             ];
           };
+        };
+      } else if config.networking.hostName == "asgard" then {
+        "/persist/system" = {
+          hideMounts = true;
+          directories = [
+            "/etc/nixos"
+            "/etc/ssh"
+            "/srv"
+            "/var/lib"
+            "/var/log"
+            # "/run/secrets"
+            # "/root/.config/sops/age"
+          ];
+          files = [
+            "/etc/machine-id"
+            "/root/.config/sops/age/keys.txt"
+          ];
         };
       } else { };
   };

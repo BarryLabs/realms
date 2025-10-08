@@ -1,22 +1,24 @@
 keys:
   - &abyss age1jpwgxaa282tkqyj83ghs3xd2nrarujy0j37cak0rutsy6vcyefvqqanx06
   - &aegir age1j0jy5z8faw59pg8m8vep4yewnxd28zwjspx60addxnufgcejn94qtw5dg9
-  - &asgard age1yuzcsew6aajkc6mux6cj6y5hgpxu8dygcl0xulpxcrew5za25vtsyewnpx
+  - &asgard age1terczsjheccdsf4dntwlqjk7z78rz0wrylwk4ulpp2ks8xesmy3qnthx6k
   - &heimskringla age1khz8lrffyc9tp6g8frwtzyvghkduevtq58uxnnkychjvv33xgflqesjf63
   - &yggdrasil age1n7c2m50rre25k087m70q07pg57z8wh2gemfk9eus92gyrugqy3lq5m2l3w
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
-      - age: *abyss
+      - age:
+          - *abyss
+          - *yggdrasil
+  - path_regex: secrets/aegir/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *aegir
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
-      - age: *aegir
+      - age:
+          - *asgard
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
-      - age: *asgard
-  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
-    key_groups:
-      - age: *heimskringla
-  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
-    key_groups:
-      - age: *yggdrasil
+      - age:
+          - *heimskringla

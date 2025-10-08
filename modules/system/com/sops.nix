@@ -13,7 +13,7 @@ in
         keyFile = config.var.ageFile;
       };
       defaultSopsFormat = lib.mkDefault "yaml";
-      defaultSopsFile = lib.mkDefault ../../../secrets/secrets.yaml;
+      defaultSopsFile = lib.mkDefault ../../../secrets/${config.var.host}.yaml;
     };
   };
 }

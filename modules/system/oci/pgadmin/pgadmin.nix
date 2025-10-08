@@ -5,10 +5,10 @@
 }:
 with lib;
 let
-  cfg = config.augs.oci.forgejo;
+  cfg = config.augs.oci.pgadmin;
 in
 {
-  options.augs.oci.forgejo.enable = mkEnableOption "Forgejo Container";
+  options.augs.oci.pgadmin.enable = mkEnableOption "PGAdmin Container";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;
@@ -24,38 +24,38 @@ in
 
     systemd = {
       services = {
-        "podman-Forgejo" = {
+        "podman-pgAdmin" = {
           serviceConfig = {
             Restart = lib.mkOverride 90 "always";
           };
           after = [
-            "podman-network-forgejo_Forgejo.service"
+            "podman-network-pgadmin_Pgadmin.service"
           ];
           requires = [
-            "podman-network-forgejo_Forgejo.service"
+            "podman-network-pgadmin_Pgadmin.service"
           ];
           partOf = [
-            "podman-compose-forgejo-root.target"
+            "podman-compose-pgadmin-root.target"
           ];
           wantedBy = [
-            "podman-compose-forgejo-root.target"
+            "podman-compose-pgadmin-root.target"
           ];
         };
-        "podman-network-forgejo_Forgejo" = {
+        "podman-network-pgadmin_Pgadmin" = {
           path = [ pkgs.podman ];
           serviceConfig = {
             Type = "oneshot";
             RemainAfterExit = true;
-            ExecStop = "podman network rm -f forgejo_Forgejo";
+            ExecStop = "podman network rm -f pgadmin_Pgadmin";
           };
           script = ''
-            podman network inspect forgejo_Forgejo || podman network create forgejo_Forgejo --driver=bridge
+            podman network inspect pgadmin_Pgadmin || podman network create pgadmin_Pgadmin --driver=bridge
           '';
-          partOf = [ "podman-compose-forgejo-root.target" ];
-          wantedBy = [ "podman-compose-forgejo-root.target" ];
+          partOf = [ "podman-compose-pgadmin-root.target" ];
+          wantedBy = [ "podman-compose-pgadmin-root.target" ];
         };
       };
-      targets."podman-compose-forgejo-root" = {
+      targets."podman-compose-pgadmin-root" = {
         unitConfig = {
           Description = "Root Target";
         };
@@ -67,26 +67,22 @@ in
       oci-containers = {
         backend = "podman";
         containers = {
-          "Forgejo" = {
-            image = "codeberg.org/forgejo/forgejo:11";
+          "pgAdmin" = {
+            image = "dpage/pgadmin4:latest";
             log-driver = "journald";
-            environment = {
-              USER_UID = "1000";
-              USER_GID = "1000";
-            };
+            environmentFiles = [
+              /run/secrets/services/pgadmin/default_email
+              /run/secrets/services/pgadmin/default_pass
+            ];
             extraOptions = [
-              "--network-alias=forgejo"
-              "--network=forgejo_Forgejo"
-              "--security-opt=no-new-privileges"
+              "--network-alias=pgadmin"
+              "--network=pgadmin_Pgadmin"
             ];
             ports = [
-              "222:22"
-              "3000:3000"
+              "9000:80/tcp"
             ];
             volumes = [
-              "/sata/.container/forgejo/data:/data"
-              "/etc/timezone:/etc/timezone:ro"
-              "/etc/localtime:/etc/localtime:ro"
+              "/sata/.container/pgadmin/data:/var/lib/pgadmin:rw"
             ];
           };
         };
