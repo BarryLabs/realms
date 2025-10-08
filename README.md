@@ -65,7 +65,7 @@ The structure of this repo is as you may expect. Machine configuration files are
 5. Check through the configuration in `./machines/${HOST}/default.nix`.
 6. Apply your own SSH key within `./modules/system/com/users.nix` so you don't get locked out of your machine when it builds.
 7. Use `nix run github:nix-community/nixos-anywhere -- --flake <path to flake>#<host> --target-host nixos@<ip address>` from the remote machine when you have finished making your changes.
-8.
+8. Wait.
 
 ### Installation Script
 
