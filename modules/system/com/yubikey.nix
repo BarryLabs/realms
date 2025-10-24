@@ -17,7 +17,7 @@ in
     services.udev.packages = [ pkgs.yubikey-personalization ];
     services.pcscd.enable = true;
     services.yubikey-agent.enable = true;
-    programs.ssh.startAgent = true;
+    # programs.ssh.startAgent = true;
     security = {
       pam = {
         sshAgentAuth.enable = true;

@@ -11,17 +11,17 @@ in
     system = {
       activationScripts = {
         "nfsBuilder" = ''
-          install -d -m 600 /nfs -o nobody -g nogroup
+          install -d -m 600 /void/share/nfs -o nobody -g nogroup
         '';
       };
     };
     networking.firewall.allowedTCPPorts = [ 2049 ];
     fileSystems = {
-      "/nfs/family" = {
+      "/void/share/nfs/family" = {
         options = [ "bind" ];
         device = "/zpool/nfs/family";
       };
-      "/nfs/yggdrasil" = {
+      "/void/share/nfs/yggdrasil" = {
         options = [ "bind" ];
         device = "/zpool/nfs/yggdrasil";
       };

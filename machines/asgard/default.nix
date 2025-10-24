@@ -9,24 +9,24 @@
   ];
 
   augs = {
-    borg.asgard.enable = true;
+    backup.asgard.enable = true;
     com = {
-      bash.enable = true;
-      bootGRUB.enable = true;
-      environment.enable = true;
-      fstrim.enable = true;
+      # bash.enable = true;
+      # bootGRUB.enable = true;
+      # environment.enable = true;
+      # fstrim.enable = true;
       impermanence.enable = false;
-      locale.enable = true;
-      network.enable = true;
+      # locale.enable = true;
+      # network.enable = true;
       nh.enable = true;
-      nix.enable = true;
-      nixpkgs.enable = true;
-      openssh.enable = true;
-      qemuguest.enable = true;
+      # nix.enable = true;
+      # nixpkgs.enable = true;
+      # openssh.enable = true;
+      # qemuguest.enable = true;
       sops.enable = true;
-      state.enable = true;
-      sudo-rs.enable = true;
-      timezone.enable = true;
+      # state.enable = true;
+      # sudo-rs.enable = true;
+      # timezone.enable = true;
       users.enable = true;
       zfs.enable = true;
       zram.enable = true;
@@ -140,7 +140,7 @@
         mode = "0400";
       };
       "services/immich_db/db_name" = {
-        mode = "0400";        
+        mode = "0400";
       };
       "services/immich_db/db_user" = {
         mode = "0400";

@@ -15,14 +15,13 @@
     ./com/fstrim.nix
     ./com/gnupg.nix
     ./com/governor.nix
-    ./com/hyprlandPortal.nix
-    ./com/impermanence.nix
     ./com/kernel.nix
     ./com/locale.nix
     ./com/mac-randomizer.nix
     ./com/network.nix
     ./com/nh.nix
     ./com/nix.nix
+    ./com/nix-ld.nix
     ./com/nixpkgs.nix
     ./com/nvidiaGPU.nix
     ./com/openssh.nix
@@ -51,6 +50,9 @@
     ./com/zram.nix
     ./com/zsh.nix
 
+    ./gui/hyprland
+    ./gui/niri
+
     ./oci/filebrowser/filebrowser.nix
     ./oci/firefly/firefly.nix
     ./oci/forgejo/forgejo.nix
@@ -63,11 +65,14 @@
 
     ./programs/alvr
     ./programs/appimages
+    ./programs/dolphin
     ./programs/firejail
     ./programs/ghidra
-    ./programs/hyprland
+    ./programs/kicad
     ./programs/localsend
+    ./programs/nautilus
     ./programs/steam
+    ./programs/thunar
     ./programs/weylus
 
     ./services/arr
@@ -105,5 +110,7 @@
     ./services/teamspeak3
     #./services/traefik
     ./services/vpn
+
+    ./style
   ];
 }

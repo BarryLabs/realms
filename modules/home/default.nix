@@ -3,10 +3,8 @@
     ./browser
     ./cli
     ./ext
-    #./derive
-    ./fonts
+    ./gui
     ./terminal
     ./tools
-    ./wm
   ];
 }

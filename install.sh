@@ -3,6 +3,7 @@
 if [ -n "$(grep -i nixos </etc/os-release)" ]; then
   echo "Beginning installation..."
 else
+  echo "Boot into nixos in order to use the installation script."
   exit
 fi
 echo "Proceeding with Git check."
@@ -14,26 +15,31 @@ fi
 sleep 0.1
 cd || return
 git clone https://github.com/BarryLabs/realms.git
-cd Realms
+cd realms || return
 read -rp "Options:
 ------------
 abyss
 aegir
 asgard
+bifrost
 heimskringla
 hel
 himinbjorg
+jotunheim
 mini-iso
 [ mini-vm ]
 mini-vm
 muspelheim
 tesseract
 valaskjalf
+valhalla
 yggdrasil
 ------------
-Please type out the name of the desired configuration: " host
+
+
+Please enter the name of the desired configuration: " host
 if [ -z "$host" ]; then
-  host="mini-vm"
+  host="mini"
 fi
 echo "--------"
 echo "Generating hardware configuration..."
@@ -49,5 +55,5 @@ sudo cp -r ~/Realms/* /etc/nixos/
 sudo cp -r ~/Realms/.* /etc/nixos/
 echo "Building $host..."
 echo "--------"
-sudo nixos-rebuild switch --flake ~/Realms/#${host}
+sudo nixos-rebuild switch --flake ~/Realms/#$host
 sudo rm -rf ~/Realms

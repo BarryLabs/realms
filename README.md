@@ -6,27 +6,18 @@
 
 ## Yggdrasil
 
-<img align="center" width="90%" src="https://github.com/BarryLabs/Realms/blob/main/common/yggdrasil-desktop-1.png" />
+<img align="center" width="90%" src="https://github.com/BarryLabs/Realms/blob/main/assets/yggdrasil-desktop-1.png" />
 
 ## Abyss
 
-<img align="center" width="90%" src="https://github.com/BarryLabs/Realms/blob/main/common/abyss-desktop-1.png" />
-<img align="center" width="90%" src="https://github.com/BarryLabs/Realms/blob/main/common/abyss-desktop-2.png" />
+<img align="center" width="90%" src="https://github.com/BarryLabs/Realms/blob/main/assets/abyss-desktop-1.png" />
+<img align="center" width="90%" src="https://github.com/BarryLabs/Realms/blob/main/assets/abyss-desktop-2.png" />
 
 </div>
-
-# Index
-
-- [Abstract](#abstract)
-- [Installation](#installation)
-- [Featured Tools](#featured-tools)
 
 ---
 
 # Abstract
-
-> [!NOTE]
-> Each machine is capable of handling all firmware with the current exception of _abyss_. The firmware file included seems to only work for the wifi module and not the bluetooth module.
 
 Realms aims to automate and reduce the operational footprint of my lab with a few goals in mind;
 
@@ -46,31 +37,31 @@ Realms aims to automate and reduce the operational footprint of my lab with a fe
 ## Installation
 
 > [!WARNING]
-> Installation won't work out of the box due to _Disko_, _Impermanence_ and/or _Sops-Nix_. These tools require tailored configurations and as such they will not work with other machines.
+> Installation probably won't work out of the box due to _Disko_, _Impermanence_ and/or _Sops-Nix_ amongst other reasons.
 
-> [!IMPORTANT]
-> The installation script should be used unless there is a remote Nix host available.
+The structure of this repo is as you may expect. Machine configuration files are in the machines folder and application configuration files are somewhat organized into individual modules. The easiest method would be to clone the repository however lets go over the _other_ methods below.
 
-The structure of this repo is as you may expect. Machine configuration files are in the machines folder and application configuration files are somewhat organized into individual modules.
+### Installation Script
+
+Prerequisites:
+
+1. NixOS Host
+
+Installation:
+
+1. Download the installation script with `curl -O https://github.com/BarryLabs/realms/install.sh` or `wget https://github.com/BarryLabs/realms/install.sh`.
+2. Make it executable with `chmod +x install.sh`.
+3. Execute the script with `./install.sh`.
 
 ### NixOS-Anywhere
 
-> [!IMPORTANT]
-> NixOS-Anywhere is a convenient tool that enables remote building of Nix configurations via SSH. This is the preferred method of installation among environment with multiple Nix hosts.
-
-1. Boot into any NixOS image.
+1. Boot into any ISO.
 2. Change password with `passwd`.
 3. Check IPv4 with `ip a`.
 4. Clone this repository with `git clone https://github.com/BarryLabs/realms.git` on the remote machine.
 5. Check through the configuration in `./machines/${HOST}/default.nix`.
 6. Apply your own SSH key within `./modules/system/com/users.nix` so you don't get locked out of your machine when it builds.
 7. Use `nix run github:nix-community/nixos-anywhere -- --flake <path to flake>#<host> --target-host nixos@<ip address>` from the remote machine when you have finished making your changes.
-8. Wait.
-
-### Installation Script
-
-> [!IMPORTANT]
-> The installation script `./install.sh` should be used in all cases except where NixOS-Anywhere is used.
 
 ---
 

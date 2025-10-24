@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.programs.steam;
+  module = "steam";
+  cfg = config.augs.programs.${module};
 in
 {
-  options.augs.programs.steam.enable = mkEnableOption "Base Steam Module";
+  options.augs.programs.${module}.enable = mkEnableOption "Base Steam Module";
   config = mkIf cfg.enable {
     nixpkgs = {
       config = {
@@ -35,7 +36,7 @@ in
           "--expose-wayland"
         ];
       };
-      steam = {
+      ${module} = {
         enable = true;
         extraCompatPackages = with pkgs; [
           proton-ge-bin

@@ -6,7 +6,7 @@
   ];
 
   augs = {
-    borg.abyss.enable = true;
+    backup.abyss.enable = true;
     sync.base.enable = true;
     com = {
       apparmor.enable = true;

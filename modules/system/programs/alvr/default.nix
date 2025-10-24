@@ -4,13 +4,14 @@
 }:
 with lib;
 let
-  cfg = config.augs.programs.alvr;
+  module = "alvr";
+  cfg = config.augs.programs.${module};
 in
 {
-  options.augs.programs.alvr.enable = mkEnableOption "Base ALVR Module";
+  options.augs.programs.${module}.enable = mkEnableOption "Base ALVR Module";
   config = mkIf cfg.enable {
     programs = {
-      alvr = {
+      ${module} = {
         enable = true;
         openFirewall = true;
       };

@@ -2,12 +2,12 @@
   imports = [
     ./btop
     ./easyeffects
+    ./freetube
     ./lutris
     ./mangohud
     ./mpv
     ./obs
     ./ollama
-    ./pidgin
     ./podman
     ./thunderbird
     ./zathura

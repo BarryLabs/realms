@@ -1,5 +1,11 @@
+{ pkgs, ... }:
 {
   home = {
+    packages = with pkgs; [
+      grim
+      slurp
+      swappy
+    ];
     file = {
       ".config/swappy/config" = {
         text = ''

@@ -1,1 +1,0 @@
-use-grammars = { only = [ "python", "go", "zig", "bash", "r", "css", "html", "markdown", "nix", "nu", "rust", "c", "cpp" ] }

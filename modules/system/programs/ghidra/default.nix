@@ -4,13 +4,18 @@
 }:
 with lib;
 let
-  cfg = config.augs.programs.ghidra;
+  module = "ghidra";
+  cfg = config.augs.programs.${module};
 in
 {
-  options.augs.programs.ghidra.enable = mkEnableOption "Base Ghidra Module";
+  options.augs.programs.${module}.enable = mkEnableOption "Base Ghidra Module";
   config = mkIf cfg.enable {
+    environment.sessionVariables =
+      if config.programs.niri.enable then {
+        _JAVA_AWT_WM_NONREPARENTING = "1";
+      } else { };
     programs = {
-      ghidra = {
+      ${module} = {
         enable = true;
       };
     };

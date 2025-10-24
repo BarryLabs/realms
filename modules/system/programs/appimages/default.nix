@@ -3,13 +3,14 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.programs.appimages;
+  module = "appimage";
+  cfg = config.augs.programs.${module};
 in
 {
-  options.augs.programs.appimages.enable = mkEnableOption "Appimage Compatibility";
+  options.augs.programs.${module}.enable = mkEnableOption "Appimage Compatibility";
   config = mkIf cfg.enable {
     programs = {
-      appimage = {
+      ${module} = {
         enable = true;
         binfmt = true;
       };

@@ -6,7 +6,9 @@
   ];
 
   augs = {
-    borg.yggdrasil.enable = true;
+    styles.mocha.enable = true;
+    gui.niri.enable = true;
+    backup.yggdrasil.enable = true;
     sync.base.enable = true;
     com = {
       apparmor.enable = true;
@@ -17,11 +19,12 @@
       fonts.enable = true;
       fstrim.enable = true;
       governor.enable = true;
-      hyprlandPortal.enable = true;
       kernel.enable = true;
       locale.enable = true;
       network.enable = true;
+      nh.enable = true;
       nix.enable = true;
+      nix-ld.enable = true;
       nixpkgs.enable = true;
       nvidiaGPU.enable = true;
       openssh.enable = true;
@@ -46,10 +49,12 @@
     };
     programs = {
       alvr.enable = true;
-      appimages.enable = true;
+      appimage.enable = true;
       firejail.enable = true;
       hyprland.enable = true;
+      kicad.enable = true;
       localsend.enable = true;
+      nautilus.enable = true;
       steam.enable = true;
     };
     services = {
@@ -75,6 +80,20 @@
       };
     };
   };
+  # environment.persistence."/nix/persist" = {
+  #   hideMounts = true;
+  #   directories = [
+  #     "/etc/nixos"
+  #     "/etc/ssh"
+  #     "/var/lib/nixos"
+  #     "/var/lib/systemd/timers"
+  #     "/var/lib/systemd/coredump"
+  #   ];
+  #   files = [
+  #     "/etc/machine-id"
+  #     "/root/.config/sops/age/keys.txt"
+  #   ];
+  # };
   sops = {
     secrets = {
       "ssh/barrylabs" = {
@@ -87,19 +106,19 @@
       };
       "backup/ssh/local" = {
         mode = "0400";
-        sopsFile = ../../secrets/backups/yggdrasil.yaml;
+        sopsFile = ../../secrets/yggdrasil.yaml;
       };
-      "backup/ssh/remote_yggdrasil" = {
+      "backup/ssh/remote" = {
         mode = "0400";
-        sopsFile = ../../secrets/backups/yggdrasil.yaml;
+        sopsFile = ../../secrets/yggdrasil.yaml;
       };
-      "backup/keys/local_yggdrasil" = {
+      "backup/keys/local" = {
         mode = "0400";
-        sopsFile = ../../secrets/backups/yggdrasil.yaml;
+        sopsFile = ../../secrets/yggdrasil.yaml;
       };
-      "backup/keys/remote_yggdrasil" = {
+      "backup/keys/remote" = {
         mode = "0400";
-        sopsFile = ../../secrets/backups/yggdrasil.yaml;
+        sopsFile = ../../secrets/yggdrasil.yaml;
       };
     };
   };

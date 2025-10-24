@@ -15,7 +15,7 @@ in
       settings = {
         dns = "highrise.mamot.cc";
         server_url = "https://highrise.mamot.cc";
-        logtail.enabled = false;
+        logtail.enabled = true;
       };
     };
   };

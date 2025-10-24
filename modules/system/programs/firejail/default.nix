@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.programs.firejail;
+  module = "firejail";
+  cfg = config.augs.programs.${module};
 in
 {
-  options.augs.programs.firejail.enable = mkEnableOption "Base Firejail Module";
+  options.augs.programs.${module}.enable = mkEnableOption "Base Firejail Module";
   config = mkIf cfg.enable {
     programs = {
       firejail = {

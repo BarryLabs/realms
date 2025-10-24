@@ -1,5 +1,24 @@
+{ config
+, lib
+, ...
+}:
+with lib;
+let
+  module = "zellij";
+  cfg = config.mods.cli.${module};
+in
 {
-  imports = [
-    ./base.nix
-  ];
+  options.mods.cli.${module}.enable = mkEnableOption "Base Zellij Module";
+  config = mkIf cfg.enable {
+    programs = {
+      ${module} = {
+        enable = true;
+      };
+    };
+    home.file."${module}" = {
+      recursive = true;
+      source = ../../../../.config/${module};
+      target = ".config/${module}/";
+    };
+  };
 }

@@ -1,7 +1,6 @@
 {
   imports = [
     ./bat
-    ./carapace
     ./cava
     ./emacs
     ./eza
@@ -10,14 +9,13 @@
     ./git
     ./helix
     ./jujutsu
-    # ./nixvim
     ./nushell
-    #./nvf
     ./ranger
     ./starship
     ./tealdeer
     ./tmux
     ./yazi
+    ./yt-dlp
     ./zellij
     ./zoxide
     ./zsh

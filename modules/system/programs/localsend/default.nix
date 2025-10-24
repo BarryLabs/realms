@@ -3,13 +3,14 @@
 , ...
 }:
 with lib; let
+  module = "localsend";
   cfg = config.augs.programs.localsend;
 in
 {
-  options.augs.programs.localsend.enable = mkEnableOption "Base Localsend Module";
+  options.augs.programs.${module}.enable = mkEnableOption "Base Localsend Module";
   config = mkIf cfg.enable {
     programs = {
-      localsend = {
+      ${module} = {
         enable = true;
         openFirewall = true;
       };

@@ -1,10 +1,6 @@
 {
   description = ''
     Title: Realms
-    Author: BarryLabs
-
-    Install pre-configured servers including my daily drivers
-    or pull simple modules for your own configuration.
   '';
 
   inputs = {
@@ -30,6 +26,14 @@
     impermanence = {
       url = "github:nix-community/impermanence";
     };
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-minecraft = {
       url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,38 +41,25 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
+    { nixpkgs
     , home-manager
     , disko
     , sops-nix
     , impermanence
+    , stylix
+    , nix-on-droid
     , nix-minecraft
     , ...
     }@inputs:
     let
-      inherit (self) outputs;
-      sys = {
-        sMob = "aarch64-linux";
-        s32 = "i686-linux";
-        s64 = "x86_64-linux";
-        siMob = "aarch64-darwin";
-        sMac = "x86_64-darwin";
+      specialArgs = {
+        inherit inputs;
       };
-      # archs = [
-      #   "aarch64-linux"
-      #   "i686-linux"
-      #   "x86_64-linux"
-      #   "aarch64-darwin"
-      #   "x86_64-darwin"
-      # ];
-      # forAllSystems = nixpkgs.lib.genAttrs archs;
     in
     {
-      overlays = import ./modules/overlays { inherit inputs; };
       nixosConfigurations = {
         abyss = nixpkgs.lib.nixosSystem {
-          system = sys.s64;
+          system = "x86_64-linux";
           modules = [
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
@@ -79,19 +70,18 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                backupFileExtension = "backup";
                 users.mamotdask = import ./machines/abyss/home.nix;
-                extraSpecialArgs = { inherit inputs; };
               };
             }
           ];
         };
         yggdrasil = nixpkgs.lib.nixosSystem {
-          system = sys.s64;
-          specialArgs = { inherit outputs; };
+          inherit specialArgs;
+          system = "x86_64-linux";
           modules = [
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
+            stylix.nixosModules.stylix
             impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
             ./machines/yggdrasil
@@ -99,9 +89,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                backupFileExtension = "backup";
                 users.chandler = import ./machines/yggdrasil/home.nix;
-                extraSpecialArgs = { inherit inputs; };
               };
             }
           ];
