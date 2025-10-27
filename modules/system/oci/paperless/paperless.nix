@@ -1,15 +1,15 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 with lib;
 let
-  cfg = config.augs.oci.paperless;
+  module = "paperless";
+  cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.paperless.enable = mkEnableOption "enable paperless";
+  options.augs.oci.${module}.enable = mkEnableOption "enable paperless";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;

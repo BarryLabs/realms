@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.podman;
+  module = "podman";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.podman.enable = mkEnableOption "Base Podman System Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Podman System Module";
   config = mkIf cfg.enable {
     environment = {
       variables = {

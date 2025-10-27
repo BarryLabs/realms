@@ -3,10 +3,11 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.fstrim;
+  module = "fstrim";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.fstrim.enable = mkEnableOption "Base FsTrim Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base FsTrim Module";
   config = mkIf cfg.enable {
     services = {
       fstrim = {

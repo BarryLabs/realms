@@ -4,10 +4,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.security;
+  module = "security";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.security.enable = mkEnableOption "Base Security Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Security Module";
   config = mkIf cfg.enable {
     security = {
       virtualisation = {

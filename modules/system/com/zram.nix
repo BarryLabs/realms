@@ -4,10 +4,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.zram;
+  module = "zram";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.zram.enable = mkEnableOption "Base ZRAM Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base ZRAM Module";
   config = mkIf cfg.enable {
     zramSwap = {
       enable = true;

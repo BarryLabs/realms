@@ -3,55 +3,19 @@
     ./disko.nix
     ./variables.nix
     ../../modules/system
+    ../../modules/profile/system
   ];
 
   augs = {
+    profile.client.enable = true;
     styles.mocha.enable = true;
     gui.niri.enable = true;
     backup.yggdrasil.enable = true;
     sync.base.enable = true;
-    com = {
-      apparmor.enable = true;
-      bootEFI.enable = true;
-      cpu.enable = true;
-      environment.enable = true;
-      fhb.enable = true;
-      fonts.enable = true;
-      fstrim.enable = true;
-      governor.enable = true;
-      kernel.enable = true;
-      locale.enable = true;
-      network.enable = true;
-      nh.enable = true;
-      nix.enable = true;
-      nix-ld.enable = true;
-      nixpkgs.enable = true;
-      nvidiaGPU.enable = true;
-      openssh.enable = true;
-      pam.enable = true;
-      pipewire.enable = true;
-      podman.enable = false;
-      settings.enable = true;
-      sops.enable = true;
-      state.enable = true;
-      sudo-rs.enable = true;
-      timezone.enable = true;
-      udisks.enable = true;
-      upgrade.enable = true;
-      users.enable = true;
-      virt-manager.enable = true;
-      waydroid.enable = true;
-      xboxController.enable = true;
-      xserver.enable = true;
-      yubikey.enable = true;
-      zram.enable = true;
-      zsh.enable = true;
-    };
     programs = {
       alvr.enable = true;
       appimage.enable = true;
       firejail.enable = true;
-      hyprland.enable = true;
       kicad.enable = true;
       localsend.enable = true;
       nautilus.enable = true;

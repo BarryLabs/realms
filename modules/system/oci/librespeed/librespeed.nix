@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.oci.librespeed;
+  module = "librespeed";
+  cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.librespeed.enable = mkEnableOption "Librespeed Container";
+  options.augs.oci.${module}.enable = mkEnableOption "Librespeed Container";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;

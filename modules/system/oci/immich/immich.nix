@@ -1,15 +1,15 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 with lib;
 let
-  cfg = config.augs.oci.immich;
+  module = "immich";
+  cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.immich.enable = mkEnableOption "enable immich";
+  options.augs.oci.${module}.enable = mkEnableOption "enable immich";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;

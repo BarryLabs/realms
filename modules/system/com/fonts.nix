@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.fonts;
+  module = "fonts";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.fonts.enable = mkEnableOption "Base Fonts Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Fonts Module";
   config = mkIf cfg.enable {
     fonts = {
       enableDefaultPackages = true;

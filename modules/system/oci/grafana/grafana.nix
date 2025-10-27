@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.oci.grafana;
+  module = "grafana";
+  cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.grafana.enable = mkEnableOption "Grafana Container";
+  options.augs.oci.${module}.enable = mkEnableOption "Grafana Container";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;

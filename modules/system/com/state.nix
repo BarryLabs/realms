@@ -3,7 +3,8 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.state;
+  module = "state";
+  cfg = config.augs.com.${module};
 in
 {
   options.augs.com.state.enable = mkEnableOption "Base Compatibility State Module";

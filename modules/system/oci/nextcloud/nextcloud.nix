@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.oci.nextcloud;
+  module = "nextcloud";
+  cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.nextcloud.enable = mkEnableOption "Nextcloud Container";
+  options.augs.oci.${module}.enable = mkEnableOption "Nextcloud Container";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;

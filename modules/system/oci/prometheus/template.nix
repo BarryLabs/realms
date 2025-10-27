@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.oci.prometheus;
+  module = "prometheus";
+  cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.prometheus.enable = mkEnableOption "Prometheus Container";
+  options.augs.oci.${module}.enable = mkEnableOption "Prometheus Container";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;

@@ -3,10 +3,11 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.zsh;
+  module = "zsh";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.zsh.enable = mkEnableOption "Base Zsh Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Zsh Module";
   config = mkIf cfg.enable {
     programs = {
       zsh = {

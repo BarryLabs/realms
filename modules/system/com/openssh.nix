@@ -4,10 +4,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.openssh;
+  module = "openssh";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.openssh.enable = mkEnableOption "Base SSH Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base SSH Module";
   config = mkIf cfg.enable {
     security.pam.services = {
       sshd.enableAppArmor = if config.augs.com.apparmor.enable then true else false;

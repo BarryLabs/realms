@@ -3,10 +3,11 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.bootEFI;
+  module = "bootEFI";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.bootEFI.enable = mkEnableOption "Base BootEFI Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base BootEFI Module";
   config = mkIf cfg.enable {
     boot = {
       loader = {

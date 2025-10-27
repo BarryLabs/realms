@@ -4,10 +4,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.blacklistNvidia;
+  module = "blacklistNvidia";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.blacklistNvidia.enable = mkEnableOption "Blacklist Nvidia GPU's";
+  options.augs.com.${module}.enable = mkEnableOption "Blacklist Nvidia GPU's";
   config = mkIf cfg.enable {
     boot.extraModprobeConfig = ''
       blacklist nouveau

@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.oci.homepage;
+  module = "homepage";
+  cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.homepage.enable = mkEnableOption "Homepage Container";
+  options.augs.oci.${module}.enable = mkEnableOption "Homepage Container";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;

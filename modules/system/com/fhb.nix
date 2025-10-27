@@ -3,10 +3,11 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.fhb;
+  module = "fhb";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.fhb.enable = mkEnableOption "File Hierarchy Builder Module";
+  options.augs.com.${module}.enable = mkEnableOption "File Hierarchy Builder Module";
   config = mkIf cfg.enable {
     system = {
       activationScripts = {

@@ -3,10 +3,11 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.virt-manager;
+  module = "virt-manager";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.virt-manager.enable = mkEnableOption "Base Virt-Manager Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Virt-Manager Module";
   config = mkIf cfg.enable {
     users.extraGroups.libvirtd.members = [ config.var.user ];
     programs = {

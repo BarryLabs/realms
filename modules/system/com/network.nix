@@ -4,10 +4,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.network;
+  module = "network";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.network.enable = mkEnableOption "Base Networking Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Networking Module";
   config = mkIf cfg.enable {
     networking = {
       hostName = config.var.host;

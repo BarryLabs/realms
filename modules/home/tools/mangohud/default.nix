@@ -14,20 +14,22 @@ in
     #     ".config/MangoHud"
     #   ];
     # };
+    # home.file."${module}" = {
+    #   source = "./MangoHud.conf";
+    #   target = ".config/MangoHud/MangoHud.conf";
+    # };
     programs = {
       mangohud = {
         enable = true;
         enableSessionWide = true;
-        # settings = {
-        #   alpha = 0.70;
-        #   background_alpha = 0.40;
-        #   font_scale = 0.60;
-        # };
         settingsPerApplication = {
           mpv = {
             no_display = true;
           };
           zen = {
+            no_display = true;
+          };
+          nautilus = {
             no_display = true;
           };
         };

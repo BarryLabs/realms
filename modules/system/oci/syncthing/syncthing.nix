@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.oci.syncthing;
+  module = "syncthing";
+  cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.syncthing.enable = mkEnableOption "Syncthing Container";
+  options.augs.oci.${module}.enable = mkEnableOption "Syncthing Container";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;

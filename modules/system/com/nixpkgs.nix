@@ -3,10 +3,11 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.nixpkgs;
+  module = "nixpkgs";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.nixpkgs.enable = mkEnableOption "Nixpkgs Module for Realms";
+  options.augs.com.${module}.enable = mkEnableOption "Nixpkgs Module for Realms";
   config = mkIf cfg.enable {
     nixpkgs = {
       hostPlatform = lib.mkDefault "x86_64-linux";

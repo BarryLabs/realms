@@ -4,10 +4,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.doas;
+  module = "doas";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.doas.enable = mkEnableOption "Base Doas Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Doas Module";
   config = mkIf cfg.enable {
     security = {
       pam.services = {

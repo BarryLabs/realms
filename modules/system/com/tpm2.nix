@@ -1,14 +1,14 @@
 { config
 , lib
-, pkgs
 , ...
 }:
 with lib;
 let
-  cfg = config.augs.com.tpm2;
+  module = "tpm2";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.tpm2.enable = mkEnableOption "Base TPM2 Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base TPM2 Module";
   config = mkIf cfg.enable {
     security.tpm2 = {
       enable = true;

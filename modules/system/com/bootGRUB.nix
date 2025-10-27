@@ -3,14 +3,15 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.bootGRUB;
+  module = "bootGRUB";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.bootGRUB.enable = mkEnableOption "Base BootGrub Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base BootGrub Module";
   config = mkIf cfg.enable {
     boot = {
       loader = {
-        timeout = 3;
+        timeout = 5;
         grub = {
           enable = true;
           useOSProber = true;

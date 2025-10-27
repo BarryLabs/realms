@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.oci.pgadmin;
+  module = "pgadmin";
+  cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.pgadmin.enable = mkEnableOption "PGAdmin Container";
+  options.augs.oci.${module}.enable = mkEnableOption "PGAdmin Container";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;

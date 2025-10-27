@@ -4,10 +4,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.upgrade;
+  module = "upgrade";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.upgrade.enable = mkEnableOption "Base Upgrade Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Upgrade Module";
   config = mkIf cfg.enable {
     system.autoUpgrade = {
       enable = true;

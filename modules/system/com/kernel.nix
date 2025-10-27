@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.kernel;
+  module = "kernel";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.kernel.enable = mkEnableOption "Kernel Module for Realms";
+  options.augs.com.${module}.enable = mkEnableOption "Kernel Module for Realms";
   config = mkIf cfg.enable {
     boot = {
       extraModulePackages =

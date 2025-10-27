@@ -30,6 +30,7 @@ in
         yazi.enable = true;
         yt-dlp.enable = true;
         zellij.enable = true;
+        zoxide.enable = true;
         zsh.enable = true;
       };
       tools = {

@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.udisks;
+  module = "udisks";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.udisks.enable = mkEnableOption "Base Udisks Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Udisks Module";
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       usbutils

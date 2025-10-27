@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.oci.filebrowser;
+  module = "filebrowser";
+  cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.filebrowser.enable = mkEnableOption "Filebrowser Container";
+  options.augs.oci.${module}.enable = mkEnableOption "Filebrowser Container";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;

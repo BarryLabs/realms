@@ -4,10 +4,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.thermald;
+  module = "thermald";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.thermald.enable = mkEnableOption "Base Thermald Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Thermald Module";
   config = mkIf cfg.enable {
     services.thermald = {
       enable = true;

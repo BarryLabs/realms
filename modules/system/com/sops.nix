@@ -3,10 +3,11 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.sops;
+  module = "sops";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.sops.enable = mkEnableOption "Base Sops Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Sops Module";
   config = mkIf cfg.enable {
     sops = {
       age = {

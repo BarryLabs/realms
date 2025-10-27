@@ -1,11 +1,14 @@
 {
   description = ''
-    Title: Realms
+    Realms
   '';
 
   inputs = {
     nixpkgs = {
       url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    };
+    impermanence = {
+      url = "github:nix-community/impermanence";
     };
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -23,9 +26,6 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    impermanence = {
-      url = "github:nix-community/impermanence";
-    };
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,6 +33,7 @@
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
     nix-minecraft = {
       url = "github:Infinidoge/nix-minecraft";
@@ -57,6 +58,16 @@
       };
     in
     {
+      nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
+        pkgs = import nixpkgs {
+          system = "aarch64-linux";
+          overlays = [
+            nix-on-droid.overlays.default
+          ];
+        };
+        modules = [ ./machines/jotunheim ];
+        home-manager-path = home-manager.outPath;
+      };
       nixosConfigurations = {
         abyss = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";

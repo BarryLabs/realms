@@ -4,10 +4,11 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.yubikey;
+  module = "yubikey";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.yubikey.enable = mkEnableOption "Base Yubikey Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Yubikey Module";
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       pam_u2f
@@ -47,10 +48,6 @@ in
               unixAuth = true;
               sshAgentAuth = true;
             } else { };
-          hyprlock = {
-            u2fAuth = true;
-            unixAuth = true;
-          };
         };
       };
     };

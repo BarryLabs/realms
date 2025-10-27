@@ -4,10 +4,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.pam;
+  module = "pam";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.pam.enable = mkEnableOption "Base PAM Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base PAM Module";
   config = mkIf cfg.enable {
     security = {
       rtkit = {

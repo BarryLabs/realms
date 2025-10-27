@@ -4,10 +4,11 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.mac-randomizer;
+  module = "mac-randomizer";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.mac-randomizer.enable = mkEnableOption "Base Mac Randomizer Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Mac Randomizer Module";
   config = mkIf cfg.enable {
     systemd.services.macchanger = {
       enable = true;

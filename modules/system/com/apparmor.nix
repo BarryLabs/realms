@@ -5,13 +5,14 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.apparmor;
+  module = "apparmor";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.apparmor.enable = mkEnableOption "Base AppArmor Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base AppArmor Module";
   config = mkIf cfg.enable {
     security = {
-      apparmor = {
+      ${module} = {
         enable = true;
         killUnconfinedConfinables = true;
         packages = with pkgs; [

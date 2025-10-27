@@ -4,10 +4,11 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.users;
+  module = "users";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.users.enable = mkEnableOption "Base Users Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Users Module";
   config = mkIf cfg.enable {
     users = {
       users = {

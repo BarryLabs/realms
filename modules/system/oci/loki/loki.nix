@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.oci.loki;
+  module = "loki";
+  cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.loki.enable = mkEnableOption "Loki Container";
+  options.augs.oci.${module}.enable = mkEnableOption "Loki Container";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;

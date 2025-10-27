@@ -5,11 +5,12 @@
 }:
 with lib;
 let
-  cfg = config.augs.programs.hyprland;
+  module = "hyprland";
+  cfg = config.augs.gui.${module};
 
 in
 {
-  options.augs.programs.hyprland.enable = mkEnableOption "Hyprland with Catppuccin Mocha SDDM";
+  options.augs.gui.${module}.enable = mkEnableOption "Hyprland with Catppuccin Mocha SDDM";
   config = mkIf cfg.enable {
     xdg = {
       portal = {

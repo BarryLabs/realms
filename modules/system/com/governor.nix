@@ -3,10 +3,11 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.governor;
+  module = "governor";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.governor.enable = mkEnableOption "Base CPU Governor Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base CPU Governor Module";
   config = mkIf cfg.enable {
     powerManagement = {
       cpuFreqGovernor =

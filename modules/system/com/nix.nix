@@ -4,10 +4,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.nix;
+  module = "nix";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.nix.enable = mkEnableOption "Base Nix Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Nix Module";
   config = mkIf cfg.enable {
     nix = {
       # gc = {
@@ -21,7 +22,7 @@ in
           "root"
           "@wheel"
         ];
-        cores = lib.mkDefault 8;
+        cores = lib.mkDefault 6;
         experimental-features = [
           "nix-command"
           "flakes"

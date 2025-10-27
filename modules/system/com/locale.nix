@@ -3,10 +3,11 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.locale;
+  module = "locale";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.locale.enable = mkEnableOption "Base Locale Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Locale Module";
   config = mkIf cfg.enable {
     i18n = {
       defaultLocale = config.var.locale;

@@ -14,7 +14,7 @@ spawn-at-startup "keepassxc"
 spawn-at-startup "obsidian"
 
 prefer-no-csd
-screenshot-path null
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 hotkey-overlay { skip-at-startup; }
 
 output "HDMI-A-1" {
@@ -62,6 +62,7 @@ environment {
 }
 
 cursor {
+	hide-when-typing
 	xcursor-size 16
 	xcursor-theme "Bibata-Modern-Ice"
 }
@@ -138,6 +139,67 @@ layout {
 	}
 }
 
+workspace "main" {
+	open-on-output "HDMI-A-2"
+}
+
+window-rule {
+	match app-id="obsidian"
+	open-on-workspace "main"
+	draw-border-with-background true
+}
+
+workspace "gaming" {
+	open-on-output "HDMI-A-2"
+}
+
+window-rule {
+    match app-id="lutris"
+    open-on-workspace "gaming"
+    open-maximized true
+    draw-border-with-background true    
+}
+
+workspace "business" {
+	open-on-output "HDMI-A-2"
+}
+
+window-rule {
+    match app-id="thunderbird"
+    open-on-workspace "business"
+    open-maximized true
+    draw-border-with-background true    
+}
+
+workspace "entertainment" {
+	open-on-output "HDMI-A-1"
+}
+
+window-rule {
+    match app-id="firefox"
+    open-on-workspace "entertainment"
+    draw-border-with-background true    
+}
+
+workspace "comms" {
+	open-on-output "HDMI-A-1"
+}
+
+window-rule {
+    match app-id="vesktop"
+    open-on-workspace "comms"
+    open-maximized true
+}
+
+workspace "privacy" {
+	open-on-output "HDMI-A-1"
+}
+
+window-rule {
+	match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+	open-on-workspace "privacy"
+}
+
 window-rule {
 	match is-window-cast-target=true
     focus-ring {
@@ -168,22 +230,6 @@ window-rule {
 }
 
 // Spawned Applications
-window-rule {
-    match app-id="thunderbird"
-    open-maximized true
-    draw-border-with-background true    
-}
-
-window-rule {
-    match app-id="vesktop"
-    open-maximized true
-}
-
-window-rule {
-    match app-id="firefox"
-    draw-border-with-background true    
-}
-
 window-rule {
     match title="Friends List" app-id="steam"
     default-column-width { fixed 340; }

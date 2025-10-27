@@ -3,10 +3,11 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.gnupg;
+  module = "gnupg";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.gnupg.enable = mkEnableOption "Base GnuPG Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base GnuPG Module";
   config = mkIf cfg.enable {
     programs = {
       gnupg = {

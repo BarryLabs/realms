@@ -4,20 +4,18 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.bash;
+  module = "bash";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.bash.enable = mkEnableOption "Base Bash Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Bash Module";
   config = mkIf cfg.enable {
-    programs.bash = {
+    programs.${module} = {
       completion = {
         enable = true;
       };
       shellAliases = lib.mkDefault {
-        c = "clear";
         h = "history";
-        nr = "sudo nixos-rebuild switch";
-        nc = "sudo nix-collect-garbage -d";
       };
     };
   };

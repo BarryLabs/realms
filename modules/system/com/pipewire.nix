@@ -4,10 +4,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.pipewire;
+  module = "pipewire";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.pipewire.enable = mkEnableOption "Base Pipewire Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Pipewire Module";
   config = mkIf cfg.enable {
     # environment.systemPackages = with pkgs; [
     #   pavucontrol

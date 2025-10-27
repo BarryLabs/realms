@@ -18,7 +18,7 @@ git clone https://github.com/BarryLabs/realms.git
 cd realms || return
 read -rp "Options:
 ------------
-abyss
+[ abyss ]
 aegir
 asgard
 bifrost
@@ -27,7 +27,6 @@ hel
 himinbjorg
 jotunheim
 mini-iso
-[ mini-vm ]
 mini-vm
 muspelheim
 tesseract
@@ -39,7 +38,7 @@ yggdrasil
 
 Please enter the name of the desired configuration: " host
 if [ -z "$host" ]; then
-  host="mini"
+  host="abyss"
 fi
 echo "--------"
 echo "Generating hardware configuration..."
@@ -51,9 +50,9 @@ sed -i 's/disko/hardware-configuration/g' ./machines/$host/default.nix
 NIX_CONFIG="experimental-features = nix-command flakes"
 echo "Moving files into /etc/nixos..."
 echo "--------"
-sudo cp -r ~/Realms/* /etc/nixos/
-sudo cp -r ~/Realms/.* /etc/nixos/
+sudo cp -r ~/realms/* /etc/nixos/
+sudo cp -r ~/realms/.* /etc/nixos/
 echo "Building $host..."
 echo "--------"
-sudo nixos-rebuild switch --flake ~/Realms/#$host
-sudo rm -rf ~/Realms
+sudo nixos-rebuild switch --flake ~/realms/#$host
+sudo rm -rf ~/realms

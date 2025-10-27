@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.oci.firefly;
+  module = "firefly";
+  cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.firefly.enable = mkEnableOption "Firefly Container";
+  options.augs.oci.${module}.enable = mkEnableOption "Firefly Container";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;

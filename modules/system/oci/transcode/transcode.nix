@@ -1,15 +1,15 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 with lib;
 let
-  cfg = config.augs.oci.transcode;
+  module = "transcode";
+  cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.transcode.enable = mkEnableOption "enable tdarr";
+  options.augs.oci.${module}.enable = mkEnableOption "enable tdarr";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;

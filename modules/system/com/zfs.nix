@@ -3,10 +3,11 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.zfs;
+  module = "zfs";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.zfs.enable = mkEnableOption "ZFS Module for Realms";
+  options.augs.com.${module}.enable = mkEnableOption "ZFS Module for Realms";
   config = mkIf cfg.enable {
     boot = {
       supportedFilesystems = [ "zfs" ];

@@ -3,10 +3,11 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.nvidiaGPU;
+  module = "nvidiaGPU";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.nvidiaGPU.enable = mkEnableOption "Nvidia GPU Module for Realms";
+  options.augs.com.${module}.enable = mkEnableOption "Nvidia GPU Module for Realms";
   config = mkIf cfg.enable {
     hardware = {
       graphics = {

@@ -10,7 +10,7 @@ in
 {
   options.augs.com.${module}.enable = mkEnableOption "Base Dynamic Library Module";
   config = mkIf cfg.enable {
-    programs.${module} = {
+    programs.nix-ld = {
       enable = true;
     };
   };

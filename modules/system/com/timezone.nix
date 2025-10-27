@@ -4,10 +4,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.timezone;
+  module = "timezone";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.timezone.enable = mkEnableOption "Base Timezone Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Timezone Module";
   config = mkIf cfg.enable {
     time = {
       hardwareClockInLocalTime = true;

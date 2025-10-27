@@ -24,6 +24,8 @@ in
     environment = {
       systemPackages = [ pkgs.gamemode ];
     };
+    systemd.user.tmpfiles.users.${config.var.user}.rules = lib.optional config.programs.steam.enable
+      "L %h/.local/share/Steam/steam_dev.cfg - - - - /etc/nixos/modules/system/programs/steam/steam_dev.cfg";
     programs = {
       gamemode = {
         enable = true;

@@ -4,10 +4,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.com.xboxController;
+  module = "xboxController";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.xboxController.enable = mkEnableOption "Base Xbox Controller Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base Xbox Controller Module";
   config = mkIf cfg.enable {
     hardware = {
       xone = {

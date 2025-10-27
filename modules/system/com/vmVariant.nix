@@ -3,10 +3,11 @@
 , ...
 }:
 with lib; let
-  cfg = config.augs.com.vmVariant;
+  module = "vmVariant";
+  cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.vmVariant.enable = mkEnableOption "Base vmVariant Module";
+  options.augs.com.${module}.enable = mkEnableOption "Base vmVariant Module";
   config = mkIf cfg.enable {
     virtualisation = {
       vmVariant = {

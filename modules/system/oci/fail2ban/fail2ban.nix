@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.oci.template;
+  module = "template";
+  cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.pangolin.enable = mkEnableOption "OCI template for Nix";
+  options.augs.oci.${module}.enable = mkEnableOption "OCI template for Nix";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;
@@ -68,11 +69,7 @@ in
         backend = "podman";
         containers = {
           "*" = {
-            autoStart = true;
             hostname = "*";
-            labels = {
-              "traefik.https.routers.example.rule" = "Host(`example.container`)";
-            };
             image = "";
             log-driver = "journald";
             extraOptions = [

@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.oci.promtail;
+  module = "promtail";
+  cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.promtail.enable = mkEnableOption "Promtail Container";
+  options.augs.oci.${module}.enable = mkEnableOption "Promtail Container";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;

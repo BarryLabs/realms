@@ -5,10 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.augs.oci.jellyfin;
+  module = "jellyfin";
+  cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.jellyfin.enable = mkEnableOption "Jellyfin Container";
+  options.augs.oci.${module}.enable = mkEnableOption "Jellyfin Container";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;
