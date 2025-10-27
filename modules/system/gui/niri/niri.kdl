@@ -123,12 +123,7 @@ layout {
 		width 6
 	}
 	struts {
-		// Set a negative strut for the top and bottom to minimize wasted space.
-		// Set a 1px wide strut on the sides to allow easy window switching with the mouse.
-		// left 0
-		// right 0
-		// top 1
-		// bottom -1
+
 	}
 	shadow {
 		on
@@ -283,6 +278,8 @@ binds {
 	Super+Ctrl+F { maximize-column; }
 	// Expand Column
 	Super+Shift+Ctrl+F { expand-column-to-available-width; }
+	// Toggle Shortcuts
+	Super+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 	// Toggle Tabbed Display Mode
 	Mod+W { toggle-column-tabbed-display; }
 	// Move Active Window In and Out of Column
@@ -357,50 +354,16 @@ binds {
 	Super+Ctrl+Shift+Down  { move-window-to-monitor-down; }
 	Super+Ctrl+Shift+Up    { move-window-to-monitor-up; }
 	Super+Ctrl+Shift+Right { move-window-to-monitor-right; }
-	// Brightness Controls
+	// External Button Controls
 	XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "set" "2%+"; }
 	XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "2%-"; }
-
-	// Screen brightness control for external monitors.
-	// https://github.com/rockowitz/ddcutil/issues/110
-	// Shift+XF86MonBrightnessUp   allow-when-locked=true {
-	// 	spawn "ddcutil" "--bus" "7" "--disable-dynamic-sleep" "--noverify" "--skip-ddc-checks" "--sleep-multiplier" "0.13" "setvcp" "10" "+" "2"
-	// }
-	// Shift+XF86MonBrightnessDown allow-when-locked=true {
-	// 	spawn "ddcutil" "--bus" "7" "--disable-dynamic-sleep" "--noverify" "--skip-ddc-checks" "--sleep-multiplier" "0.13" "setvcp" "10" "-" "2";
-	// }
-
-	// Media control.
-	// XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }
-	// XF86AudioStop allow-when-locked=true { spawn "playerctl" "stop"; }
-	// XF86AudioPrev allow-when-locked=true { spawn "playerctl" "previous"; }
-	// XF86AudioNext allow-when-locked=true { spawn "playerctl" "next"; }
-
-	// Media audio control.
-	// Shift+XF86AudioRaiseVolume allow-when-locked=true { spawn "playerctl" "volume" "0.01%+"; }
-	// Shift+XF86AudioLowerVolume allow-when-locked=true { spawn "playerctl" "volume" "0.01%-"; }
-
-	// Output audio control.
-	// XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.01+"; }
-	// XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.01-"; }
-	// XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute"   "@DEFAULT_AUDIO_SINK@" "toggle"; }
-
-	// Input audio control.
-	// Super+XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SOURCE@" "0.01+"; }
-	// Super+XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SOURCE@" "0.01-"; }
-	// Super+XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute"   "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-	// XF86AudioMicMute           allow-when-locked=true { spawn "wpctl" "set-mute"   "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-
-	// Power menu.
-	// XF86PowerOff allow-when-locked=true { spawn "/etc/nixos/scripts/power.sh"; }
-	// XF86Sleep    allow-when-locked=true { spawn "/etc/nixos/scripts/power.sh"; }
-	// XF86Suspend  allow-when-locked=true { spawn "/etc/nixos/scripts/power.sh"; }
-
-	// Select from the clipboard.
-	// Super+Shift+V { spawn "dash" "-c" "clipman pick -t CUSTOM -T 'fuzzel -d --no-icons --width 60'"; }
-
-	// Clear the clipboard.
-	// Super+Control+V { spawn "dash" "-c" "clipman clear --all && dunstify 'Clipboard cleared.'"; }
-
-	Super+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+	Shift+XF86AudioRaiseVolume allow-when-locked=true { spawn "playerctl" "volume" "0.01%+"; }
+	Shift+XF86AudioLowerVolume allow-when-locked=true { spawn "playerctl" "volume" "0.01%-"; }
+	XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.01+"; }
+	XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.01-"; }
+	XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute"   "@DEFAULT_AUDIO_SINK@" "toggle"; }
+	Super+XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SOURCE@" "0.01+"; }
+	Super+XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SOURCE@" "0.01-"; }
+	Super+XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute"   "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+	XF86AudioMicMute           allow-when-locked=true { spawn "wpctl" "set-mute"   "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 }
