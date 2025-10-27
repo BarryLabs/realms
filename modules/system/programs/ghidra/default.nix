@@ -15,7 +15,7 @@ in
         _JAVA_AWT_WM_NONREPARENTING = "1";
       } else { };
     programs = {
-      ${module} = {
+      ghidra = {
         enable = true;
       };
     };

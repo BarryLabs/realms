@@ -7,12 +7,31 @@ let
   cfg = config.mods.wm.wayland.waybar.yggdrasil;
 in
 {
-  options.mods.wm.wayland.waybar.yggdrasil.enable = mkEnableOption "enable waybar for yggdrasil";
+  options.mods.wm.wayland.waybar.yggdrasil.enable = mkEnableOption "Waybar for Yggdrasil";
   config = mkIf cfg.enable {
     programs = {
       waybar = {
         enable = true;
         settings = {
+          bottomBar = {
+            layer = "top";
+            position = "bottom";
+            height = 12;
+            output = [
+              "HDMI-A-1"
+              "HDMI-A-2"
+            ];
+            modules-center = [
+              "wlr/taskbar"
+            ];
+            "wlr/taskbar" = {
+              format = "{icon}";
+              icon-size = 14;
+              tooltip-format = "{title} | {app_id}";
+              on-click = "activate";
+              on-click-middle = "close";
+            };
+          };
           mainBar = {
             layer = "top";
             position = "top";
@@ -24,15 +43,13 @@ in
             modules-left = [
               "custom/startmenu"
               "clock"
-              "gamemode"
-              "wlr/taskbar"
+              "cpu"
+              "memory"
+              "disk"
             ];
             modules-center = [
             ];
             modules-right = [
-              "cpu"
-              "memory"
-              "disk"
               "network"
               "pulseaudio"
               "privacy"
@@ -47,55 +64,6 @@ in
               format = " {:%I:%M %p}";
               tooltip = true;
               tooltip-format = "<small>{:%A, %d.%B %Y }</small>\n<tt><big>{calendar}</big></tt>";
-            };
-            "tray" = {
-              spacing = 6;
-              icon-size = 14;
-              show-passive-items = true;
-              icons = {
-                firefox = "~/Projects/Repos/Realms/.config/waybar/icons/firefox.png";
-                keepassxc = "~/Projects/Repos/Realms/.config/waybar/icons/keepassxc.png";
-                vesktop = "~/Projects/Repos/Realms/.config/waybar/icons/discord.png";
-              };
-            };
-            "gamemode" = {
-              format = "{glyph}";
-              format-alt = "{glyph} {count}";
-              glyph = "";
-              hide-not-running = true;
-              use-icon = true;
-              icon-name = "input-gaming-symbolic";
-              icon-spacing = 4;
-              icon-size = 20;
-              tooltip-format = "Games running: {count}";
-            };
-            "wlr/taskbar" = {
-              format = "{icon}";
-              icon-size = 12;
-              tooltip-format = "{title} | {app_id}";
-              on-click = "activate";
-              on-click-middle = "close";
-            };
-            "hyprland/window" = {
-              icon = true;
-              icon-size = 12;
-              rewrite = {
-                "" = " No Windows?? ";
-                "(.*) - Vesktop" = "$1";
-              };
-            };
-            "hyprland/workspaces" = {
-              format = "{icon}";
-              format-icons = {
-                active = "";
-                empty = "";
-                default = "";
-                urgent = "";
-                special = "󰠱";
-              };
-              all-outputs = true;
-              on-scroll-up = "hyprctl dispatch workspace e+1";
-              on-scroll-down = "hyprctl dispatch workspace e-1";
             };
             "disk" = {
               path = "/";
@@ -144,7 +112,9 @@ in
               on-click = "pavucontrol";
               ignored-sinks = [ "Easy Effects Sink" ];
             };
-            # "privacy" = { };
+            "privacy" = {
+              icon-size = 12;
+            };
             "idle_inhibitor" = {
               format = "{icon}";
               format-icons = {
@@ -209,40 +179,18 @@ in
             border-radius: 15px 15px 15px 15px;
           }
 
-          #tray {
-            background: #242434;
-            margin: 3px;
-            padding: 0px 10px 0px 10px;
-            border-radius: 15px 15px 15px 15px;
-          }
-
-          #gamemode {
-            background: #242434;
-            margin: 3px;
-            padding: 0px 10px 0px 10px;
-            border-radius: 15px 15px 15px 15px;
-          }
-
           #taskbar {
-            margin: 3px;
+            margin: 0rem;
             background: #fab387;
-            padding: 0px 10px 0px 10px;
-            border-radius: 10px 10px 10px 10px;       
+            padding: 0rem 0.5rem 0rem 0rem;
+            border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;       
           }
-
-          #workspaces {
-            background: linear-gradient(45deg, #f38ba8, #1F1F2D);
-            border: solid 0px #000000;
-            border-radius: 10px 10px 10px 10px;
-            font-weight: normal;
-            font-style: normal;
-          }
-          #workspaces button {
-            padding: 0px 10px;
-            border-radius: 1rem;
+          #taskbar button {
+            padding: 0rem 0rem 0rem 0rem;
+            border-radius: 0.5rem;
             transition: all 0.2s ease-in-out;
           }
-          
+        
           #disk {
             color: #000000;
             background: #8caaee;
@@ -294,14 +242,6 @@ in
           #backlight {
             color: #000000;
             background: #fab387;
-            margin: 3px;
-            padding: 0px 10px 0px 10px;
-            border-radius: 15px 15px 15px 15px;
-          }
-
-          #idle_inhibitor {
-            color: #000000;
-            background: #ca9ee6;
             margin: 3px;
             padding: 0px 10px 0px 10px;
             border-radius: 15px 15px 15px 15px;

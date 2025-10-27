@@ -242,6 +242,8 @@ window-rule {
 }
 
 binds {
+	// Help Menu
+	Super+H { show-hotkey-overlay; }
 	// Quit Niri
 	Ctrl+Alt+Delete { quit; }
 	// Toggle Overview
@@ -252,14 +254,12 @@ binds {
 	Super+Q { close-window; }
 	// Spawn Wezterm
 	Super+Return { spawn "wezterm"; }
-	// Help Menu
-	Super+H { show-hotkey-overlay; }
-	// Spawn Rofi
-	Super+M { spawn "rofi" "-show" "drun"; }
-	// Spawn Rofi-Based-Emoji-Picker
-	Super+E { spawn "emoji"; }
-	// Spawn Grim/Slurp/Swappy for Screenshots
-	Super+G { spawn "screenshot"; }
+	// Spawn Launcher
+	Super+M { spawn "fuzzel"; }
+	// Screenshots
+	Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
 	// Toggle showing Waybar when launched.
 	Super+B { spawn "pkill" "-SIGUSR1" "waybar"; }
 	// Toggle Floating on Active Window

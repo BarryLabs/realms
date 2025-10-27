@@ -27,6 +27,7 @@ in
       (lutris.override {
         extraPkgs = pkgs: [
           adwaita-icon-theme
+          proton-ge-bin
         ];
       })
     ];

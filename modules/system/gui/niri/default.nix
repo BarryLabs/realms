@@ -21,8 +21,10 @@ in
         };
       };
     };
-    systemd.user.tmpfiles.users.${config.var.user}.rules = lib.optional config.programs.niri.enable
-      "L %h/.config/niri/config.kdl - - - - /etc/nixos/modules/system/gui/niri/niri.kdl";
+    systemd.user.tmpfiles.users.${config.var.user}.rules = [
+      "L %h/.config/niri/config.kdl - - - - /etc/nixos/modules/system/gui/niri/niri.kdl"
+      "L %h/.config/fuzzel/fuzzel.ini - - - - /etc/nixos/modules/system/gui/niri/fuzzel.ini"
+    ];
     environment = lib.mkIf config.augs.gui.${module}.enable {
       sessionVariables = {
         NIXOS_OZONE_WL = "1";
@@ -31,9 +33,11 @@ in
       };
       systemPackages = with pkgs; [
         xwayland-satellite
+        fuzzel
         hyprpicker
         mpvpaper
         wl-clipboard
+        nautilus
       ];
     };
     programs.niri = {

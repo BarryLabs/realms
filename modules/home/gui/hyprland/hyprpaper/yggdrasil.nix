@@ -18,10 +18,10 @@ in
         splash_offset = 2.0;
 
         preload =
-          [ "/etc/nixos/.config/wallpapers/astronaut.png" "/etc/nixos/.config/wallpapers/nixos_dark.png" ];
+          [ "/etc/nixos/.config/wallpapers/i_heart_linux.png" "/etc/nixos/.config/wallpapers/nixos_dark.png" ];
 
         wallpaper = [
-          "HDMI-A-1,/etc/nixos/.config/wallpapers/astronaut.png"
+          "HDMI-A-1,/etc/nixos/.config/wallpapers/i_heart_linux.png"
           "HDMI-A-2,/etc/nixos/.config/wallpapers/nixos_dark.png"
         ];
       };

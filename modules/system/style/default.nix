@@ -13,7 +13,7 @@ in
     stylix = {
       enable = true;
       autoEnable = true;
-      image = ../../../.config/styles/catppuccin.png;
+      image = ../../../.config/wallpapers/i_heart_linux.png;
       polarity = "dark";
       fonts = rec {
         serif = monospace;

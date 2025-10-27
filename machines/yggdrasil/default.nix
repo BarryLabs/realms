@@ -5,29 +5,6 @@
     ../../modules/system
     ../../modules/profile/system
   ];
-
-  augs = {
-    profile.client.enable = true;
-    styles.mocha.enable = true;
-    gui.niri.enable = true;
-    backup.yggdrasil.enable = true;
-    sync.base.enable = true;
-    programs = {
-      alvr.enable = true;
-      appimage.enable = true;
-      firejail.enable = true;
-      kicad.enable = true;
-      localsend.enable = true;
-      nautilus.enable = true;
-      steam.enable = true;
-    };
-    services = {
-      mullvad.enable = true;
-      node-exporter.enable = true;
-      openrgb.enable = true;
-      promtail.enable = true;
-    };
-  };
   fileSystems = {
     "/mnt/Storage" = {
       fsType = "ntfs";
@@ -42,6 +19,17 @@
       enp6s0 = {
         useDHCP = true;
       };
+    };
+  };
+  augs = {
+    backup.yggdrasil.enable = true;
+    sync.base.enable = true;
+    styles.mocha.enable = true;
+    gui.niri.enable = true;
+    profile = {
+      client.enable = true;
+      desktop.enable = true;
+      monitoring.enable = true;
     };
   };
   # environment.persistence."/nix/persist" = {

@@ -40,9 +40,6 @@ in
       };
       ${module} = {
         enable = true;
-        extraCompatPackages = with pkgs; [
-          proton-ge-bin
-        ];
         dedicatedServer = {
           openFirewall = true;
         };

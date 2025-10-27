@@ -53,15 +53,15 @@
     ./gui/hyprland
     ./gui/niri
 
-    ./oci/filebrowser/filebrowser.nix
-    ./oci/firefly/firefly.nix
-    ./oci/forgejo/forgejo.nix
-    ./oci/immich/immich.nix
-    ./oci/paperless/paperless.nix
-    ./oci/pgadmin/pgadmin.nix
-    ./oci/syncthing/syncthing.nix
-    ./oci/torrent/torrent.nix
-    ./oci/transcode/transcode.nix
+    ./oci/filebrowser
+    ./oci/firefly
+    ./oci/forgejo
+    ./oci/immich
+    ./oci/paperless
+    ./oci/pgadmin
+    ./oci/syncthing
+    ./oci/torrent
+    ./oci/transcode
 
     ./programs/alvr
     ./programs/appimages

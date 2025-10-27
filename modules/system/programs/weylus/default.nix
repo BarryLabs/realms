@@ -10,7 +10,7 @@ in
   options.augs.programs.${module}.enable = mkEnableOption "Base Weylus Module";
   config = mkIf cfg.enable {
     programs = {
-      ${module} = {
+      weylus = {
         enable = true;
         openFirewall = true;
       };
