@@ -32,6 +32,9 @@ in
           nautilus = {
             no_display = true;
           };
+          xdg-desktop-portal-gnome = {
+            no_display = true;
+          };
         };
       };
     };

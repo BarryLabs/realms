@@ -45,7 +45,6 @@ in
           ))
           rust-analyzer
           taplo
-          taplo-lsp
           tailwindcss-language-server
           vscode-langservers-extracted
           yaml-language-server

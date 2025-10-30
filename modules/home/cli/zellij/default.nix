@@ -17,8 +17,8 @@ in
     };
     home.file."${module}" = {
       recursive = true;
-      source = ../../../../.config/${module};
-      target = ".config/${module}/";
+      source = ./layouts;
+      target = ".config/${module}/layouts";
     };
   };
 }

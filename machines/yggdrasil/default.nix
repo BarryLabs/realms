@@ -5,6 +5,19 @@
     ../../modules/system
     ../../modules/profile/system
   ];
+  home-manager.extraSpecialArgs = {
+    vars = {
+      user = "chandler";
+      screen = {
+        one = {
+          name = "HDMI-A-2";
+        };
+        two = {
+          name = "HDMI-A-1";
+        };
+      };
+    };
+  };
   fileSystems = {
     "/mnt/Storage" = {
       fsType = "ntfs";
@@ -30,6 +43,11 @@
       client.enable = true;
       desktop.enable = true;
       monitoring.enable = true;
+      virtualisation.enable = true;
+    };
+    com = {
+      nvidiaGPU.enable = true;
+      sops.enable = true;
     };
   };
   # environment.persistence."/nix/persist" = {

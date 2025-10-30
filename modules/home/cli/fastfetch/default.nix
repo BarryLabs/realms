@@ -8,7 +8,7 @@ let
   cfg = config.mods.cli.${module};
 in
 {
-  options.mods.cli.${module}.enable = mkEnableOption "Base Fastfetch Module";
+  options.mods.cli.${module}.enable = mkEnableOption "Fastfetch Module";
   config = mkIf cfg.enable {
     programs = {
       ${module} = {
@@ -64,7 +64,7 @@ in
             }
             {
               type = "custom";
-              format = " OS -> Realms 0.1.0";
+              format = " OS -> Realms 1.0.0";
             }
             {
               type = "kernel";

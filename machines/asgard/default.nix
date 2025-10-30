@@ -10,30 +10,15 @@
 
   augs = {
     backup.asgard.enable = true;
+    profile = {
+      monitoring.enable = true;
+      server.enable = true;
+    };
     com = {
-      # bash.enable = true;
-      # bootGRUB.enable = true;
-      # environment.enable = true;
-      # fstrim.enable = true;
-      impermanence.enable = false;
-      # locale.enable = true;
-      # network.enable = true;
       nh.enable = true;
-      # nix.enable = true;
-      # nixpkgs.enable = true;
-      # openssh.enable = true;
-      # qemuguest.enable = true;
       sops.enable = true;
-      # state.enable = true;
-      # sudo-rs.enable = true;
-      # timezone.enable = true;
-      users.enable = true;
       zfs.enable = true;
       zram.enable = true;
-    };
-    services = {
-      node-exporter.enable = true;
-      promtail.enable = true;
     };
     oci = {
       filebrowser.enable = true;

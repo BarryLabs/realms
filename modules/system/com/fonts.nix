@@ -19,7 +19,7 @@ in
         font-awesome
         openmoji-color
         nerd-font-patcher
-        noto-fonts-emoji
+        noto-fonts-color-emoji
       ];
       fontconfig = {
         enable = true;

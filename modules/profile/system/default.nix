@@ -4,5 +4,6 @@
     ./desktop
     ./monitoring
     ./server
+    ./virtualisation
   ];
 }

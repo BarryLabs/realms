@@ -8,7 +8,7 @@ with lib; let
   cfg = config.augs.styles.${module};
 in
 {
-  options.augs.styles.${module}.enable = mkEnableOption "Mocha Style Module";
+  options.augs.styles.${module}.enable = mkEnableOption "Mocha Module + Hack Nerd Font";
   config = mkIf cfg.enable {
     stylix = {
       enable = true;
@@ -20,8 +20,8 @@ in
         sansSerif = monospace;
         emoji = monospace;
         monospace = {
-          package = pkgs.source-code-pro;
-          name = "Source Code Pro";
+          package = pkgs.nerd-fonts.hack;
+          name = "Hack Nerd Font";
         };
       };
       opacity =

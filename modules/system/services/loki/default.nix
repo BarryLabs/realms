@@ -11,7 +11,7 @@ in
     services = {
       loki = {
         enable = true;
-        configFile = ../../../.config/loki/loki.yaml;
+        configFile = ./loki.yaml;
       };
     };
   };

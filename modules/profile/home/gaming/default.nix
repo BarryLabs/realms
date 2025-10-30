@@ -12,7 +12,7 @@ in
   imports = [
     ../../../home
   ];
-  options.mods.profile.${module}.enable = mkEnableOption "Base Gaming Profile";
+  options.mods.profile.${module}.enable = mkEnableOption "Gaming Profile";
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       runelite

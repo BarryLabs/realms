@@ -11,7 +11,7 @@ in
   imports = [
     ../../../system
   ];
-  options.augs.profile.${module}.enable = mkEnableOption "Base Monitoring Profile";
+  options.augs.profile.${module}.enable = mkEnableOption "Monitoring Profile";
   config = mkIf cfg.enable {
     augs = {
       services = {

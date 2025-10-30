@@ -1,7 +1,5 @@
 {
   imports = [
-    ./emoji
-    ./rofi-launcher
-    ./screenshot
+    ./hyprland
   ];
 }

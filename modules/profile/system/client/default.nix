@@ -11,7 +11,7 @@ in
   imports = [
     ../../../system
   ];
-  options.augs.profile.${module}.enable = mkEnableOption "Base Client Profile";
+  options.augs.profile.${module}.enable = mkEnableOption "Client Profile";
   config = mkIf cfg.enable {
     augs = {
       com = {
@@ -30,22 +30,17 @@ in
         nix.enable = true;
         nix-ld.enable = true;
         nixpkgs.enable = true;
-        nvidiaGPU.enable = true;
         openssh.enable = true;
         pam.enable = true;
         pipewire.enable = true;
         podman.enable = false;
         settings.enable = true;
-        sops.enable = true;
         state.enable = true;
         sudo-rs.enable = true;
         timezone.enable = true;
         udisks.enable = true;
         users.enable = true;
-        virt-manager.enable = true;
-        waydroid.enable = true;
-        xboxController.enable = true;
-        xserver.enable = true;
+        # xserver.enable = true;
         yubikey.enable = true;
         zram.enable = true;
         zsh.enable = true;

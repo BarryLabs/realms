@@ -18,7 +18,7 @@ in
     services = {
       ${module} = {
         enable = true;
-        acceleration = "cuda";
+        # acceleration = "cuda";
       };
     };
   };

@@ -21,6 +21,11 @@ in
           ];
       };
     };
+    hardware = {
+      xone = {
+        enable = true;
+      };
+    };
     environment = {
       systemPackages = [ pkgs.gamemode ];
     };

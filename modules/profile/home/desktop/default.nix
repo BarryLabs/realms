@@ -11,7 +11,7 @@ in
   imports = [
     ../../../home
   ];
-  options.mods.profile.${module}.enable = mkEnableOption "Base Desktop Profile";
+  options.mods.profile.${module}.enable = mkEnableOption "Desktop Profile";
   config = mkIf cfg.enable {
     mods = {
       browser = {

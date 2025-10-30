@@ -34,7 +34,7 @@ in
         services = {
           login = {
             u2fAuth = true;
-            unixAuth = false;
+            unixAuth = true;
           };
           doas =
             if config.augs.com.doas.enable then {

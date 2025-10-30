@@ -43,7 +43,6 @@
     ./com/virt-manager.nix
     ./com/vmVariant.nix
     ./com/waydroid.nix
-    ./com/xboxController.nix
     ./com/xserver.nix
     ./com/yubikey.nix
     ./com/zfs.nix

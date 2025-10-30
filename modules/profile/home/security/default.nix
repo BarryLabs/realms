@@ -12,7 +12,7 @@ in
   imports = [
     ../../../home
   ];
-  options.mods.profile.${module}.enable = mkEnableOption "Base Content Profile";
+  options.mods.profile.${module}.enable = mkEnableOption "Security Profile";
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       keepassxc

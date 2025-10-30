@@ -11,10 +11,11 @@ spawn-at-startup "firefox"
 spawn-at-startup "obs"
 spawn-at-startup "vesktop" "--ozone-platform-hint=auto"
 spawn-at-startup "keepassxc"
+spawn-at-startup "yubioath-flutter"
 spawn-at-startup "obsidian"
 
 prefer-no-csd
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png"
 hotkey-overlay { skip-at-startup; }
 
 output "HDMI-A-1" {
@@ -139,6 +140,12 @@ workspace "main" {
 }
 
 window-rule {
+	match app-id="Foot"
+	open-on-workspace "main"
+	draw-border-with-background true
+}
+
+window-rule {
 	match app-id="obsidian"
 	open-on-workspace "main"
 	draw-border-with-background true
@@ -196,6 +203,11 @@ window-rule {
 }
 
 window-rule {
+	match app-id=r#"^com\.yubico\.yubioath$"#
+	open-on-workspace "privacy"
+}
+
+window-rule {
 	match is-window-cast-target=true
     focus-ring {
         active-color "#f38ba8"
@@ -220,6 +232,12 @@ window-rule {
 
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"^foot$"#
     default-column-width {}
     open-floating true
 }
@@ -253,7 +271,7 @@ binds {
 	// Close Active Window.
 	Super+Q { close-window; }
 	// Spawn Wezterm
-	Super+Return { spawn "wezterm"; }
+	Super+Return { spawn "foot"; }
 	// Spawn Launcher
 	Super+M { spawn "fuzzel"; }
 	// Screenshots

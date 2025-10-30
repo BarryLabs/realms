@@ -11,7 +11,7 @@ in
   imports = [
     ../../../system
   ];
-  options.augs.profile.${module}.enable = mkEnableOption "Base Server Profile";
+  options.augs.profile.${module}.enable = mkEnableOption "Server Profile";
   config = mkIf cfg.enable {
     augs = {
       com = {

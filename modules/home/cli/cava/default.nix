@@ -17,10 +17,6 @@ in
             framerate = 60;
           };
           smoothing.noise_reduction = 88;
-          color = {
-            background = "'#111111'";
-            foreground = "'#33ffff'";
-          };
         };
       };
     };

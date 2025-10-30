@@ -11,12 +11,11 @@ in
   imports = [
     ../../../home
   ];
-  options.mods.profile.${module}.enable = mkEnableOption "Base CLI Profile";
+  options.mods.profile.${module}.enable = mkEnableOption "CLI Profile";
   config = mkIf cfg.enable {
     mods = {
       terminal = {
         foot.enable = true;
-        wezterm.enable = true;
       };
       cli = {
         bat.enable = true;
