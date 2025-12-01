@@ -4,14 +4,6 @@
 
 ![nixos](https://img.shields.io/badge/NixOS-24273A.svg?style=flat&logo=nixos&logoColor=4h6232)
 
-## Yggdrasil
-
-<img align="center" width="90%" src="https://codeberg.org/BarryLabs/realms/src/branch/main/assets/yggdrasil-desktop-1.png" />
-
-## Abyss
-
-<img align="center" width="90%" src="https://codeberg.org/BarryLabs/realms/src/branch/main/assets/abyss-desktop-1.png" />
-
 </div>
 
 ---
