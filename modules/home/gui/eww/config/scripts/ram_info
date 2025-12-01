@@ -1,0 +1,16 @@
+#!/run/current-system/sw/bin/bash
+
+case $1 in
+"--used")
+	free -t --mega | grep Mem | awk '{printf $3/100}'
+	;;
+"--all")
+	free -t --mega | grep Mem | awk '{printf $2/100}'
+	;;
+"--parsed")
+	free -t -h | grep Mem | awk '{printf $3 "b"}'
+	;;
+*)
+	true
+	;;
+esac

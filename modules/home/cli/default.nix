@@ -1,0 +1,25 @@
+{
+  imports = [
+    ./bat
+    ./cava
+    ./emacs
+    ./eza
+    ./fastfetch
+    ./fzf
+    ./git
+    ./goose-cli
+    ./helix
+    ./jujutsu
+    ./nushell
+    ./nvim
+    ./ranger
+    ./starship
+    ./tealdeer
+    ./tmux
+    ./yazi
+    ./yt-dlp
+    ./zellij
+    ./zoxide
+    ./zsh
+  ];
+}

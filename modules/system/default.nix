@@ -1,0 +1,118 @@
+{
+  imports = [
+    ./com/apparmor.nix
+    ./com/bash.nix
+    ./com/blacklistNvidiaGPU.nix
+    ./com/bluetooth.nix
+    ./com/bootEFI.nix
+    ./com/bootGRUB.nix
+    ./com/bootLimine.nix
+    ./com/cpu.nix
+    ./com/dns.nix
+    ./com/doas.nix
+    ./com/environment.nix
+    ./com/fhb.nix
+    ./com/fonts.nix
+    ./com/fstrim.nix
+    ./com/gnupg.nix
+    ./com/governor.nix
+    ./com/intelGPU.nix
+    ./com/btrfsImpermanent.nix
+    ./com/kbd.nix
+    ./com/kernel.nix
+    ./com/locale.nix
+    ./com/mac-randomizer.nix
+    ./com/network.nix
+    ./com/nh.nix
+    ./com/nix.nix
+    ./com/nix-ld.nix
+    ./com/nixpkgs.nix
+    ./com/nvidiaGPU.nix
+    ./com/openssh.nix
+    ./com/pam.nix
+    ./com/pipewire.nix
+    ./com/podman.nix
+    ./com/qemuguest.nix
+    ./com/security.nix
+    ./com/settings.nix
+    ./com/sops.nix
+    ./com/state.nix
+    ./com/sudo-rs.nix
+    ./com/thermald.nix
+    ./com/timezone.nix
+    ./com/tpm2.nix
+    ./com/udisks.nix
+    ./com/users.nix
+    ./com/virt-manager.nix
+    ./com/vmVariant.nix
+    ./com/waydroid.nix
+    ./com/yubikey.nix
+    ./com/zfs.nix
+    ./com/zram.nix
+    ./com/zsh.nix
+
+    ./gui/hyprland
+    ./gui/niri
+
+    ./oci/filebrowser
+    ./oci/firefly
+    ./oci/forgejo
+    ./oci/immich
+    ./oci/linkwarden
+    ./oci/paperless
+    ./oci/pgadmin
+    ./oci/syncthing
+    ./oci/torrent
+    ./oci/transcode
+
+    ./programs/alvr
+    ./programs/appimages
+    ./programs/dolphin
+    ./programs/firejail
+    ./programs/ghidra
+    ./programs/kicad
+    ./programs/localsend
+    ./programs/nautilus
+    ./programs/steam
+    ./programs/thunar
+    ./programs/weylus
+
+    ./services/arr
+    ./services/authelia
+    ./services/borg
+    ./services/clamav
+    # ./services/email
+    ./services/flatpak
+    ./services/frigate
+    ./services/gitea
+    ./services/gotify
+    ./services/grafana
+    ./services/headscale
+    ./services/home-assistant
+    ./services/homepage
+    ./services/k3s
+    ./services/loki
+    # ./services/minecraft
+    ./services/mullvad
+    ./services/n8n
+    ./services/nextcloud
+    # ./services/nfs
+    ./services/node-exporter
+    ./services/ollama
+    ./services/open-webui
+    ./services/openrgb
+    ./services/postgres
+    ./services/prometheus
+    ./services/promtail
+    ./services/qdrant
+    ./services/searx
+    #./services/smb
+    ./services/sunshine
+    ./services/syncthing
+    ./services/teamspeak3
+    #./services/traefik
+    ./services/vpn
+
+    ./style/default.nix
+  ];
+}

@@ -1,0 +1,325 @@
+;; Variables
+(defvar day "0")
+(defvar month "0")
+(defvar year "0")
+(defvar eww "eww -c $HOME/.config/eww")
+(defvar system_reveal false)
+(defvar ram_reveal false)
+(defvar disk_reveal false)
+(defvar date_reveal false)
+(defvar ANIM_DUR "400ms")
+
+(defpoll hour :interval "1s" "scripts/time_info --hour")
+(defpoll minutes :interval "1s" "scripts/time_info --minutes")
+(defpoll type :interval "1s" "scripts/time_info --type")
+(defpoll date :interval "1s" "scripts/time_info --date")
+(defpoll ram_used :interval "1s" "scripts/ram_info --used")
+(defpoll ram_parsed :interval "1s" "scripts/ram_info --parsed")
+(defpoll ram_all :interval "1s" "scripts/ram_info --all")
+(defpoll ram_graph :interval "1s" "scripts/ram_info --graph")
+(defpoll disk_all :interval "1s" "scripts/disk_info --all")
+(defpoll disk_used :interval "1s" "scripts/disk_info --used")
+(defpoll disk_free :interval "1s" "scripts/disk_info --free")
+(defpoll window_title :interval "1s" "scripts/get_window_title")
+
+(deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get_workspaces")
+(deflisten current_workspace :initial "..." "bash ~/.config/eww/scripts/get_active_workspace")
+(deflisten urgent_workspace :initial "..." "bash ~/.config/eww/scripts/get_urgent_workspaces")
+
+;; Windows
+(defwindow bar0
+  :monitor 0
+  :namespace "top_bar"
+  :exclusive true
+  :geometry (geometry 
+              :y "4px"
+              :height "16px"
+              :width "99%"
+              :anchor "top center")
+  (bar))
+(defwindow bar1
+  :monitor 1
+  :namespace "top_bar"
+  :exclusive true
+  :geometry (geometry
+              :y "4px"
+              :height "16px"
+              :width "99%"
+              :anchor "top center")
+  (bar))
+
+;; Calendar window
+(defwindow calendar
+  :monitor 0
+  :stacking "overlay"
+  :geometry 
+    (geometry 
+      :x "15px" 
+      :y "15px"
+      :width "415px"
+      :height "100px")
+  (box
+    :class "cal_box"
+    :orientation "h"
+    :valign "fill"
+    :halign "fill"
+    (calendar
+      :day day
+      :month month
+      :year year
+      :show-details "true"
+      :show-heading "true"
+      :show-day-names "true")))
+
+(defwidget bar []
+  (centerbox
+    :class "top-bar"
+    :orientation "h"  
+  (left)
+  (center)
+  (right)))
+
+(defwidget left []
+  (box
+    :class "left_modules"
+    :orientation "h"
+    :halign "start"
+    :space-evenly false
+      (box
+        :class "left_menu_box"
+        :orientation "h"
+      (home_menu))
+      (box
+        :class "left_workspace_box"
+        :orientation "h"
+      (workspaces))))
+
+(defwidget center []
+  (box
+    :class "center_modules"
+    :orientation "h"
+    :halign "center"
+  (active_window)))
+
+(defwidget right []
+  (box
+    :class "right_modules"
+    :orientation "h"
+    :halign "end"
+  (ram)
+  (disk)
+  (time)
+  (powermenu)))
+
+(defwidget home_menu []
+  (button :class "home_menu"
+          :onclick "scripts/rofi_launcher &"
+    (label :text "")))
+
+(defwidget workspaces []
+  (eventbox :onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-widget"
+    (box :space-evenly false
+      (label :text "${workspaces}${current_workspace}${urgent_workspace}" :visible false)
+      (for workspace in workspaces
+        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+          (box :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.id == urgent_workspace ? "urgent" : ""} ${workspace.windows > 0 ? "occupied" : "empty" }"
+            (label :text "${workspace.id}")))))))
+
+(defwidget active_window []
+  (box
+    :class "window_title_box"
+    (label
+      :class "window_title"
+      :text window_title)))
+
+;; (defwidget system_menu []
+;;   (eventbox
+;;     :onhover "${eww} update system_reveal=\"true\""
+;;     :onhoverlost "${eww} update system_reveal=\"false\""
+;;     :tooltip "System Menu"
+;;     (box
+;;       :class sys_menu_box
+;;       :orientation h
+;;       :space-evenly false
+;;       :vexpand "false"
+;;       :hexpand "false"
+;;       (box
+;;         :class "center_boxes"
+;;         :orientation v
+;;         :space-evenly false
+;;         :valign "center"
+;;         :vexpand "false"
+;;         :hexpand "false"
+;;         (revealer
+;;           :reveal "${!system_reveal}"
+;;           :transition "slideleft"
+;;           :duration ANIM_DUR
+;;           (box
+;;             :orientation h
+;;             :class "revel_box"
+;;             :valign "start"
+;;             (label
+;;               :class "center_labels"
+;;               :halign "right"
+;;               :text "${sys_menu_icon}")))
+;;         (revealer
+;;           :reveal "${system_reveal}"
+;;           :transition "slideright"
+;;           :duration ANIM_DUR
+;;           (box
+;;             :orientation h
+;;             :class "revel_box"
+;;             :valign "start"
+;;             (label
+;;               :class "sys_labels"
+;;               :valign "center"
+;;               :text "${sys_menu_icon}")
+;;             (label
+;;               :class "sys_labels"
+;;               :valign "center"
+;;               :text "${}")))))))
+
+(defwidget ram []
+  (eventbox
+    :onhover "${eww} update ram_reveal=\"true\""
+    :onhoverlost "${eww} update ram_reveal=\"false\""
+    :tooltip "RAM usage"
+    (box 
+      :orientation "h"
+      :space-evenly false
+      :class "ram_box"
+      :vexpand "false"
+      :hexpand "false"
+        ;; (image
+        ;;   :class "center_icons"
+        ;;   :path "images/ram.png"
+        ;;   :image-width 30
+        ;;   :image-height 30)
+        (box 
+          :orientation "v"
+          :space-evenly "false"
+          :vexpand "false"
+          :hexpand "false"
+          :valign "center"
+          :class "center_boxes"
+          (revealer
+            :reveal "${!ram_reveal}"
+            :transition "slidedown"
+            :duration ANIM_DUR
+            (box
+              :orientation "v"
+              :class "center_info"
+              :valign "start"
+              (label
+                :class "center_labels"
+                :text "${ram_parsed}"
+                :halign "center")))
+          (revealer
+            :reveal ram_reveal
+            :transition "slideup"
+            :duration ANIM_DUR
+            :valign "center"
+            (box
+              :valign "center"
+              :class "center_revealers"
+              (graph
+                :thickness 4
+                :value ram_used
+                :time-range "300s"
+                :min 0
+                :max 124.00
+                :dynamic "true"
+                :line-style "round")))))))
+
+(defwidget disk []
+  (eventbox
+    :onhover "${eww} update disk_reveal=\"true\""
+    :onhoverlost "${eww} update disk_reveal=\"false\""
+    :tooltip "Disk usage"
+    (box 
+      :orientation "h"
+      :space-evenly false
+      :class "disk_box"
+        (box 
+          :orientation "v"
+          :space-evenly "false"
+          :valign "center"
+          :class "center_boxes"
+          (revealer
+            :reveal "${!disk_reveal}"
+            :transition "slidedown"
+            :duration ANIM_DUR
+            (box
+              :orientation "v"
+              :class "center_info"
+              :valign "start"
+              (label
+                :class "disk"
+                :text "${disk_free}Gb"
+                :halign "center")))
+          (revealer
+            :reveal disk_reveal
+            :transition "slideup"
+            :duration ANIM_DUR
+            :valign "center"
+            (box
+              :valign "center"
+              :halign "fill"
+              :class "center_revealers"
+              (label
+                :halign "center"
+                :text "${disk_used}Gb/${disk_all}Gb")))))))
+
+(defwidget time []
+  (eventbox
+    :tooltip "Current time"
+    :onhover "${eww} update date_reveal=true"
+    :onhoverlost "${eww} update date_reveal=false"
+    (button 
+      :onclick "scripts/calendar_window"
+      (box
+        :class "time_box"
+        :orientation "h"
+        :space-evenly true
+          (box
+            :orientation "v"
+            :space-evenly false
+            :valign "center"
+            :class "center_boxes"
+            (revealer
+              :reveal "${!date_reveal}"
+              :transition "slideup"
+              :duration ANIM_DUR
+              (box
+                :orientation "v"
+                :class "center_info"
+                :valign "start"
+                (label
+                  :valign "center"
+                  :class "time"
+                  :markup "<span font-weight=\"heavy\">${hour}</span><span font-weight=\"heavy\">:${minutes}</span><span font-size=\"xx-small\">${type}</span>" )))
+            (revealer
+              :reveal date_reveal
+              :transition "slideup"
+              :duration ANIM_DUR
+              :valign "fill"
+              (box
+                :class "center_revealers"
+                :valign "center"
+                :halign "fill"
+                (label
+                  :halign "center"
+                  :class "date"
+                  :markup "<span font-size=\"xx-small\">${date}</span>"))))))))
+
+(defwidget powermenu []
+  (box
+    :orientation "h"
+    :space-evenly false
+    :class "powermenu-box"
+    :halign "end"
+    (button
+      :class "powermenu-button"
+      :tooltip "Toggle Power Menu"
+      :onclick "wlogout && sleep 2"
+      "⏻")))

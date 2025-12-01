@@ -1,0 +1,24 @@
+{
+  imports = [
+    ./disko.nix
+    ./variables.nix
+    ../../modules/system
+  ];
+  augs = {
+    profile = {
+      server.enable = true;
+      monitoring.enable = true;
+    };
+    services = {
+      email.enable = true;
+    };
+  };
+  networking = {
+    firewall = {
+      allowedTCPPorts = [ ];
+    };
+  };
+  # sops = {
+  #   secrets = {};
+  # };
+}
