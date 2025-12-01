@@ -6,12 +6,11 @@
 
 ## Yggdrasil
 
-<img align="center" width="90%" src="https://codeberg.com/BarryLabs/realms/blob/main/assets/yggdrasil-desktop-1.png" />
+<img align="center" width="90%" src="https://codeberg.org/BarryLabs/realms/src/branch/main/assets/yggdrasil-desktop-1.png" />
 
 ## Abyss
 
-<img align="center" width="90%" src="https://codeberg.com/BarryLabs/realms/blob/main/assets/abyss-desktop-1.png" />
-<img align="center" width="90%" src="https://codeberg.com/BarryLabs/realms/blob/main/assets/abyss-desktop-2.png" />
+<img align="center" width="90%" src="https://codeberg.org/BarryLabs/realms/src/branch/main/assets/abyss-desktop-1.png" />
 
 </div>
 
