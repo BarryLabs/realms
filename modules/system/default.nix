@@ -2,6 +2,7 @@
   imports = [
     ./com/apparmor.nix
     ./com/bash.nix
+    ./com/bcachefs.nix
     ./com/blacklistNvidiaGPU.nix
     ./com/bluetooth.nix
     ./com/bootEFI.nix

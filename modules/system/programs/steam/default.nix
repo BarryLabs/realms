@@ -9,8 +9,11 @@ let
   cfg = config.augs.programs.${module};
 in
 {
-  options.augs.programs.${module}.enable = mkEnableOption "Base Steam Module";
+  options.augs.programs.${module}.enable = mkEnableOption "Steam Module";
   config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      protonup-qt
+    ];
     nixpkgs = {
       config = {
         allowUnfreePredicate =
@@ -25,9 +28,6 @@ in
       xone = {
         enable = true;
       };
-    };
-    environment = {
-      systemPackages = [ pkgs.gamemode ];
     };
     systemd.user.tmpfiles.users.${config.var.user}.rules = lib.optional config.programs.steam.enable
       "L %h/.local/share/Steam/steam_dev.cfg - - - - /etc/nixos/modules/system/programs/steam/steam_dev.cfg";

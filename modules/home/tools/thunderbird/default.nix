@@ -7,14 +7,8 @@ with lib; let
   cfg = config.mods.tools.${module};
 in
 {
-  options.mods.tools.${module}.enable = mkEnableOption "Base Thunderbird Module";
+  options.mods.tools.${module}.enable = mkEnableOption "Thunderbird Module";
   config = mkIf cfg.enable {
-    # home.persistence."/nix/persist/home" = {
-    #   directories = [
-    #     ".mozilla"
-    #     ".thunderbird"
-    #   ];
-    # };
     programs = {
       thunderbird = {
         enable = true;
@@ -25,7 +19,7 @@ in
         profiles = {
           default = {
             isDefault = true;
-            withExternalGnupg = true;
+            withExternalGnupg = false;
             settings = {
               "mail.spellcheck.inline" = false;
               "mailnews.database.global.views.global.columns" = {

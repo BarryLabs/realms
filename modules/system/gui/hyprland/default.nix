@@ -28,13 +28,10 @@ in
         default_session = initial_session;
         initial_session = {
           user = config.var.user;
-          command = if config.augs.gui.hyprland.enable then "${pkgs.hyprland}/bin/hyprland" else "";
+          command = "${pkgs.hyprland}/bin/hyprland";
         };
       };
     };
-    # systemd.user.tmpfiles.users.${config.var.user}.rules = [
-    #   "L %h/.config/hypr/ - - - - /etc/nixos/modules/system/gui/hyprland/hypr"
-    # ];
     programs = {
       hyprland = {
         enable = true;

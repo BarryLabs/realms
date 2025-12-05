@@ -8,14 +8,14 @@ let
   cfg = config.mods.cli.${module};
 in
 {
-  options.mods.cli.${module}.enable = mkEnableOption "Chandler's Git Module";
+  options.mods.cli.${module}.enable = mkEnableOption "Git Module";
   config = mkIf cfg.enable {
     programs = {
       ${module} = {
         enable = true;
         settings = {
           core = {
-            editor = "helix";
+            editor = "nvim";
             init.defaultBranch = "main";
           };
           user = {

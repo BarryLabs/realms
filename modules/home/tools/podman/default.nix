@@ -8,13 +8,8 @@ let
   cfg = config.mods.tools.${module};
 in
 {
-  options.mods.tools.${module}.enable = mkEnableOption "Base Podman Module";
+  options.mods.tools.${module}.enable = mkEnableOption "Podman Module";
   config = mkIf cfg.enable {
-    # home.persistence."/nix/persist/home" = {
-    #   directories = [
-    #     ".config/podman"
-    #   ];
-    # };
     services = {
       podman = {
         enable = true;

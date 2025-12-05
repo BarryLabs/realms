@@ -8,7 +8,7 @@ with lib; let
   cfg = config.mods.gui.${module};
 in
 {
-  options.mods.gui.${module}.enable = mkEnableOption "Base Dunst Module";
+  options.mods.gui.${module}.enable = mkEnableOption "Dunst Module";
   config = mkIf cfg.enable {
     services = {
       dunst = {
@@ -16,7 +16,7 @@ in
         settings = {
           global = {
             browser = "${pkgs.firefox}/bin/firefox";
-            # dmenu = "${pkgs.rofi}/bin/rofi -dmenu";
+            dmenu = "${pkgs.fuzzel}/bin/fuzzel -dmenu";
             corner_radius = 6;
             follow = "mouse";
             format = "<b>%s</b>\\n%b";

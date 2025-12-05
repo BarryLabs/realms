@@ -11,11 +11,6 @@ in
 {
   options.mods.tools.${module}.enable = mkEnableOption "OBS Module";
   config = mkIf cfg.enable {
-    # home.persistence."/nix/persist/home" = {
-    #   directories = [
-    #     ".config/obs-studio"
-    #   ];
-    # };
     programs = {
       obs-studio = {
         enable = true;

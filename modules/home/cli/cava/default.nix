@@ -7,18 +7,21 @@ with lib; let
   cfg = config.mods.cli.${module};
 in
 {
-  options.mods.cli.${module}.enable = mkEnableOption "Base Cava Module";
+  options.mods.cli.${module}.enable = mkEnableOption "Cava Module";
   config = mkIf cfg.enable {
-    programs = {
-      ${module} = {
-        enable = true;
-        settings = {
-          general = {
-            framerate = 60;
-          };
-          smoothing.noise_reduction = 88;
-        };
-      };
-    };
+    home.packages = with pkgs; [
+      cava
+    ];
+    #programs = {
+    #  ${module} = {
+    #    enable = true;
+    #    settings = {
+    #      general = {
+    #        framerate = 60;
+    #      };
+    #      smoothing.noise_reduction = 88;
+    #    };
+    #  };
+    #};
   };
 }

@@ -12,12 +12,12 @@
   };
   augs = {
     styles.mocha.enable = true;
-    svc.sync.enable = true;
+    svc.sync-node.enable = true;
     gui.hyprland.enable = true;
     profile = {
       client.enable = true;
       desktop.enable = true;
-      monitoring.enable = true;
+      monitoring.enable = false;
       virtualisation.enable = true;
     };
     com = {
@@ -36,13 +36,6 @@
     interfaces = {
       enp4s0 = {
         useDHCP = true;
-      };
-    };
-  };
-  sops = {
-    secrets = {
-      Nixfleet = {
-        mode = "0400";
       };
     };
   };

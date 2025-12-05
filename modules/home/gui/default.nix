@@ -2,6 +2,7 @@
   imports = [
     ./dunst
     ./eww
+    ./fuzzel
     ./hyprland
     ./hyprlock
     ./hyprpaper

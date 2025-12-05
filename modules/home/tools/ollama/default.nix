@@ -1,5 +1,6 @@
 { config
 , lib
+, pkgs
 , ...
 }:
 with lib;
@@ -8,18 +9,10 @@ let
   cfg = config.mods.tools.${module};
 in
 {
-  options.mods.tools.${module}.enable = mkEnableOption "Ollama Module for Nvidia GPU's";
+  options.mods.tools.${module}.enable = mkEnableOption "Ollama Module";
   config = mkIf cfg.enable {
-    # home.persistence."/nix/persist/home" = {
-    #   directories = [
-    #     ".ollama"
-    #   ];
-    # };
-    services = {
-      ${module} = {
-        enable = true;
-        # acceleration = "cuda";
-      };
-    };
+    home.packages = with pkgs; [
+      ollama
+    ];
   };
 }

@@ -26,7 +26,6 @@
       dunst.enable = true;
       hyprland.enable = true;
       hyprpaper.enable = true;
-      rofi.enable = true;
       wlogout.enable = true;
       wlsunset.enable = true;
     };

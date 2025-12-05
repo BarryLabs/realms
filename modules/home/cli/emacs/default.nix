@@ -7,19 +7,22 @@ with lib; let
   cfg = config.mods.cli.${module};
 in
 {
-  options.mods.cli.${module}.enable = mkEnableOption "Base Emacs Module";
+  options.mods.cli.${module}.enable = mkEnableOption "Emacs Module";
   config = mkIf cfg.enable {
-    programs = {
-      ${module} = {
-        enable = true;
-        extraConfig = ''
-          (setq standard-indent 2)
-        '';
-        extraPackages = epkgs: [
-          epkgs.emms
-          epkgs.magit
-        ];
-      };
-    };
+    home.packages = with pkgs; [
+      emacs
+    ];
+    #programs = {
+    #  ${module} = {
+    #    enable = true;
+    #    extraConfig = ''
+    #      (setq standard-indent 2)
+    #    '';
+    #    extraPackages = epkgs: [
+    #      epkgs.emms
+    #      epkgs.magit
+    #    ];
+    #  };
+    #};
   };
 }

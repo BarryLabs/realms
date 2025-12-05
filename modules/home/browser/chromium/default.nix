@@ -7,13 +7,8 @@ with lib; let
   cfg = config.mods.browser.${module};
 in
 {
-  options.mods.browser.${module}.enable = mkEnableOption "Base Chromium Module";
+  options.mods.browser.${module}.enable = mkEnableOption "Chromium Module";
   config = mkIf cfg.enable {
-    # home.persistence."/nix/persist/home" = {
-    #   directories = [
-    #     ".chromium"
-    #   ];
-    # };
     programs = {
       ${module} = {
         enable = true;

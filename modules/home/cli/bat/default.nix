@@ -9,19 +9,22 @@ let
   cfg = config.mods.cli.${module};
 in
 {
-  options.mods.cli.${module}.enable = mkEnableOption "Base Bat Module";
+  options.mods.cli.${module}.enable = mkEnableOption "Bat Module";
   config = mkIf cfg.enable {
-    programs = {
-      ${module} = {
-        enable = true;
-        extraPackages = with pkgs.bat-extras; [
-          batdiff
-          batman
-          batwatch
-          batpipe
-          prettybat
-        ];
-      };
-    };
+    home.packages = with pkgs; [
+      bat
+    ];
+    #programs = {
+    #  ${module} = {
+    #    enable = true;
+    #    extraPackages = with pkgs.bat-extras; [
+    #      batdiff
+    #      batman
+    #      batwatch
+    #      batpipe
+    #      prettybat
+    #    ];
+    #  };
+    #};
   };
 }

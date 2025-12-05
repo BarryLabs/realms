@@ -1,5 +1,6 @@
 { config
 , lib
+, pkgs
 , ...
 }:
 with lib;
@@ -13,9 +14,6 @@ in
   ];
   options.mods.profile.${module}.enable = mkEnableOption "CLI Profile";
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      stow
-    ];
     mods = {
       terminal = {
         foot.enable = true;
@@ -31,6 +29,7 @@ in
         jujutsu.enable = true;
         nvim.enable = true;
         starship.enable = true;
+        stow.enable = true;
         yazi.enable = true;
         yt-dlp.enable = true;
         zellij.enable = true;

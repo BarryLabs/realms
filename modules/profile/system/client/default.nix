@@ -46,7 +46,7 @@ in
         udisks.enable = true;
         users.enable = true;
         yubikey.enable = true;
-        zram.enable = true;
+        zram.enable = false;
         zsh.enable = true;
       };
     };

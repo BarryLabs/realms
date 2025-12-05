@@ -1,5 +1,6 @@
 { config
 , lib
+, pkgs
 , ...
 }:
 with lib; let
@@ -9,11 +10,8 @@ in
 {
   options.mods.gui.${module}.enable = mkEnableOption "EWW Module";
   config = mkIf cfg.enable {
-    programs = {
-      eww = {
-        enable = true;
-        configDir = ./config;
-      };
-    };
+    home.packages = with pkgs; [
+      eww
+    ];
   };
 }

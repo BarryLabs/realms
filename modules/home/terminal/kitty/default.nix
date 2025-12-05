@@ -9,13 +9,8 @@ let
   cfg = config.mods.terminal.${module};
 in
 {
-  options.mods.terminal.${module}.enable = mkEnableOption "Base Kitty Module";
+  options.mods.terminal.${module}.enable = mkEnableOption "Kitty Module";
   config = mkIf cfg.enable {
-    # home.persistence."/nix/persist/home" = {
-    #   directories = [
-    #     ".config/kitty"
-    #   ];
-    # };
     programs = {
       ${module} = {
         enable = true;
@@ -25,8 +20,7 @@ in
         };
         themeFile = "Catppuccin-Mocha";
         settings = {
-          shell = "${pkgs.nushell}/bin/nu";
-          #shell = "${pkgs.zsh}/bin/zsh";
+          shell = "${pkgs.zsh}/bin/zsh";
           editor = "${pkgs.neovim}/bin/nvim";
           background_image = "none";
           copy_on_select = true;

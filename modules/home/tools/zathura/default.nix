@@ -8,13 +8,8 @@ let
   cfg = config.mods.tools.${module};
 in
 {
-  options.mods.tools.${module}.enable = mkEnableOption "Base Zathura Module";
+  options.mods.tools.${module}.enable = mkEnableOption "Zathura Module";
   config = mkIf cfg.enable {
-    # home.persistence."/nix/persist/home" = {
-    #   directories = [
-    #     ".config/zathura"
-    #   ];
-    # };
     programs = {
       zathura = {
         enable = true;

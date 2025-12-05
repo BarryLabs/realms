@@ -7,17 +7,8 @@ with lib; let
   cfg = config.mods.tools.${module};
 in
 {
-  options.mods.tools.${module}.enable = mkEnableOption "Base Mangohud Module";
+  options.mods.tools.${module}.enable = mkEnableOption "Mangohud Module";
   config = mkIf cfg.enable {
-    # home.persistence."/nix/persist/home" = {
-    #   directories = [
-    #     ".config/MangoHud"
-    #   ];
-    # };
-    # home.file."${module}" = {
-    #   source = "./MangoHud.conf";
-    #   target = ".config/MangoHud/MangoHud.conf";
-    # };
     programs = {
       mangohud = {
         enable = true;

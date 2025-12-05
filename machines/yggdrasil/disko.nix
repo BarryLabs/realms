@@ -22,10 +22,8 @@
                 size = "100%";
                 content = {
                   type = "luks";
-                  name = "cryptRoot";
-                  settings = {
-                    allowDiscards = true;
-                  };
+                  name = "crypt";
+                  settings.allowDiscards = true;
                   content = {
                     type = "btrfs";
                     extraArgs = [ "-f" ];
@@ -45,10 +43,6 @@
                       "/home" = {
                         mountpoint = "/home";
                         mountOptions = [ "compress=zstd" "noatime" ];
-                      };
-                      "/log" = {
-                        mountpoint = "/var/log";
-                        mountOptions = [ "compress=ztsd" "noatime" ];
                       };
                       "/swap" = {
                         mountpoint = "/.swapvol";
@@ -71,7 +65,6 @@
                 size = "100%";
                 content = {
                   type = "filesystem";
-                  name = "cryptStorage";
                   format = "xfs";
                   mountpoint = "/persist/blaze";
                   mountOptions = [

@@ -8,13 +8,8 @@ let
   cfg = config.mods.terminal.${module};
 in
 {
-  options.mods.terminal.${module}.enable = mkEnableOption "Base Wezterm Module";
+  options.mods.terminal.${module}.enable = mkEnableOption "Wezterm Module";
   config = mkIf cfg.enable {
-    # home.persistence."/nix/persist/home" = {
-    #   directories = [
-    #     ".config/wezterm"
-    #   ];
-    # };
     programs = {
       ${module} = {
         enable = true;

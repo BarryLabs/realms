@@ -9,27 +9,14 @@ let
   cfg = config.mods.browser.${module};
 in
 {
-  options.mods.browser.${module}.enable = mkEnableOption "Base Qutebrowser Module";
+  options.mods.browser.${module}.enable = mkEnableOption "Qutebrowser Module";
   config = mkIf cfg.enable {
-    # home.persistence."/nix/persist/home" = {
-    #   directories = [
-    #     ".config/qutebrowser"
-    #     ".local/share/qutebrowser"
-    #   ];
-    # };
     programs = {
       ${module} = {
         enable = true;
         aliases = { };
         quickmarks = {
-          gog = "https://www.gog.com/en/";
-          anime = "https://hianime.tv/";
           world = "https://lemmy.world/";
-          homepage = "http://192.168.70.5:8082/";
-          guix-cookbook = "https://guix.gnu.org/cookbook/en/guix-cookbook.html";
-          nix-resources = "https://nixos.wiki/wiki/Resources#Cookbooks";
-          rust-cookbook = "https://rust-lang-nursery.github.io/rust-cookbook/";
-          zig-cookbook = "https://zig.guide/";
         };
         greasemonkey = [
           (pkgs.fetchurl {

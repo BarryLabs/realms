@@ -14,6 +14,7 @@
     ./nvim
     ./ranger
     ./starship
+    ./stow
     ./tealdeer
     ./tmux
     ./yazi

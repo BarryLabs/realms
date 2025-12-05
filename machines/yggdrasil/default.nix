@@ -10,12 +10,12 @@
       user = "chandler";
     };
   };
-  # fileSystems = {
-  #   "/mnt/Storage" = {
-  #     fsType = "xfs";
-  #     device = "/dev/disk/by-uuid/CC3A7A573A7A3F10";
-  #   };
-  # };
+  fileSystems = {
+    "/persist/hdd" = {
+      fsType = "xfs";
+      device = "/dev/disk/by-uuid/d67c935f-2321-43fa-8135-32915d91f2b4";
+    };
+  };
   networking = {
     interfaces = {
       enp5s0 = {
@@ -27,22 +27,21 @@
     };
   };
   augs = {
-    backup.yggdrasil.enable = false;
     styles.mocha.enable = true;
     gui.hyprland.enable = true;
     profile = {
       client.enable = true;
       desktop.enable = true;
-      monitoring.enable = false;
+      monitoring.enable = true;
       virtualisation.enable = true;
     };
     com = {
       nvidiaGPU.enable = true;
-      sops.enable = false;
+      sops.enable = true;
     };
     svc = {
       flatpak.enable = true;
-      sync.enable = false;
+      sync-node.enable = true;
     };
   };
   # sops = {
@@ -54,22 +53,6 @@
   #     "ssh/nixfleet" = {
   #       mode = "0400";
   #       sopsFile = ../../secrets/ssh.yaml;
-  #     };
-  #     "backup/ssh/local" = {
-  #       mode = "0400";
-  #       sopsFile = ../../secrets/yggdrasil.yaml;
-  #     };
-  #     "backup/ssh/remote" = {
-  #       mode = "0400";
-  #       sopsFile = ../../secrets/yggdrasil.yaml;
-  #     };
-  #     "backup/keys/local" = {
-  #       mode = "0400";
-  #       sopsFile = ../../secrets/yggdrasil.yaml;
-  #     };
-  #     "backup/keys/remote" = {
-  #       mode = "0400";
-  #       sopsFile = ../../secrets/yggdrasil.yaml;
   #     };
   #   };
   # };

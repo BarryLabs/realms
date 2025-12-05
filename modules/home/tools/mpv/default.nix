@@ -8,14 +8,8 @@ with lib; let
   cfg = config.mods.tools.${module};
 in
 {
-  options.mods.tools.${module}.enable = mkEnableOption "Base MPV Module";
+  options.mods.tools.${module}.enable = mkEnableOption "MPV Module";
   config = mkIf cfg.enable {
-    # home.persistence."/nix/persist/home" = {
-    #   directories = [
-    #     ".config/mpv"
-    #     ".local/state/mpv"
-    #   ];
-    # };
     programs = {
       mpv = {
         enable = true;

@@ -10,16 +10,6 @@
     homeDirectory = "/home/${vars.user}";
     stateVersion = "25.11";
     enableNixpkgsReleaseCheck = false;
-    #persistence."/persist/home" = {
-    #  directories = [
-    #    "Documents"
-    #    "Downloads"
-    #    "Music"
-    #    "Pictures"
-    #    "Projects"
-    #    "Videos"
-    #  ];
-    #};
   };
   mods = {
     profile = {
@@ -31,11 +21,9 @@
     };
     gui = {
       dunst.enable = true;
-      hyprlock.enable = true;
+      eww.enable = true;
+      fuzzel.enable = true;
       hyprpaper.enable = true;
-      waybar.enable = true;
-      wlogout.enable = true;
-      wlsunset.enable = true;
     };
   };
 }

@@ -8,7 +8,7 @@ let
   cfg = config.mods.cli.${module};
 in
 {
-  options.mods.cli.${module}.enable = mkEnableOption "Base Starship Module";
+  options.mods.cli.${module}.enable = mkEnableOption "Starship Module";
   config = mkIf cfg.enable {
     programs = {
       ${module} = {

@@ -19,16 +19,8 @@ in
             layer = "top";
             position = "bottom";
             height = 12;
-            output =
-              if vars.user == "chandler" then [
-                "HDMI-A-1"
-                "HDMI-A-2"
-              ] else if vars.user == "mamotdask" then [
-                "eDP-1"
-              ] else [ ];
-            modules-center = [
-              "wlr/taskbar"
-            ];
+            output = ["eDP-1"];
+            modules-center = ["wlr/taskbar"];
             "wlr/taskbar" = {
               format = "{icon}";
               icon-size = 14;
@@ -41,13 +33,7 @@ in
             layer = "top";
             position = "top";
             height = 23;
-            output =
-              if vars.user == "chandler" then [
-                "HDMI-A-1"
-                "HDMI-A-2"
-              ] else if vars.user == "mamotdask" then [
-                "eDP-1"
-              ] else [ ];
+            output = ["eDP-1"];
             modules-left = [
               "custom/startmenu"
               "clock"
@@ -55,8 +41,7 @@ in
               "memory"
               "disk"
             ];
-            modules-center = [
-            ];
+            modules-center = [];
             modules-right = [
               "network"
               "pulseaudio"

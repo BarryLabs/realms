@@ -4,18 +4,14 @@
 , ...
 }:
 with lib; let
-  module = "nvim";
+  module = "stow";
   cfg = config.mods.cli.${module};
 in
 {
-  options.mods.cli.${module}.enable = mkEnableOption "Neovim Module";
+  options.mods.cli.${module}.enable = mkEnableOption "Stow Module";
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      neovim
-      clang
-      zig
-      rustup
-      uv
+      stow
     ];
   };
 }

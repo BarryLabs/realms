@@ -8,7 +8,7 @@ let
   cfg = config.mods.cli.${module};
 in
 {
-  options.mods.cli.${module}.enable = mkEnableOption "Base Zoxide Module";
+  options.mods.cli.${module}.enable = mkEnableOption "Zoxide Module";
   config = mkIf cfg.enable {
     programs = {
       ${module} = {
