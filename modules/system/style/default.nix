@@ -13,7 +13,7 @@ in
     stylix = {
       enable = true;
       autoEnable = true;
-      image = ../../../.config/wallpapers/i_heart_linux.png;
+      image = ../../../.config/wallpapers/romb.png;
       polarity = "dark";
       fonts = rec {
         serif = monospace;

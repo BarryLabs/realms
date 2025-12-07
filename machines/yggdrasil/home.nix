@@ -15,14 +15,17 @@
     profile = {
       cli.enable = true;
       content.enable = true;
+      crypto.enable = true;
       desktop.enable = true;
       gaming.enable = true;
+      programming.enable = true;
       security.enable = true;
     };
     gui = {
       dunst.enable = true;
       eww.enable = true;
       fuzzel.enable = true;
+      hyprland.enable = true;
       hyprpaper.enable = true;
     };
   };

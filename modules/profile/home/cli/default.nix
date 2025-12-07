@@ -25,7 +25,6 @@ in
         fzf.enable = true;
         git.enable = true;
         goose-cli.enable = true;
-        helix.enable = false;
         jujutsu.enable = true;
         nvim.enable = true;
         starship.enable = true;

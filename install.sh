@@ -14,11 +14,11 @@ else
 fi
 sleep 0.1
 cd || return
-git clone https://github.com/BarryLabs/realms.git
+git clone https://codeberg.org/BarryLabs/realms.git
 cd realms || return
 read -rp "Options:
 ------------
-[ abyss ]
+abyss
 aegir
 asgard
 bifrost
@@ -32,13 +32,12 @@ muspelheim
 tesseract
 valaskjalf
 valhalla
-yggdrasil
+[ yggdrasil ]
 ------------
-
 
 Please enter the name of the desired configuration: " host
 if [ -z "$host" ]; then
-  host="abyss"
+  host="yggdrasil"
 fi
 echo "--------"
 echo "Generating hardware configuration..."
