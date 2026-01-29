@@ -49,7 +49,7 @@ Installation:
 1. Boot into any ISO.
 2. Change password with `passwd`.
 3. Check IPv4 with `ip a`.
-4. Clone this repository with `git clone https://github.com/BarryLabs/realms.git` on the remote machine.
+4. Clone this repository with `git clone https://codeberg.org/BarryLabs/realms.git` on the remote machine.
 5. Check through the configuration in `./machines/${HOST}/default.nix`.
 6. Apply your own SSH key within `./modules/system/com/users.nix` so you don't get locked out of your machine when it builds.
 7. Use `nix run github:nix-community/nixos-anywhere -- --flake <path to flake>#<host> --target-host nixos@<ip address>` from the remote machine when you have finished making your changes.
