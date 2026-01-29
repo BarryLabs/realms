@@ -23,30 +23,6 @@
             };
           };
         };
-        sata = {
-          type = "disk";
-          device = "/dev/sdb";
-          content = {
-            type = "gpt";
-            partitions = {
-              CryptStorage = {
-                size = "100%";
-                content = {
-                  type = "luks";
-                  name = "Storage";
-                  settings = {
-                    allowDiscards = true;
-                  };
-                  content = {
-                    type = "filesystem";
-                    format = "ext4";
-                    mountpoint = "/sata";
-                  };
-                };
-              };
-            };
-          };
-        };
       };
     };
   };

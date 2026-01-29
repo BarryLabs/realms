@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib;
 let
@@ -12,7 +13,7 @@ in
   options.augs.svc.${module}.enable = mkEnableOption "Mullvad Module";
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      mullvad-closest
+      mullvad-compass
       mullvad-browser
     ];
     services.mullvad-vpn = {

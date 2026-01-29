@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib;
 let
@@ -11,6 +12,34 @@ in
 {
   options.augs.oci.${module}.enable = mkEnableOption "enable paperless";
   config = mkIf cfg.enable {
+    sops = {
+      secrets = {
+        "services/paperless/admin_user" = {
+          mode = "0400";
+        };
+        "services/paperless/admin_pass" = {
+          mode = "0400";
+        };
+        "services/paperless/db_host" = {
+          mode = "0400";
+        };
+        "services/paperless/db_pass" = {
+          mode = "0400";
+        };
+        "services/paperless/db_user" = {
+          mode = "0400";
+        };
+        "services/paperless_db/db_name" = {
+          mode = "0400";
+        };
+        "services/paperless_db/db_user" = {
+          mode = "0400";
+        };
+        "services/paperless_db/db_pass" = {
+          mode = "0400";
+        };
+      };
+    };
     virtualisation.podman = {
       enable = true;
       autoPrune.enable = true;
@@ -136,10 +165,10 @@ in
               "8000:8000/tcp"
             ];
             volumes = [
-              "/sata/.container/paperless/application/consume:/usr/src/paperless/consume:rw"
-              "/sata/.container/paperless/application/data:/usr/src/paperless/data:rw"
-              "/sata/.container/paperless/application/export:/usr/src/paperless/export:rw"
-              "/sata/.container/paperless/application/media:/usr/src/paperless/media:rw"
+              "/srv/paperless/application/consume:/usr/src/paperless/consume:rw"
+              "/srv/paperless/application/data:/usr/src/paperless/data:rw"
+              "/srv/paperless/application/export:/usr/src/paperless/export:rw"
+              "/srv/paperless/application/media:/usr/src/paperless/media:rw"
             ];
           };
           "PaperlessDB" = {
@@ -148,7 +177,7 @@ in
             environmentFiles = [
               /run/secrets/services/paperless_db/db_name
               /run/secrets/services/paperless_db/db_user
-              /run/secrets/services/paperless_db/db_password
+              /run/secrets/services/paperless_db/db_pass
             ];
             extraOptions = [
               "--network-alias=db"
@@ -156,7 +185,7 @@ in
               "--security-opt=no-new-privileges:true"
             ];
             volumes = [
-              "/sata/.container/paperless/data:/var/lib/postgresql/data:rw"
+              "/srv/paperless/data:/var/lib/postgresql/data:rw"
             ];
           };
           "PaperlessRedis" = {
@@ -168,7 +197,7 @@ in
               "--security-opt=no-new-privileges:true"
             ];
             volumes = [
-              "/sata/.container/paperless/redis:/data:rw"
+              "/srv/paperless/redis:/data:rw"
             ];
           };
         };

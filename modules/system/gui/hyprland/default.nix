@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib;
 let
@@ -28,7 +29,7 @@ in
         default_session = initial_session;
         initial_session = {
           user = config.var.user;
-          command = "${pkgs.hyprland}/bin/hyprland";
+          command = "${pkgs.hyprland}/bin/start-hyprland";
         };
       };
     };

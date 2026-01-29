@@ -1,49 +1,45 @@
-{ pkgs, ... }:
 {
   imports = [
     ./disko.nix
     ./variables.nix
+    ../../profiles/system
     ../../modules/system
-    ../../modules/profile/system
   ];
+
+  boot.supportedFilesystems = [ "nfs" ];
+  fileSystems."/srv" = {
+    device = "192.168.40.5:/asgard/share/media";
+    fsType = "nfs";
+  };
 
   augs = {
     profile = {
-      monitoring.enable = true;
       server.enable = true;
+      monitoring.enable = true;
     };
     com = {
+      bootGRUB.enable = true;
       intelGPU.enable = true;
+      nvidiaGPU.enable = true;
       nh.enable = true;
+      podman.enable = true;
+      sops.enable = true;
     };
     oci = {
-      torrent.enable = false;
-      transcode.enable = false;
+      jellyseerr.enable = true;
+      jellyfin.enable = true;
+      prowlarr.enable = true;
+      radarr.enable = true;
+      sonarr.enable = true;
+      torrent.enable = true;
     };
   };
 
-  system.activationScripts = {
-    "media-FolderHandler" = {
-      text = ''
-        install -d -m 755 /srv/Media -o root -g root
-      '';
+  sops = {
+    secrets = {
+      tz = {
+        mode = "0400";
+      };
     };
   };
-
-  # sops = {
-  #   secrets = {
-  #     borgJob = {
-  #       mode = "0400";
-  #     };
-  #     bbAegir = {
-  #       mode = "0400";
-  #     };
-  #     localAegirEncKey = {
-  #       mode = "0400";
-  #     };
-  #     remoteAegirEncKey = {
-  #       mode = "0400";
-  #     };
-  #   };
-  # };
 }

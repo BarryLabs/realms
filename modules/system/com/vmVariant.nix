@@ -1,8 +1,10 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
-with lib; let
+with lib;
+let
   module = "vmVariant";
   cfg = config.augs.com.${module};
 in

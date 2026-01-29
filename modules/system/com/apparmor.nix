@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib;
 let
@@ -9,7 +10,7 @@ let
   cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.${module}.enable = mkEnableOption "Base AppArmor Module";
+  options.augs.com.${module}.enable = mkEnableOption "AppArmor Module";
   config = mkIf cfg.enable {
     security = {
       ${module} = {

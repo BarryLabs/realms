@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib;
 let
@@ -9,7 +10,7 @@ let
   cfg = config.augs.gui.${module};
 in
 {
-  options.augs.gui.${module}.enable = mkEnableOption "Base Niri Module";
+  options.augs.gui.${module}.enable = mkEnableOption "Niri Module";
   config = mkIf cfg.enable {
     #services.greetd = {
     #  enable = true;
@@ -23,7 +24,6 @@ in
     #};
     systemd.user.tmpfiles.users.${config.var.user}.rules = [
       "L %h/.config/niri/config.kdl - - - - /etc/nixos/modules/system/gui/niri/niri.kdl"
-      "L %h/.config/fuzzel/fuzzel.ini - - - - /etc/nixos/modules/system/gui/niri/fuzzel.ini"
     ];
     environment = lib.mkIf config.augs.gui.${module}.enable {
       sessionVariables = {

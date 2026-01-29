@@ -13,9 +13,9 @@ in
     programs = {
       ${module} = {
         enable = true;
-        enableBashIntegration = if config.mods.cli.bash.base.enable then true else false;
-        enableZshIntegration = if config.mods.cli.zsh.base.enable then true else false;
-        installBatSyntax = if config.mods.cli.bat.base.enable then true else false;
+        enableBashIntegration = if config.mods.cli.bash.enable then true else false;
+        enableZshIntegration = if config.mods.cli.zsh.enable then true else false;
+        installBatSyntax = if config.mods.cli.bat.enable then true else false;
         installVimSyntax = true;
         settings = {
           mouse-hide-while-typing = true;

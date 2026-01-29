@@ -30,10 +30,10 @@ in
             Restart = lib.mkOverride 90 "always";
           };
           after = [
-            "podman-network-media_Media.service"
+            "podman-network-seerr_Seerr.service"
           ];
           requires = [
-            "podman-network-media_Media.service"
+            "podman-network-seerr_Seerr.service"
           ];
           partOf = [
             "podman-compose-jellyseerr-root.target"
@@ -42,15 +42,15 @@ in
             "podman-compose-jellyseerr-root.target"
           ];
         };
-        "podman-network-media_Media" = {
+        "podman-network-seerr_Seerr" = {
           path = [ pkgs.podman ];
           serviceConfig = {
             Type = "oneshot";
             RemainAfterExit = true;
-            ExecStop = "podman network rm -f media_Media";
+            ExecStop = "podman network rm -f seerr_Seerr";
           };
           script = ''
-            podman network inspect media_Media || podman network create media_Media --driver=bridge
+            podman network inspect seerr_Seerr || podman network create seerr_Seerr --driver=bridge
           '';
           partOf = [ "podman-compose-jellyseerr-root.target" ];
           wantedBy = [ "podman-compose-jellyseerr-root.target" ];
@@ -73,15 +73,15 @@ in
             log-driver = "journald";
             environment = {
               "PUID" = "1000";
-              "PGID" = "1000";
+              "PGID" = "100";
               "LOG_LEVEL" = "info";
             };
             environmentFiles = [
-              /run/secrets/jellyseerr/tz
+              /run/secrets/tz
             ];
             extraOptions = [
               "--network-alias=theater"
-              "--network=media_Media"
+              "--network=seerr_Seerr"
               "--security-opt=no-new-privileges"
             ];
             ports = [

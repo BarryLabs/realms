@@ -2,15 +2,24 @@
   imports = [
     ./disko.nix
     ./variables.nix
+    ../../profiles/system
     ../../modules/system
   ];
   augs = {
+    com = {
+      sops.enable = true;
+    };
     profile = {
       server.enable = true;
-      monitoring.enable = true;
+      monitoring.enable = false;
     };
-    svc = {
-      home-assistant.enable = true;
+    oci = {
+      home-assistant.enable = false;
     };
   };
+  # sops.secrets = {
+  #   "tz" = {
+  #     mode = "0400";
+  #   };
+  # };
 }

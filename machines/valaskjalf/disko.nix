@@ -4,7 +4,7 @@
       disk = {
         zero = {
           type = "disk";
-          device = "/dev/sda";
+          device = "/dev/vda";
           content = {
             type = "gpt";
             partitions = {
@@ -12,19 +12,12 @@
                 size = "1M";
                 type = "EF02";
               };
-              luks = {
+              root = {
                 size = "100%";
                 content = {
-                  type = "luks";
-                  name = "locked";
-                  settings = {
-                    allowDiscards = true;
-                  };
-                  content = {
-                    type = "filesystem";
-                    format = "ext4";
-                    mountpoint = "/";
-                  };
+                  type = "filesystem";
+                  format = "ext4";
+                  mountpoint = "/";
                 };
               };
             };

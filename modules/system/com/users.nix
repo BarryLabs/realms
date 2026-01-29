@@ -1,9 +1,11 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
-with lib; let
+with lib;
+let
   module = "users";
   cfg = config.augs.com.${module};
 in
@@ -19,19 +21,10 @@ in
           shell = if config.augs.com.zsh.enable then pkgs.zsh else pkgs.bash;
           description = config.var.desc;
           initialPassword = config.var.iniPass;
-          extraGroups =
-            [
-            ]
-            ++ (
-              if config.augs.com.doas.enable
-              then [ "doas" ]
-              else [ ]
-            )
-            ++ (
-              if config.augs.com.sudo-rs.enable
-              then [ "wheel" ]
-              else [ ]
-            );
+          extraGroups = [
+          ]
+          ++ (if config.augs.com.doas.enable then [ "doas" ] else [ ])
+          ++ (if config.augs.com.sudo-rs.enable then [ "wheel" ] else [ ]);
           openssh = {
             authorizedKeys = {
               keys = lib.mkDefault [

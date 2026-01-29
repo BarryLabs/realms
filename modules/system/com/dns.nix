@@ -1,6 +1,7 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
 with lib;
 let
@@ -8,7 +9,7 @@ let
   cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.${module}.enable = mkEnableOption "Base DNS Module";
+  options.augs.com.${module}.enable = mkEnableOption "DNS Module";
   config = mkIf cfg.enable {
     networking = {
       nameservers = [

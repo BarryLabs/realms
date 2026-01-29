@@ -12,19 +12,12 @@
                 size = "1M";
                 type = "EF02";
               };
-              luks = {
+              root = {
                 size = "100%";
                 content = {
-                  type = "luks";
-                  name = "locked";
-                  settings = {
-                    allowDiscards = true;
-                  };
-                  content = {
-                    type = "filesystem";
-                    format = "ext4";
-                    mountpoint = "/";
-                  };
+                  type = "filesystem";
+                  format = "ext4";
+                  mountpoint = "/";
                 };
               };
             };

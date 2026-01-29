@@ -7,6 +7,7 @@
     ./hyprlock
     ./hyprpaper
     ./hyprpolkit
+    ./quickshell
     ./rofi
     ./waybar
     ./wlogout

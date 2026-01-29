@@ -2,7 +2,7 @@
 {
   imports = [
     ../../modules/home
-    ../../modules/profile/home
+    ../../profiles/home
   ];
   programs.home-manager.enable = true;
   home = {
@@ -23,10 +23,12 @@
     };
     gui = {
       dunst.enable = true;
-      eww.enable = true;
       fuzzel.enable = true;
       hyprland.enable = true;
       hyprpaper.enable = true;
+      quickshell.enable = true;
+      waybar.enable = true;
+      wlogout.enable = true;
     };
   };
 }

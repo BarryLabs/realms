@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib;
 let
@@ -79,7 +80,7 @@ in
               /run/secrets/home-assistant/tz
             ];
             extraOptions = [
-              "--device=/dev/dri:/dev/dri:rwm"
+              # "--device=/dev/dri:/dev/dri:rwm"
               "--network-alias=home"
               "--network=home_Home"
               "--security-opt=no-new-privileges"

@@ -1,8 +1,10 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.augs.com.cpu;
 in
 {
@@ -12,15 +14,17 @@ in
       cpu = {
         amd = {
           updateMicrocode =
-            if config.networking.hostName == "yggdrasil"
-            then lib.mkDefault config.hardware.enableRedistributableFirmware
-            else false;
+            if config.networking.hostName == "yggdrasil" then
+              lib.mkDefault config.hardware.enableRedistributableFirmware
+            else
+              false;
         };
         intel = {
           updateMicrocode =
-            if config.networking.hostName == "yggdrasil"
-            then false
-            else lib.mkDefault config.hardware.enableRedistributableFirmware;
+            if config.networking.hostName == "yggdrasil" then
+              false
+            else
+              lib.mkDefault config.hardware.enableRedistributableFirmware;
         };
       };
     };

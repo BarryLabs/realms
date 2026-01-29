@@ -7,6 +7,22 @@ in
 {
   options.augs.oci.${module}.enable = mkEnableOption "Linkwarden Container";
   config = mkIf cfg.enable {
+    sops = {
+      secrets = {
+        "services/linkwarden/nextauth_key" = {
+          mode = "0400";
+        };
+        "services/linkwarden/meili_key" = {
+          mode = "0400";
+        };
+        "services/linkwarden/db_key" = {
+          mode = "0400";
+        };
+        "services/linkwarden/db_url" = {
+          mode = "0400";
+        };
+      };
+    };
     virtualisation.podman = {
       enable = true;
       autoPrune.enable = true;
@@ -111,7 +127,7 @@ in
               /run/secrets/services/linkwarden/db_url
             ];
             volumes = [
-              "/sata/.container/linkwarden/data:/data/data:rw"
+              "/srv/linkwarden/data:/data/data:rw"
             ];
             ports = [
               "4000:3000/tcp"
@@ -138,7 +154,7 @@ in
               /run/secrets/services/linkwarden/db_key
             ];
             volumes = [
-              "/sata/.container/linkwarden/meili_data:/meili_data:rw"
+              "/srv/linkwarden/meili_data:/meili_data:rw"
             ];
             log-driver = "journald";
             extraOptions = [
@@ -158,7 +174,7 @@ in
               /run/secrets/services/linkwarden/db_key
             ];
             volumes = [
-              "/sata/.container/linkwarden/postgres:/var/lib/postgresql/data:rw"
+              "/srv/linkwarden/postgres:/var/lib/postgresql/data:rw"
             ];
             log-driver = "journald";
             extraOptions = [

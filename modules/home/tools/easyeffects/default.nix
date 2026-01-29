@@ -1,9 +1,11 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
-with lib; let
+with lib;
+let
   module = "easyeffects";
   cfg = config.mods.tools.${module};
 in
@@ -13,10 +15,5 @@ in
     home.packages = with pkgs; [
       easyeffects
     ];
-    #services = {
-    #  easyeffects = {
-    #    enable = true;
-    #  };
-    #};
   };
 }

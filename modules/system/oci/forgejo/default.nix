@@ -85,7 +85,7 @@ in
               "3000:3000"
             ];
             volumes = [
-              "/sata/.container/forgejo/data:/data"
+              "/srv/forgejo/data:/data"
               "/etc/timezone:/etc/timezone:ro"
               "/etc/localtime:/etc/localtime:ro"
             ];

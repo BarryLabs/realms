@@ -1,7 +1,8 @@
-{ pkgs
-, config
-, lib
-, ...
+{
+  pkgs,
+  config,
+  lib,
+  ...
 }:
 with lib;
 let
@@ -17,10 +18,7 @@ in
         enable = true;
         extraArgs = "--keep-since 7d --keep 5";
       };
-      flake =
-        if config.networking.hostName == "abyss" then "/home/${config.var.user}/Projects/repos/realms-main"
-        else if config.networking.hostName == "yggdrasil" then "/home/${config.var.user}/Projects/repos/realms-main"
-        else "/etc/nixos";
+      flake = "/etc/nixos";
     };
 
     environment.systemPackages = with pkgs; [

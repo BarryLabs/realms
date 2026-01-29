@@ -73,7 +73,7 @@ in
             log-driver = "journald";
             environment = {
               PUID = "1000";
-              PGID = "1000";
+              PGID = "100";
             };
             extraOptions = [
               "--network-alias=Sync"
@@ -87,8 +87,8 @@ in
               "21027:21027/udp"
             ];
             volumes = [
-              "/sata/.container/syncthing/config:/config"
-              "/sata/.container/syncthing/data:/Syncthing"
+              "/srv/syncthing/config:/config"
+              "/srv/syncthing/data:/data"
             ];
           };
         };

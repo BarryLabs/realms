@@ -2,14 +2,18 @@
   imports = [
     ./disko.nix
     ./variables.nix
+    ../../profiles/system
     ../../modules/system
   ];
   augs = {
+    com = {
+      bootGRUB.enable = true;
+      sops.enable = true;
+    };
     profile = {
       server.enable = true;
-      monitoring.enable = true;
     };
-    services = {
+    svc = {
       email.enable = true;
     };
   };
@@ -18,7 +22,11 @@
       allowedTCPPorts = [ ];
     };
   };
-  # sops = {
-  #   secrets = {};
-  # };
+  sops = {
+    secrets = {
+      "postmasters_key" = {
+        mode = "0400";
+      };
+    };
+  };
 }

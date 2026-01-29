@@ -11,6 +11,16 @@ in
 {
   options.augs.oci.${module}.enable = mkEnableOption "Filebrowser Container";
   config = mkIf cfg.enable {
+    sops = {
+      secrets = {
+        "services/filebrowser/config" = {
+          mode = "0400";
+        };
+        "services/filebrowser/admin_pass" = {
+          mode = "0400";
+        };
+      };
+    };
     virtualisation.podman = {
       enable = true;
       autoPrune.enable = true;
@@ -84,9 +94,9 @@ in
               "80:80/tcp"
             ];
             volumes = [
-              "/sata/.container/filebrowser/folder:/folder"
-              "/sata/.container/filebrowser/data:/home/filebrowser/data:rw"
-              "/sata/.container/filebrowser/config.yaml:/home/filebrowser/config.yaml:ro"
+              "/srv/filebrowser/folder:/folder"
+              "/srv/filebrowser/data:/home/filebrowser/data:rw"
+              "/srv/filebrowser/config.yaml:/home/filebrowser/config.yaml:ro"
             ];
           };
         };

@@ -1,8 +1,10 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
-with lib; let
+with lib;
+let
   module = "btrfsImpermanent";
   cfg = config.augs.com.${module};
 in
@@ -29,7 +31,10 @@ in
       services.rollback = {
         description = "Rollback BTRFS Root Subvolume to a Pristine State";
         wantedBy = [ "initrd.target" ];
-        after = [ "systemd-cryptsetup@crypt.service" "systemd-cryptsetup@crypted.service" ];
+        after = [
+          "systemd-cryptsetup@crypt.service"
+          "systemd-cryptsetup@crypted.service"
+        ];
         before = [ "sysroot.mount" ];
         unitConfig.DefaultDependencies = "no";
         serviceConfig.Type = "oneshot";

@@ -73,10 +73,10 @@ in
             log-driver = "journald";
             environment = {
               "PUID" = "1000";
-              "PGID" = "1000";
+              "PGID" = "100";
             };
             environmentFiles = [
-              /run/secrets/jellyfin/tz
+              /run/secrets/tz
             ];
             extraOptions = [
               "--device=/dev/dri:/dev/dri:rwm"
@@ -90,6 +90,7 @@ in
             volumes = [
               "/srv/modules/jellyfin/cache:/cache"
               "/srv/modules/jellyfin/config:/config"
+              "/srv/Media:/media"
             ];
           };
         };

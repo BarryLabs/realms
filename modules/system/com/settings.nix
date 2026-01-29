@@ -1,6 +1,7 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
 with lib;
 let
@@ -12,6 +13,6 @@ in
   config = mkIf cfg.enable {
     documentation.enable = false;
     systemd.coredump.enable = true;
-    services.logrotate.checkConfig = false;
+    services.logrotate.checkConfig = lib.mkDefault false;
   };
 }

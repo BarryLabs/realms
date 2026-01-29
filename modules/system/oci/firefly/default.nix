@@ -11,6 +11,37 @@ in
 {
   options.augs.oci.${module}.enable = mkEnableOption "Firefly Container";
   config = mkIf cfg.enable {
+    sops = {
+      secrets = {
+        "services/firefly/owner" = {
+          mode = "0400";
+        };
+        "services/firefly/app_key" = {
+          mode = "0400";
+        };
+        "services/firefly/db_port" = {
+          mode = "0400";
+        };
+        "services/firefly/db_name" = {
+          mode = "0400";
+        };
+        "services/firefly/db_user" = {
+          mode = "0400";
+        };
+        "services/firefly/db_pass" = {
+          mode = "0400";
+        };
+        "services/firefly_db/db_name" = {
+          mode = "0400";
+        };
+        "services/firefly_db/db_user" = {
+          mode = "0400";
+        };
+        "services/firefly_db/db_pass" = {
+          mode = "0400";
+        };
+      };
+    };
     virtualisation.podman = {
       enable = true;
       autoPrune.enable = true;
@@ -123,7 +154,7 @@ in
               "8080:8080/tcp"
             ];
             volumes = [
-              "/sata/.container/firefly/upload:/var/www/html/storage/upload:rw"
+              "/srv/firefly/upload:/var/www/html/storage/upload:rw"
             ];
           };
           "FireflyDB" = {
@@ -135,7 +166,7 @@ in
               /run/secrets/services/firefly_db/db_pass
             ];
             volumes = [
-              "/sata/.container/firefly/data:/var/lib/postgresql/data:rw"
+              "/srv/firefly/data:/var/lib/postgresql/data:rw"
             ];
             extraOptions = [
               "--network-alias=db"

@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib;
 let
@@ -73,10 +74,10 @@ in
             log-driver = "journald";
             environment = {
               "PUID" = "1000";
-              "PGID" = "1000";
+              "PGID" = "100";
             };
             environmentFiles = [
-              /run/secrets/prowlarr/tz
+              /run/secrets/tz
             ];
             extraOptions = [
               "--network-alias=prowl"
@@ -87,7 +88,7 @@ in
               "9696:9696/tcp"
             ];
             volumes = [
-              "/srv/modules/prowlarr/data:/config"
+              "/srv/modules/prowlarr/config:/config"
             ];
           };
         };

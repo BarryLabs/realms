@@ -10,8 +10,10 @@
     ./goose-cli
     ./helix
     ./jujutsu
+    ./minio-client
     ./nushell
     ./nvim
+    ./pandoc
     ./ranger
     ./starship
     ./stow

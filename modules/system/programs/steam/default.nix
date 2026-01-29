@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib;
 let
@@ -12,6 +13,7 @@ in
   options.augs.programs.${module}.enable = mkEnableOption "Steam Module";
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
+      gamescope-wsi
       protonup-qt
     ];
     nixpkgs = {
@@ -24,24 +26,15 @@ in
           ];
       };
     };
-    hardware = {
-      xone = {
-        enable = true;
-      };
-    };
-    systemd.user.tmpfiles.users.${config.var.user}.rules = lib.optional config.programs.steam.enable
-      "L %h/.local/share/Steam/steam_dev.cfg - - - - /etc/nixos/modules/system/programs/steam/steam_dev.cfg";
+    systemd.user.tmpfiles.users.${config.var.user}.rules =
+      lib.optional config.programs.steam.enable "L %h/.local/share/Steam/steam_dev.cfg - - - - /etc/nixos/modules/system/programs/steam/steam_dev.cfg";
     programs = {
       gamemode = {
         enable = true;
       };
       gamescope = {
         enable = true;
-        capSysNice = true;
-        args = [
-          "--rt"
-          "--expose-wayland"
-        ];
+        capSysNice = false;
       };
       ${module} = {
         enable = true;
@@ -52,7 +45,7 @@ in
           enable = true;
         };
         remotePlay = {
-          openFirewall = true;
+          openFirewall = false;
         };
       };
     };

@@ -7,7 +7,7 @@ with lib; let
   cfg = config.mods.cli.${module};
 in
 {
-  options.mods.cli.${module}.enable = mkEnableOption "Base Yazi Module";
+  options.mods.cli.${module}.enable = mkEnableOption "Yazi Module";
   config = mkIf cfg.enable {
     programs = {
       ${module} = {

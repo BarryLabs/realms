@@ -11,6 +11,28 @@ in
 {
   options.augs.oci.${module}.enable = mkEnableOption "enable immich";
   config = mkIf cfg.enable {
+    sops = {
+      secrets = {
+        "services/immich/db_name" = {
+          mode = "0400";
+        };
+        "services/immich/db_user" = {
+          mode = "0400";
+        };
+        "services/immich/db_pass" = {
+          mode = "0400";
+        };
+        "services/immich_db/db_name" = {
+          mode = "0400";
+        };
+        "services/immich_db/db_user" = {
+          mode = "0400";
+        };
+        "services/immich_db/db_pass" = {
+          mode = "0400";
+        };
+      };
+    };
     virtualisation.podman = {
       enable = true;
       autoPrune.enable = true;
@@ -134,7 +156,7 @@ in
             ];
             volumes = [
               "/etc/localtime:/etc/localtime:ro"
-              "/sata/.container/immich/upload:/usr/src/app/upload:rw"
+              "/srv/immich/upload:/usr/src/app/upload:rw"
             ];
             ports = [
               "2283:2283/tcp"
@@ -164,7 +186,7 @@ in
               /run/secrets/services/immich_db/db_pass
             ];
             volumes = [
-              "/sata/.container/immich/data:/var/lib/postgresql/data:rw"
+              "/srv/immich/data:/var/lib/postgresql/data:rw"
             ];
             cmd = [
               "postgres"
@@ -190,7 +212,7 @@ in
           "ImmichML" = {
             image = "ghcr.io/immich-app/immich-machine-learning:release";
             volumes = [
-              "/sata/.container/immich/ml:/cache:rw"
+              "/srv/immich/ml:/cache:rw"
             ];
             log-driver = "journald";
             extraOptions = [
@@ -202,7 +224,7 @@ in
           "ImmichRedis" = {
             image = "docker.io/redis:6.2-alpine@sha256:328fe6a5822256d065debb36617a8169dbfbd77b797c525288e465f56c1d392b";
             volumes = [
-              "/sata/.container/immich/cache:/data:rw"
+              "/srv/immich/cache:/data:rw"
             ];
             log-driver = "journald";
             extraOptions = [

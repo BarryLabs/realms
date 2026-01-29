@@ -1,9 +1,11 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
-with lib; let
+with lib;
+let
   module = "mpv";
   cfg = config.mods.tools.${module};
 in
@@ -26,27 +28,7 @@ in
         config = {
           profile = "gpu-hq";
           ytdl-format = "bestvideo+bestaudio";
-          # background-color = "#1e1e2e";
-          # osd-back-color = "#11111b";
-          # osd-border-color = "#11111b";
-          # osd-color = "#cdd6f4";
-          # osd-shadow-color = "#1e1e2e";
         };
-        package = (
-          pkgs.mpv-unwrapped.wrapper {
-            scripts = with pkgs.mpvScripts; [
-              modernz
-              memo
-              crop
-              quality-menu
-              sponsorblock
-              youtube-chat
-            ];
-            mpv = pkgs.mpv-unwrapped.override {
-              waylandSupport = true;
-            };
-          }
-        );
       };
     };
   };

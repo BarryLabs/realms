@@ -3,10 +3,14 @@
   imports = [
     ./disko.nix
     ./variables.nix
+    ../../profiles/system
     ../../modules/system
   ];
 
   augs = {
+    com = {
+      fstrim.enable = true;
+    };
     profile = {
       server.enable = true;
       monitoring.enable = true;

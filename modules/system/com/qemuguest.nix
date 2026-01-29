@@ -1,9 +1,11 @@
-{ config
-, lib
-, modulesPath
-, ...
+{
+  config,
+  lib,
+  modulesPath,
+  ...
 }:
-with lib; let
+with lib;
+let
   module = "qemuguest";
   cfg = config.augs.com.${module};
 in

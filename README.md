@@ -21,7 +21,7 @@ Realms aims to automate and reduce the operational footprint of my lab with a fe
 - _Time to Deploy_:
   Building a server is notoriously time-consuming and I am _lazy_. Pre-configured settings allow the workload to be put upfront...or even copied, network-targeted builds via SSH, disk and sops allow the convenience of building binaries on a stronger machine for smaller machines and generators offer easy image generation.
 - _Hardening_:
-  We can define our security posture prior to deployment. This is already beneficial because it directly refers to the above point but goes deeper provided conditional logic and options. For example, you have the choice to use doas or sudo-rs and both handle enabling apparmor for the respective but only if apparmor is already enabled.
+  We can define our security posture prior to deployment. This is already beneficial because it directly refers to the above point but goes deeper provided conditional logic and options. For example, you have the choice to use doas or sudo-rs and both handle enabling apparmor.
 
 ---
 
@@ -69,14 +69,14 @@ Installation:
 | Bar                   | waybar,eww                        |
 | Blender               | blender                           |
 | Browser               | firefox,qutebrowser               |
-| CLI                   | bat,eza,cava,fzf,tealdeer,zoxide  |
+| CLI                   | bat,eza,cava,fzf,fd,zoxide        |
 | Email                 | thunderbird                       |
 | File Browser          | yazi,ranger                       |
 | File Sync             | syncthing,nfs,smb                 |
 | FPS/Game Latency      | mangohud                          |
 | Gaming                | steam,lutris                      |
 | Game Streaming        | steam,sunshine                    |
-| High-Availability     | podman-quadlets,k3s               |
+| High-Availability     | podman,k3s                        |
 | Logout                | wlogout                           |
 | Multiplexer           | zellij,tmux,wezterm,ghostty,kitty |
 | Notes                 | neorg,obsidian                    |

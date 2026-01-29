@@ -1,8 +1,10 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
-with lib; let
+with lib;
+let
   module = "zfs";
   cfg = config.augs.com.${module};
 in
@@ -13,13 +15,9 @@ in
       supportedFilesystems = [ "zfs" ];
       zfs = {
         forceImportRoot =
-          if config.networking.hostName == "asgard"
-          then lib.mkDefault false
-          else lib.mkDefault true;
+          if config.networking.hostName == "asgard" then lib.mkDefault false else lib.mkDefault true;
         extraPools = (
-          if config.networking.hostName == "asgard"
-          then lib.mkDefault [ "asgard" ]
-          else lib.mkDefault [ ]
+          if config.networking.hostName == "asgard" then lib.mkDefault [ "asgard" ] else lib.mkDefault [ ]
         );
       };
     };
@@ -32,10 +30,9 @@ in
           enable = lib.mkDefault true;
           interval = lib.mkDefault "monthly";
           randomizedDelaySec = lib.mkDefault "12h";
-          pools =
-            [
-              "asgard"
-            ];
+          pools = [
+            "asgard"
+          ];
         };
         autoSnapshot = {
           enable = lib.mkDefault true;

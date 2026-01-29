@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib;
 let
@@ -73,10 +74,10 @@ in
             log-driver = "journald";
             environment = {
               "PUID" = "1000";
-              "PGID" = "1000";
+              "PGID" = "100";
             };
             environmentFiles = [
-              /run/secrets/sonarr/tz
+              /run/secrets/tz
             ];
             extraOptions = [
               "--network-alias=sub"
@@ -87,7 +88,7 @@ in
               "8989:8989/tcp"
             ];
             volumes = [
-              "/srv/modules/sonarr/data:/config"
+              "/srv/modules/sonarr/config:/config"
             ];
           };
         };

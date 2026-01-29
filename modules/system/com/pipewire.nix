@@ -1,6 +1,7 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
 with lib;
 let
@@ -8,11 +9,8 @@ let
   cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.${module}.enable = mkEnableOption "Base Pipewire Module";
+  options.augs.com.${module}.enable = mkEnableOption "Pipewire Module";
   config = mkIf cfg.enable {
-    # environment.systemPackages = with pkgs; [
-    #   pavucontrol
-    # ];
     services = {
       pipewire = {
         enable = true;

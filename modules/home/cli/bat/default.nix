@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib;
 let
@@ -14,17 +15,5 @@ in
     home.packages = with pkgs; [
       bat
     ];
-    #programs = {
-    #  ${module} = {
-    #    enable = true;
-    #    extraPackages = with pkgs.bat-extras; [
-    #      batdiff
-    #      batman
-    #      batwatch
-    #      batpipe
-    #      prettybat
-    #    ];
-    #  };
-    #};
   };
 }

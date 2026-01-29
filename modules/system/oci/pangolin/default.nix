@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib;
 let
@@ -9,7 +10,7 @@ let
   cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.${module}.enable = mkEnableOption "enable pangolin";
+  options.augs.oci.${module}.enable = mkEnableOption "Pangolin Container";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;

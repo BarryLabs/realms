@@ -1,0 +1,51 @@
+{
+  config,
+  lib,
+  ...
+}:
+with lib;
+let
+  module = "client";
+  cfg = config.augs.profile.${module};
+in
+{
+  imports = [
+    ../../../modules/system
+  ];
+  options.augs.profile.${module}.enable = mkEnableOption "Client Profile";
+  config = mkIf cfg.enable {
+    augs = {
+      com = {
+        apparmor.enable = true;
+        bootLimine.enable = true;
+        cpu.enable = true;
+        environment.enable = true;
+        fhb.enable = true;
+        fonts.enable = true;
+        fstrim.enable = true;
+        governor.enable = true;
+        kernel.enable = true;
+        kbd.enable = true;
+        locale.enable = true;
+        network.enable = true;
+        nh.enable = true;
+        nix.enable = true;
+        nix-ld.enable = true;
+        nixpkgs.enable = true;
+        openssh.enable = true;
+        pam.enable = true;
+        pipewire.enable = true;
+        podman.enable = false;
+        settings.enable = true;
+        state.enable = true;
+        sudo-rs.enable = true;
+        timezone.enable = true;
+        udisks.enable = true;
+        users.enable = true;
+        yubikey.enable = true;
+        zram.enable = false;
+        zsh.enable = true;
+      };
+    };
+  };
+}

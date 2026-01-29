@@ -1,6 +1,7 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
 with lib;
 let
@@ -86,7 +87,7 @@ in
             Preferences = {
               "layout.css.prefers-color-scheme.content-override" = lock-zero;
               "toolkit.legacyUserProfileCustomizations.stylesheets" = lock-true;
-              
+
               "browser.aboutConfig.showWarning" = lock-false;
               "browser.aboutwelcome.enabled" = lock-false;
               "browser.bookmarks.addedImportButton" = lock-false;

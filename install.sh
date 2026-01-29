@@ -26,10 +26,7 @@ heimskringla
 hel
 himinbjorg
 jotunheim
-mini-iso
-mini-vm
 muspelheim
-tesseract
 valaskjalf
 valhalla
 [ yggdrasil ]

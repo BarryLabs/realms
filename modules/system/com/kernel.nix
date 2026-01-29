@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib;
 let
@@ -9,7 +10,7 @@ let
   cfg = config.augs.com.${module};
 in
 {
-  options.augs.com.${module}.enable = mkEnableOption "Kernel Module for Realms";
+  options.augs.com.${module}.enable = mkEnableOption "Kernel Module";
   config = mkIf cfg.enable {
     boot = {
       extraModulePackages =
@@ -26,19 +27,24 @@ in
           pkgs.linuxPackages_zen
         else
           pkgs.linuxPackages_hardened;
-      kernelModules =
-        [
-          "snd_aloop"
-          "v4l2loopback"
-        ]
-        ++ (
-          if config.networking.hostName == "abyss" then
-            [ "kvm-intel" ]
-          else if config.networking.hostName == "yggdrasil" then
-            [ "kvm-amd" ]
-          else
-            [ ]
-        );
+      kernelModules = [
+      ]
+      ++ (
+        if config.networking.hostName == "abyss" then
+          [
+            "kvm-intel"
+            "snd_aloop"
+            "v4l2loopback"
+          ]
+        else if config.networking.hostName == "yggdrasil" then
+          [
+            "kvm-amd"
+            "snd_aloop"
+            "v4l2loopback"
+          ]
+        else
+          [ ]
+      );
       kernelParams = [
         "slab_nomerge"
         "page_poison=1"

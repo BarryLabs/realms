@@ -1,9 +1,11 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
-with lib; let
+with lib;
+let
   module = "yubikey";
   cfg = config.augs.com.${module};
 in
@@ -37,17 +39,23 @@ in
             unixAuth = true;
           };
           doas =
-            if config.augs.com.doas.enable then {
-              u2fAuth = true;
-              unixAuth = true;
-              sshAgentAuth = true;
-            } else { };
+            if config.augs.com.doas.enable then
+              {
+                u2fAuth = true;
+                unixAuth = true;
+                sshAgentAuth = true;
+              }
+            else
+              { };
           sudo-rs =
-            if config.augs.com.sudo-rs.enable then {
-              u2fAuth = true;
-              unixAuth = true;
-              sshAgentAuth = true;
-            } else { };
+            if config.augs.com.sudo-rs.enable then
+              {
+                u2fAuth = true;
+                unixAuth = true;
+                sshAgentAuth = true;
+              }
+            else
+              { };
         };
       };
     };

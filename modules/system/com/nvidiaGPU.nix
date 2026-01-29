@@ -1,8 +1,10 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
-with lib; let
+with lib;
+let
   module = "nvidiaGPU";
   cfg = config.augs.com.${module};
 in
@@ -24,20 +26,6 @@ in
           enable = true;
         };
         package = config.boot.kernelPackages.nvidiaPackages.beta;
-        prime =
-          if config.networking.hostName == "abyss"
-          then {
-            intelBusId = config.var.i630Id;
-            nvidiaBusId = config.var.d1660Id;
-            sync = {
-              enable = true;
-            };
-            #offload = {
-            #  enable = true;
-            #  enableOffloadCmd = true;
-            #};
-          }
-          else { };
       };
     };
   };

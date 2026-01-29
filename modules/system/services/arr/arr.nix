@@ -1,8 +1,10 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
-with lib; let
+with lib;
+let
   module = "arr";
   cfg = config.augs.svc.${module};
 in
@@ -17,8 +19,8 @@ in
       jellyfin = {
         enable = true;
         openFirewall = true;
-        dataDir = "/srv/Modules/Jellyfin/Data";
-        cacheDir = "/srv/Modules/Jellyfin/Cache";
+        dataDir = "/srv/jellyfin/Data";
+        cacheDir = "/srv/jellyfin/Cache";
       };
       prowlarr = {
         enable = true;
@@ -27,12 +29,12 @@ in
       radarr = {
         enable = true;
         openFirewall = true;
-        dataDir = "/srv/Modules/Radarr/Data";
+        dataDir = "/srv/radarr/Data";
       };
       sonarr = {
         enable = true;
         openFirewall = true;
-        dataDir = "/srv/Modules/Sonarr/Data";
+        dataDir = "/srv/sonarr/Data";
       };
     };
   };

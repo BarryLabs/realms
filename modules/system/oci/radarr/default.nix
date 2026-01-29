@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib;
 let
@@ -73,10 +74,10 @@ in
             log-driver = "journald";
             environment = {
               "PUID" = "1000";
-              "PGID" = "1000";
+              "PGID" = "100";
             };
             environmentFiles = [
-              /run/secrets/radarr/tz
+              /run/secrets/tz
             ];
             extraOptions = [
               "--network-alias=dish"
@@ -87,7 +88,7 @@ in
               "7878:7878/tcp"
             ];
             volumes = [
-              "/srv/modules/radarr/data:/config"
+              "/srv/modules/radarr/config:/config"
             ];
           };
         };

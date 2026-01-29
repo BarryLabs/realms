@@ -2,27 +2,30 @@
   imports = [
     ./disko.nix
     ./variables.nix
+    ../../profiles/system
     ../../modules/system
-    ../../modules/profile/system
   ];
 
   augs = {
+    com = {
+      bootGRUB.enable = true;
+      sops.enable = true;
+    };
     profile = {
       server.enable = true;
     };
     svc = {
-      promtail.enable = true;
-      node-exporter.enable = true;
-      grafana.enable = true;
       homepage.enable = true;
-      loki.enable = true;
-      prometheus.enable = true;
+    };
+    oci = {
+      changedetection.enable = true;
     };
   };
-
-  networking = {
-    firewall = {
-      allowedTCPPorts = [ 3000 3100 9001 ];
+  sops = {
+    secrets = {
+      "tz" = {
+        mode = "0400";
+      };
     };
   };
 }

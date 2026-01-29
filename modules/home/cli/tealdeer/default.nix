@@ -7,7 +7,7 @@ with lib; let
   cfg = config.mods.cli.${module};
 in
 {
-  options.mods.cli.${module}.enable = mkEnableOption "Base Tealdeer Module";
+  options.mods.cli.${module}.enable = mkEnableOption "Tealdeer Module";
   config = mkIf cfg.enable {
     programs = {
       ${module} = {

@@ -1,9 +1,11 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
-with lib; let
+with lib;
+let
   module = "fuzzel";
   cfg = config.mods.gui.${module};
 in
@@ -13,11 +15,11 @@ in
     home = {
       packages = with pkgs; [
         fuzzel
-        (pkgs.writeShellScriptBin "emoji" '' 
+        (pkgs.writeShellScriptBin "emoji" ''
           if pidof fuzzel > /dev/null; then
             pkill fuzzel
           fi
-          chosen=$(cat $HOME/.config/.emoji | ${pkgs.fuzzel}/bin/fuzzel -dmenu | awk '{print $1}')
+          chosen=$(cat $HOME/.config/.emoji | ${pkgs.fuzzel}/bin/fuzzel --dmenu --prompt "Search: " | awk '{print $1}')
           [ -z "$chosen" ] && exit
           printf "$chosen" | ${pkgs.wl-clipboard}/bin/wl-copy
           ${pkgs.libnotify}/bin/notify-send "'$chosen' copied to clipboard." &

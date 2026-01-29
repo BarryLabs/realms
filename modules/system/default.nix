@@ -18,11 +18,10 @@
     ./com/gnupg.nix
     ./com/governor.nix
     ./com/intelGPU.nix
-    ./com/btrfsImpermanent.nix
     ./com/kbd.nix
     ./com/kernel.nix
     ./com/locale.nix
-    ./com/mac-randomizer.nix
+    ./com/minio-client.nix
     ./com/network.nix
     ./com/nh.nix
     ./com/nix.nix
@@ -55,19 +54,30 @@
     ./gui/hyprland
     ./gui/niri
 
+    ./oci/changedetection
     ./oci/filebrowser
     ./oci/firefly
     ./oci/forgejo
     ./oci/immich
+    ./oci/jellyfin
+    ./oci/jellyseerr
+    ./oci/lidarr
     ./oci/linkwarden
+    ./oci/newt
     ./oci/paperless
     ./oci/pgadmin
+    ./oci/prowlarr
+    ./oci/radarr
+    ./oci/romm
+    ./oci/rustfs
+    ./oci/sonarr
     ./oci/syncthing
     ./oci/torrent
     ./oci/transcode
 
     ./programs/alvr
     ./programs/appimages
+    ./programs/direnv
     ./programs/dolphin
     ./programs/firejail
     ./programs/ghidra
@@ -79,39 +89,22 @@
     ./programs/weylus
 
     ./services/arr
-    ./services/authelia
     ./services/borg
     ./services/clamav
-    # ./services/email
     ./services/flatpak
     ./services/frigate
-    ./services/gitea
-    ./services/gotify
-    ./services/grafana
-    ./services/headscale
-    ./services/home-assistant
-    ./services/homepage
     ./services/k3s
-    ./services/loki
-    # ./services/minecraft
     ./services/mullvad
     ./services/n8n
-    ./services/nextcloud
-    # ./services/nfs
+    ./services/nfsv4
     ./services/node-exporter
     ./services/ollama
     ./services/open-webui
     ./services/openrgb
-    ./services/postgres
-    ./services/prometheus
     ./services/promtail
     ./services/qdrant
-    ./services/searx
-    #./services/smb
     ./services/sunshine
     ./services/syncthing
-    ./services/teamspeak3
-    #./services/traefik
     ./services/vpn
 
     ./style/default.nix

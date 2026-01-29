@@ -1,6 +1,7 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
 with lib;
 let
@@ -16,11 +17,6 @@ in
         enable = true;
         allowedUDPPorts = [ ];
         allowedTCPPorts = [ ];
-      };
-      wireless = {
-        iwd = {
-          enable = if config.networking.hostName == "abyss" then true else false;
-        };
       };
     };
   };

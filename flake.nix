@@ -35,22 +35,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    nix-minecraft = {
-      url = "github:Infinidoge/nix-minecraft";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
-    { nixpkgs
-    , home-manager
-    , disko
-    , sops-nix
-    , impermanence
-    , stylix
-    , nix-on-droid
-    , nix-minecraft
-    , ...
+    {
+      nixpkgs,
+      home-manager,
+      disko,
+      sops-nix,
+      impermanence,
+      stylix,
+      nix-on-droid,
+      ...
     }@inputs:
     let
       specialArgs = {
@@ -75,7 +71,6 @@
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
-            impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
             ./machines/abyss
             {
@@ -95,7 +90,6 @@
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
-            impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
             ./machines/yggdrasil
             {
@@ -107,16 +101,10 @@
                   { ... }:
                   {
                     imports = [
-                      impermanence.homeManagerModules.impermanence
                       ./machines/yggdrasil/home.nix
                     ];
                   };
               };
-              # home-manager = {
-              #   useGlobalPkgs = true;
-              #   useUserPackages = true;
-              #   users.chandler = import ./machines/yggdrasil/home.nix;
-              # };
             }
           ];
         };
@@ -127,7 +115,6 @@
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
-            impermanence.nixosModules.impermanence
             ./machines/aegir
           ];
         };
@@ -138,7 +125,6 @@
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
-            impermanence.nixosModules.impermanence
             ./machines/asgard
           ];
         };
@@ -149,7 +135,6 @@
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
-            impermanence.nixosModules.impermanence
             ./machines/bifrost
           ];
         };
@@ -160,7 +145,6 @@
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
-            impermanence.nixosModules.impermanence
             ./machines/heimskringla
           ];
         };
@@ -179,23 +163,7 @@
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
-            impermanence.nixosModules.impermanence
             ./machines/himinbjorg
-          ];
-        };
-        mini-iso = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            sops-nix.nixosModules.sops
-            ./machines/mini-iso
-          ];
-        };
-        mini-vm = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            disko.nixosModules.disko
-            sops-nix.nixosModules.sops
-            ./machines/mini-vm
           ];
         };
         muspelheim = nixpkgs.lib.nixosSystem {
@@ -205,19 +173,7 @@
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
-            impermanence.nixosModules.impermanence
             ./machines/muspelheim
-          ];
-        };
-        tesseract = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          system = "x86_64-linux";
-          modules = [
-            disko.nixosModules.disko
-            sops-nix.nixosModules.sops
-            stylix.nixosModules.stylix
-            impermanence.nixosModules.impermanence
-            ./machines/tesseract
           ];
         };
         valaskjalf = nixpkgs.lib.nixosSystem {
@@ -227,7 +183,6 @@
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
-            impermanence.nixosModules.impermanence
             ./machines/valaskjalf
           ];
         };
@@ -238,7 +193,6 @@
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
-            impermanence.nixosModules.impermanence
             ./machines/valhalla
           ];
         };

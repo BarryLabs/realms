@@ -1,14 +1,16 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib;
 let
-  cfg = config.augs.oci.template;
+  module = "template";
+  cfg = config.augs.oci.${module};
 in
 {
-  options.augs.oci.template.enable = mkEnableOption "OCI template for Nix";
+  options.augs.oci.template.enable = mkEnableOption "OCI Template";
   config = mkIf cfg.enable {
     virtualisation.podman = {
       enable = true;

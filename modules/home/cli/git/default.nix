@@ -1,5 +1,6 @@
 { config
 , lib
+, pkgs
 , ...
 }:
 with lib;
@@ -10,20 +11,8 @@ in
 {
   options.mods.cli.${module}.enable = mkEnableOption "Git Module";
   config = mkIf cfg.enable {
-    programs = {
-      ${module} = {
-        enable = true;
-        settings = {
-          core = {
-            editor = "nvim";
-            init.defaultBranch = "main";
-          };
-          user = {
-            name = "BarryLabs";
-            email = "wave.carton247@aleeas.com";
-          };
-        };
-      };
-    };
+    home.packages = with pkgs; [
+      git
+    ];
   };
 }

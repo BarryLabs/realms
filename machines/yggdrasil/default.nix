@@ -2,8 +2,8 @@
   imports = [
     ./disko.nix
     ./variables.nix
+    ../../profiles/system
     ../../modules/system
-    ../../modules/profile/system
   ];
   home-manager.extraSpecialArgs = {
     vars = {
@@ -32,8 +32,8 @@
     profile = {
       client.enable = true;
       desktop.enable = true;
-      monitoring.enable = true;
       virtualisation.enable = true;
+      monitoring.enable = true;
     };
     com = {
       nvidiaGPU.enable = true;
@@ -44,16 +44,4 @@
       sync-node.enable = true;
     };
   };
-  # sops = {
-  #   secrets = {
-  #     "ssh/barrylabs" = {
-  #       mode = "0400";
-  #       sopsFile = ../../secrets/ssh.yaml;
-  #     };
-  #     "ssh/nixfleet" = {
-  #       mode = "0400";
-  #       sopsFile = ../../secrets/ssh.yaml;
-  #     };
-  #   };
-  # };
 }

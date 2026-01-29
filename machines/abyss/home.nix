@@ -1,7 +1,7 @@
 {
   imports = [
     ../../modules/home
-    ../../modules/profile/home
+    ../../profiles/home
   ];
   programs.home-manager.enable = true;
   home =

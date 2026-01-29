@@ -2,41 +2,21 @@
   imports = [
     ./disko.nix
     ./variables.nix
+    ../../profiles/system
     ../../modules/system
   ];
   augs = {
+    profile = {
+      server.enable = true;
+      monitoring.enable = true;
+    };
     com = {
-      bash.enable = true;
       bootGRUB.enable = true;
-      docs.enable = true;
-      environment.enable = true;
-      governor.enable = true;
-      kernel.enable = true;
-      locale.enable = true;
-      network.enable = true;
-      nix.enable = true;
-      nixpkgs.enable = true;
-      openssh.enable = true;
-      qemuguest.enable = true;
-      sops.enable = false;
-      state.enable = true;
-      timezone.enable = true;
-      users.enable = true;
-      vmVariant.enable = true;
+      podman.enable = true;
+      sops.enable = true;
     };
-    services = {
-      node-exporter.enable = false;
-      promtail.enable = false;
+    oci = {
+      newt.enable = true;
     };
   };
-
-  networking = {
-    firewall = {
-      allowedTCPPorts = [ ];
-    };
-  };
-
-  # sops = {
-  #   secrets = {};
-  # };
 }

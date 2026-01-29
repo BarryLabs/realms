@@ -1,8 +1,10 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
-with lib; let
+with lib;
+let
   module = "governor";
   cfg = config.augs.com.${module};
 in
@@ -11,9 +13,10 @@ in
   config = mkIf cfg.enable {
     powerManagement = {
       cpuFreqGovernor =
-        if config.networking.hostName == "yggdrasil"
-        then lib.mkDefault "performance"
-        else lib.mkDefault "powersave";
+        if config.networking.hostName == "yggdrasil" then
+          lib.mkDefault "performance"
+        else
+          lib.mkDefault "powersave";
     };
   };
 }

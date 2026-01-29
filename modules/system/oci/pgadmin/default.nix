@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib;
 let
@@ -11,6 +12,16 @@ in
 {
   options.augs.oci.${module}.enable = mkEnableOption "PGAdmin Container";
   config = mkIf cfg.enable {
+    sops = {
+      secrets = {
+        "services/pgadmin/default_email" = {
+          mode = "0400";
+        };
+        "services/pgadmin/default_pass" = {
+          mode = "0400";
+        };
+      };
+    };
     virtualisation.podman = {
       enable = true;
       autoPrune.enable = true;
@@ -81,9 +92,6 @@ in
             ];
             ports = [
               "9000:80/tcp"
-            ];
-            volumes = [
-              "/sata/.container/pgadmin/data:/var/lib/pgadmin:rw"
             ];
           };
         };
