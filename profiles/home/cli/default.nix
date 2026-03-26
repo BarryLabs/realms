@@ -17,19 +17,16 @@ in
     mods = {
       terminal = {
         foot.enable = true;
+        ghostty.enable = true;
       };
       cli = {
         bat.enable = true;
         eza.enable = true;
         fastfetch.enable = true;
-        fzf.enable = true;
-        goose-cli.enable = true;
         minio-client.enable = true;
-        pandoc.enable = true;
         starship.enable = true;
         stow.enable = true;
         yazi.enable = true;
-        yt-dlp.enable = true;
         zellij.enable = true;
         zoxide.enable = true;
         zsh.enable = true;

@@ -52,6 +52,7 @@
     ./com/zsh.nix
 
     ./gui/hyprland
+    ./gui/mango
     ./gui/niri
 
     ./oci/changedetection

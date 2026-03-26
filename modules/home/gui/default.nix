@@ -7,8 +7,10 @@
     ./hyprlock
     ./hyprpaper
     ./hyprpolkit
+    # ./noctalia
     ./quickshell
     ./rofi
+    ./swaybg
     ./waybar
     ./wlogout
     ./wlsunset

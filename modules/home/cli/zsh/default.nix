@@ -1,6 +1,7 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
 with lib;
 let
@@ -33,7 +34,13 @@ in
           ];
         };
         sessionVariables = {
-          EDITOR = if config.mods.cli.helix.enable then "hx" else if config.mods.cli.nvim.enable then "nvim" else "nano";
+          EDITOR =
+            if config.mods.cli.helix.enable then
+              "hx"
+            else if config.mods.cli.nvim.enable then
+              "nvim"
+            else
+              "nano";
           NIX_LOG = "info";
           NIX_PATH = "nixpkgs=channel:nixos-unstable";
         };
@@ -49,6 +56,13 @@ in
         syntaxHighlighting = {
           enable = true;
         };
+        # initContent =
+        #   let
+        #     zshConfig = lib.mkOrder 1000 "eval '$(direnv hook zsh)'";
+        #   in
+        #   lib.mkMerge [
+        #     zshConfig
+        #   ];
       };
     };
   };

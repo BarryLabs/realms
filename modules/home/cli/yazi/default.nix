@@ -1,8 +1,10 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
-with lib; let
+with lib;
+let
   module = "yazi";
   cfg = config.mods.cli.${module};
 in
@@ -14,6 +16,7 @@ in
         enable = true;
         enableNushellIntegration = if config.mods.cli.zsh.enable then true else false;
         enableZshIntegration = if config.mods.cli.zsh.enable then true else false;
+        shellWrapperName = "y";
         settings = {
           log = {
             enabled = false;

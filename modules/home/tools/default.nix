@@ -2,6 +2,7 @@
   imports = [
     ./btop
     ./easyeffects
+    ./fluffychat
     ./freetube
     ./gamescope
     ./lutris
@@ -11,6 +12,8 @@
     ./obsidian
     ./ollama
     ./podman
+    ./revolt
+    ./teamspeak
     ./thunderbird
     ./zathura
     ./zed

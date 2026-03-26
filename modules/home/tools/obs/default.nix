@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib;
 let
@@ -15,7 +16,6 @@ in
       obs-studio = {
         enable = true;
         plugins = with pkgs.obs-studio-plugins; [
-          wlrobs
           input-overlay
           obs-vkcapture
           obs-backgroundremoval

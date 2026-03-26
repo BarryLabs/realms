@@ -27,13 +27,12 @@
     };
   };
   augs = {
-    styles.mocha.enable = true;
-    gui.hyprland.enable = true;
+    gui.niri.enable = true;
     profile = {
       client.enable = true;
       desktop.enable = true;
       virtualisation.enable = true;
-      monitoring.enable = true;
+      # monitoring.enable = true;
     };
     com = {
       nvidiaGPU.enable = true;

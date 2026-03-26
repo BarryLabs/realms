@@ -22,13 +22,8 @@
       security.enable = true;
     };
     gui = {
-      dunst.enable = true;
       fuzzel.enable = true;
-      hyprland.enable = true;
-      hyprpaper.enable = true;
-      quickshell.enable = true;
-      waybar.enable = true;
-      wlogout.enable = true;
+      # quickshell.enable = true;
     };
   };
 }

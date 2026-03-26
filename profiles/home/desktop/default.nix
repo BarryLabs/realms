@@ -1,6 +1,7 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
 with lib;
 let
@@ -14,12 +15,8 @@ in
   options.mods.profile.${module}.enable = mkEnableOption "Desktop Profile";
   config = mkIf cfg.enable {
     mods = {
-      browser = {
-        firefox.enable = true;
-      };
       tools = {
         easyeffects.enable = true;
-        freetube.enable = true;
         mpv.enable = true;
         thunderbird.enable = true;
         zathura.enable = true;

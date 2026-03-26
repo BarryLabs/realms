@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 with lib;
@@ -12,20 +13,17 @@ in
 {
   options.augs.gui.${module}.enable = mkEnableOption "Niri Module";
   config = mkIf cfg.enable {
-    #services.greetd = {
-    #  enable = true;
-    #  settings = rec {
-    #    default_session = initial_session;
-    #    initial_session = {
-    #      user = config.var.user;
-    #      command = if config.augs.gui.niri.enable then "${pkgs.niri}/bin/niri-session" else "";
-    #    };
-    #  };
-    #};
-    systemd.user.tmpfiles.users.${config.var.user}.rules = [
-      "L %h/.config/niri/config.kdl - - - - /etc/nixos/modules/system/gui/niri/niri.kdl"
-    ];
-    environment = lib.mkIf config.augs.gui.${module}.enable {
+    services.greetd = {
+      enable = true;
+      settings = rec {
+        default_session = initial_session;
+        initial_session = {
+          user = config.var.user;
+          command = if config.augs.gui.niri.enable then "${pkgs.niri}/bin/niri-session" else "";
+        };
+      };
+    };
+    environment = {
       sessionVariables = {
         NIXOS_OZONE_WL = "1";
         WAYLAND_DISPLAY = "wayland-1";
@@ -33,11 +31,12 @@ in
       };
       systemPackages = with pkgs; [
         xwayland-satellite
-        fuzzel
-        hyprpicker
-        mpvpaper
         wl-clipboard
         nautilus
+        grim
+        slurp
+        swappy
+        inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
     };
     programs.niri = {

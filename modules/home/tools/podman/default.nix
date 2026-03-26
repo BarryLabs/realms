@@ -1,6 +1,8 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib;
 let
@@ -10,6 +12,9 @@ in
 {
   options.mods.tools.${module}.enable = mkEnableOption "Podman Module";
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      podman-compose
+    ];
     services = {
       podman = {
         enable = true;

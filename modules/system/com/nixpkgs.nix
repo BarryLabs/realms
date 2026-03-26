@@ -27,6 +27,7 @@ in
             "cuda_cccl"
             "cuda_nvcc"
             "obsidian"
+            "teamspeak6-client"
           ];
       };
     };

@@ -30,10 +30,31 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
+    };
+    mangowc = {
+      url = "github:DreamMaoMao/mangowc";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    matugen = {
+      url = "github:/InioX/Matugen";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.noctalia-qs.follows = "noctalia-qs";
+    };
+    noctalia-qs = {
+      url = "github:noctalia-dev/noctalia-qs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -46,6 +67,9 @@
       impermanence,
       stylix,
       nix-on-droid,
+      mangowc,
+      noctalia,
+      noctalia-qs,
       ...
     }@inputs:
     let
@@ -91,6 +115,7 @@
             sops-nix.nixosModules.sops
             stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
+            mangowc.nixosModules.mango
             ./machines/yggdrasil
             {
               home-manager = {

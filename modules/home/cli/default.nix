@@ -2,6 +2,7 @@
   imports = [
     ./bat
     ./cava
+    ./direnv
     ./emacs
     ./eza
     ./fastfetch

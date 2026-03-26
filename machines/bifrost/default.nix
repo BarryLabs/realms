@@ -8,9 +8,6 @@
   ];
 
   augs = {
-    com = {
-      fstrim.enable = true;
-    };
     profile = {
       server.enable = true;
       monitoring.enable = true;
@@ -66,11 +63,10 @@
       extraConfig = "nohook resolv.conf";
     };
     hosts = {
-      "192.168.1.1" = [ "router.home" ];
+      "192.168.1.1" = [ "route.home" ];
       "192.168.30.5" = [ "media.home" ];
       "192.168.40.5" = [ "nas.home" ];
-      "192.168.50.5" = [ "home.home" ];
-      "192.168.60.5" = [ "proxy.home" ];
+      "192.168.60.5" = [ "dmz.home" ];
       "192.168.60.10" = [ "auth.home" ];
       "192.168.60.15" = [ "mail.home" ];
       "192.168.70.5" = [ "monitor.home" ];

@@ -1,8 +1,10 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
-with lib; let
+with lib;
+let
   module = "mangohud";
   cfg = config.mods.tools.${module};
 in

@@ -16,18 +16,14 @@ in
   options.mods.profile.${module}.enable = mkEnableOption "Programming Profile";
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      go
-      uv
-      zig
       rustup
+      zig
     ];
     mods = {
       cli = {
+        direnv.enable = true;
         helix.enable = true;
         jujutsu.enable = true;
-      };
-      tools = {
-        zed.enable = true;
       };
     };
   };
