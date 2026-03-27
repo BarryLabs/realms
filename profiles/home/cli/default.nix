@@ -22,6 +22,7 @@ in
       cli = {
         bat.enable = true;
         eza.enable = true;
+        dust.enable = true;
         fastfetch.enable = true;
         minio-client.enable = true;
         starship.enable = true;

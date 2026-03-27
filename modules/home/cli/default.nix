@@ -3,6 +3,7 @@
     ./bat
     ./cava
     ./direnv
+    ./dust
     ./emacs
     ./eza
     ./fastfetch

@@ -60,16 +60,16 @@ Installation:
 
 | Tool Category         | Tool(s)                           |
 | --------------------- | --------------------------------- |
-| AI                    | ollama                            |
+| AI                    | ollama,goose                      |
 | Audio Development     | ardour                            |
 | Audio Effects         | easyeffects                       |
 | Authentication        | keepassxc,yubikey                 |
 | Automation            | n8n                               |
 | Backup                | borg                              |
-| Bar                   | waybar,eww,quickshell             |
+| Bar                   | noctalia,waybar                   |
 | Blender               | blender                           |
 | Browser               | firefox,qutebrowser               |
-| CLI                   | bat,eza,cava,fzf,fd,zoxide        |
+| CLI                   | bat,eza,cava,fzf,fd,zoxide,dust   |
 | Email                 | thunderbird                       |
 | File Browser          | yazi,ranger                       |
 | File Sync             | syncthing,nfs,smb                 |
@@ -77,7 +77,7 @@ Installation:
 | Gaming                | steam,lutris                      |
 | Game Streaming        | steam,sunshine                    |
 | High-Availability     | podman,k3s                        |
-| Logout                | wlogout                           |
+| Logout                | noctalia,wlogout                  |
 | Multiplexer           | zellij,tmux,wezterm,ghostty,kitty |
 | Notes                 | neorg,obsidian                    |
 | Notifications         | dunst,eww                         |
@@ -86,6 +86,7 @@ Installation:
 | Secrets               | sops                              |
 | Screenshot            | grim,slurp                        |
 | Shell                 | nushell,zsh,bash,fish             |
+| "Shell"               | quickshell,eww                    |
 | System Monitor        | btop,htop                         |
 | Terminal              | wezterm,ghostty,kitty,foot        |
 | Text Editor           | helix,nvim,emacs                  |
@@ -94,4 +95,4 @@ Installation:
 | Virtualisation        | podman,kvm                        |
 | VR                    | alvr                              |
 | Wallpaper             | hyprpaper,wpaperd,mpvpaper        |
-| Window Manager        | hyprland,niri                     |
+| Window Manager        | mango,niri,hyprland               |
