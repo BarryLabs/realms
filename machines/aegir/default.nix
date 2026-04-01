@@ -15,7 +15,7 @@
   augs = {
     profile = {
       server.enable = true;
-      monitoring.enable = true;
+      # monitoring.enable = true;
     };
     com = {
       bootGRUB.enable = true;
@@ -29,6 +29,7 @@
       jellyseerr.enable = true;
       jellyfin.enable = true;
       prowlarr.enable = true;
+      lidarr.enable = true;
       radarr.enable = true;
       sonarr.enable = true;
       torrent.enable = true;

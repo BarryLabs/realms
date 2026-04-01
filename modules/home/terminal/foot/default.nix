@@ -1,5 +1,6 @@
 { config
 , lib
+, pkgs
 , ...
 }:
 with lib;
@@ -10,13 +11,16 @@ in
 {
   options.mods.terminal.${module}.enable = mkEnableOption "Foot Module";
   config = mkIf cfg.enable {
-    programs = {
-      ${module} = {
-        enable = true;
-        server = {
-          enable = true;
-        };
-      };
-    };
+    home.packages = with pkgs; [
+      foot
+    ];
+    # programs = {
+    #   ${module} = {
+    #     enable = true;
+    #     server = {
+    #       enable = true;
+    #     };
+    #   };
+    # };
   };
 }

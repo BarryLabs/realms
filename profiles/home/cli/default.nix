@@ -16,7 +16,6 @@ in
   config = mkIf cfg.enable {
     mods = {
       terminal = {
-        foot.enable = true;
         ghostty.enable = true;
       };
       cli = {

@@ -14,16 +14,5 @@ in
     home.packages = with pkgs; [
       cava
     ];
-    #programs = {
-    #  ${module} = {
-    #    enable = true;
-    #    settings = {
-    #      general = {
-    #        framerate = 60;
-    #      };
-    #      smoothing.noise_reduction = 88;
-    #    };
-    #  };
-    #};
   };
 }

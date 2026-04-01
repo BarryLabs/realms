@@ -12,7 +12,6 @@
     ./obsidian
     ./ollama
     ./podman
-    ./revolt
     ./teamspeak
     ./thunderbird
     ./zathura

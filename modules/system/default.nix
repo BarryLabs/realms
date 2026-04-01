@@ -75,6 +75,7 @@
     ./oci/syncthing
     ./oci/torrent
     ./oci/transcode
+    ./oci/vaultwarden
 
     ./programs/alvr
     ./programs/appimages

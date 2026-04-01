@@ -14,17 +14,5 @@ in
     home.packages = with pkgs; [
       emacs
     ];
-    #programs = {
-    #  ${module} = {
-    #    enable = true;
-    #    extraConfig = ''
-    #      (setq standard-indent 2)
-    #    '';
-    #    extraPackages = epkgs: [
-    #      epkgs.emms
-    #      epkgs.magit
-    #    ];
-    #  };
-    #};
   };
 }

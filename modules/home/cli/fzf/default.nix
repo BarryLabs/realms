@@ -15,15 +15,5 @@ in
       fd
       fzf
     ];
-    #programs.${module} = {
-    #  enable = true;
-    #  enableZshIntegration = true;
-    #  changeDirWidgetCommand = "fd --type d --exclude .git .jj --follow --hidden";
-    #  defaultCommand = "fd --type f --exclude .git --follow --hidden";
-    #  defaultOptions = [
-    #    "--bind 'ctrl-/:toggle-preview'"
-    #    "--preview='bat --color-always -n {}'"
-    #  ];
-    #};
   };
 }

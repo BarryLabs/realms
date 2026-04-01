@@ -16,8 +16,13 @@ in
   options.mods.profile.${module}.enable = mkEnableOption "Programming Profile";
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
+      # Toolchains
       rustup
+      uv
       zig
+      # Language Servers
+      marksman
+      markdown-oxide
     ];
     mods = {
       cli = {

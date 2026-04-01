@@ -74,10 +74,10 @@ in
             log-driver = "journald";
             environment = {
               "RUSTFS_ADDRESS" = "0.0.0.0:9000";
+              "RUSTFS_TLS_PATH" = "/opt/tls";
               "RUSTFS_CONSOLE_ENABLE" = "true";
               "RUSTFS_CONSOLE_ADDRESS" = "0.0.0.0:9001";
               "RUSTFS_EXTERNAL_ADDRESS" = ":9000";
-              "RUSTFS_TLS_PATH" = "/opt/tls";
               "RUSTFS_CORS_ALLOWED_ORIGINS" = "*";
               "RUSTFS_CONSOLE_CORS_ALLOWED_ORIGINS" = "*";
             };
@@ -91,9 +91,9 @@ in
               "9001:9001/tcp"
             ];
             volumes = [
-              "/sata/.container/rustfs/data:/data"
-              "/sata/.container/rustfs/logs:/app/logs"
-              "/sata/.container/rustfs/tls:/opt/tls"
+              "/srv/rustfs/data:/data"
+              "/srv/rustfs/logs:/app/logs"
+              "/srv/rustfs/tls:/opt/tls"
             ];
           };
         };

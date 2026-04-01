@@ -13,7 +13,7 @@
     backup.asgard.enable = true;
     profile = {
       server.enable = true;
-      monitoring.enable = true;
+      # monitoring.enable = true;
     };
     com = {
       bootGRUB.enable = true;
@@ -36,7 +36,9 @@
       linkwarden.enable = true;
       paperless.enable = true;
       romm.enable = true;
+      rustfs.enable = true;
       syncthing.enable = true;
+      vaultwarden.enable = true;
     };
   };
 }
