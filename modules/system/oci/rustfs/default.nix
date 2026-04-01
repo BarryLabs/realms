@@ -73,11 +73,11 @@ in
             image = "rustfs/rustfs:latest";
             log-driver = "journald";
             environment = {
-              "RUSTFS_ADDRESS" = "0.0.0.0:9000";
-              "RUSTFS_TLS_PATH" = "/opt/tls";
               "RUSTFS_CONSOLE_ENABLE" = "true";
               "RUSTFS_CONSOLE_ADDRESS" = "0.0.0.0:9001";
-              "RUSTFS_EXTERNAL_ADDRESS" = ":9000";
+              "RUSTFS_ADDRESS" = "0.0.0.0:11000";
+              "RUSTFS_TLS_PATH" = "/opt/tls";
+              "RUSTFS_EXTERNAL_ADDRESS" = ":11000";
               "RUSTFS_CORS_ALLOWED_ORIGINS" = "*";
               "RUSTFS_CONSOLE_CORS_ALLOWED_ORIGINS" = "*";
             };
@@ -87,7 +87,7 @@ in
               "--security-opt=no-new-privileges"
             ];
             ports = [
-              "9000:9000/tcp"
+              "11000:9000/tcp"
               "9001:9001/tcp"
             ];
             volumes = [

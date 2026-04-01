@@ -17,6 +17,7 @@ in
     mods = {
       terminal = {
         ghostty.enable = true;
+        wezterm.enable = true;
       };
       cli = {
         bat.enable = true;

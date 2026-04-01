@@ -12,6 +12,13 @@ in
 {
   options.augs.oci.${module}.enable = mkEnableOption "Vaultwarden Container";
   config = mkIf cfg.enable {
+    sops = {
+      secrets = {
+        "services/vaultwarden/token" = {
+          mode = "0400";
+        };
+      };
+    };
     virtualisation.podman = {
       enable = true;
       autoPrune.enable = true;
@@ -72,6 +79,9 @@ in
           "Vaultwarden" = {
             image = "vaultwarden/server:latest";
             log-driver = "journald";
+            environmentFiles = [
+              /run/secrets/services/vaultwarden/token
+            ];
             extraOptions = [
               "--network-alias=vault"
               "--network=vault_Vault"
