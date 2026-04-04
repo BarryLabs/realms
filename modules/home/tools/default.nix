@@ -7,6 +7,7 @@
     ./gamescope
     ./lutris
     ./mangohud
+    ./matugen
     ./mpv
     ./obs
     ./obsidian

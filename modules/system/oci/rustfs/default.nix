@@ -12,6 +12,16 @@ in
 {
   options.augs.oci.${module}.enable = mkEnableOption "RustFS Container";
   config = mkIf cfg.enable {
+    sops = {
+      secrets = {
+        "services/rustfs/access" = {
+          mode = "0400";
+        };
+        "services/rustfs/secret" = {
+          mode = "0400";
+        };
+      };
+    };
     virtualisation.podman = {
       enable = true;
       autoPrune.enable = true;
@@ -81,6 +91,10 @@ in
               "RUSTFS_CORS_ALLOWED_ORIGINS" = "*";
               "RUSTFS_CONSOLE_CORS_ALLOWED_ORIGINS" = "*";
             };
+            environmentFiles = [
+              /run/secrets/services/rustfs/access
+              /run/secrets/services/rustfs/secret          
+            ];
             extraOptions = [
               "--network-alias=rfs"
               "--network=rfs_RFS"

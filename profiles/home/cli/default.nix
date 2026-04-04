@@ -35,6 +35,7 @@ in
       tools = {
         btop.enable = true;
         podman.enable = true;
+        matugen.enable = true;
       };
     };
   };

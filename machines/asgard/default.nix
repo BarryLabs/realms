@@ -29,7 +29,6 @@
     };
     oci = {
       pgadmin.enable = true;
-      filebrowser.enable = true;
       firefly.enable = true;
       forgejo.enable = true;
       immich.enable = true;
