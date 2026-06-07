@@ -6,7 +6,6 @@
   flake.nixosModules.abyssConfiguration = {
     pkgs,
     config,
-    # chaotic,
     ...
   }: {
     imports = [
@@ -19,13 +18,14 @@
 
       # Sops
       self.nixosModules.sops
-      
+
       # Chaotic Packages
-      # chaotic.nixosModules.default
+      inputs.chaotic.nixosModules.default
 
       # Profiles
       self.nixosModules.desktop
       self.nixosModules.content
+      self.nixosModules.power
       self.nixosModules.programming
       self.nixosModules.shell
       self.nixosModules.virtualisation
@@ -36,7 +36,8 @@
       self.nixosModules.nix
       self.nixosModules.goofcord
       self.nixosModules.netbird
-      self.nixosModules.niri
+      self.nixosModules.mango
+      self.nixosModules.nvidiaGPU-Sync
       self.nixosModules.syncthing
       self.nixosModules.talosctl
       # self.nixosModules.zen

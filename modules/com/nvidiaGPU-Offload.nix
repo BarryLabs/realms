@@ -1,15 +1,21 @@
-{pkgs, lib, ...}:
-with pkgs; let
-  patchDesktop = pkg: appName: from: to: lib.hiPrio (
-    pkgs.runCommand "$patched-desktop-entry-for-${appName}" {} ''
-      ${coreutils}/bin/mkdir -p $out/share/applications
-      ${gnused}/bin/sed 's#${from}#${to}#g' < ${pkg}/share/applications/${appName}.desktop > $out/share/applications/${appName}.desktop
-      '');
-    GPUOffloadApp = pkg: desktopName: lib.mkIf config.hardware.nvidia.prime.offload.enable
-    (patchDesktop pkg desktopName "^Exec=" "Exec=nvidia-offload ");
-in
 {
-  flake.nixosModules.nvidiaGPU-Offload = { config, ... }: {
+  pkgs,
+  lib,
+  ...
+}:
+with pkgs; let
+  patchDesktop = pkg: appName: from: to:
+    lib.hiPrio (
+      pkgs.runCommand "$patched-desktop-entry-for-${appName}" {} ''
+        ${coreutils}/bin/mkdir -p $out/share/applications
+        ${gnused}/bin/sed 's#${from}#${to}#g' < ${pkg}/share/applications/${appName}.desktop > $out/share/applications/${appName}.desktop
+      ''
+    );
+  GPUOffloadApp = pkg: desktopName:
+    lib.mkIf config.hardware.nvidia.prime.offload.enable
+    (patchDesktop pkg desktopName "^Exec=" "Exec=nvidia-offload ");
+in {
+  flake.nixosModules.nvidiaGPU-Offload = {
     environment.systemPackages = with pkgs; [
       (GPUOffloadApp steam "steam")
     ];
@@ -18,19 +24,18 @@ in
       "nvidia"
     ];
     hardware = {
-      graphics = true;
+      graphics.enable = true;
       nvidia = {
-        open = false;
-        nvidiaSettings = true;
-        modesetting.enable = true;
-        powerManagement = {
-          enable = false;
-          finegrained = false;
-        };
-        package = config.boot.kernelPackages.nvidiaPackages.beta;
+        open = true;
+        # nvidiaSettings = true;
+        # modesetting.enable = true;
+        # powerManagement = {
+        #   enable = false;
+        #   finegrained = false;
+        # };
         prime = {
-          intelBusId = "PCI:0:2:0";
-          nvidiaBusId = "PCI:14:0:0";
+          intelBusId = "PCI:0@0:2:0";
+          nvidiaBusId = "PCI:2@0:0:0";
           offload = {
             enable = true;
             enableOffloadCmd = true;

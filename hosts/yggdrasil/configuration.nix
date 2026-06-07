@@ -6,7 +6,6 @@
   flake.nixosModules.yggdrasilConfiguration = {
     pkgs,
     config,
-    # chaotic,
     ...
   }: {
     imports = [
@@ -21,7 +20,7 @@
       self.nixosModules.sops
 
       # Chaotic Packages
-      # chaotic.nixosModules.default
+      inputs.chaotic.nixosModules.default
 
       # Profiles
       self.nixosModules.desktop
@@ -32,13 +31,11 @@
 
       # Packages
       self.nixosModules.bootLimine
-      # self.nixosModules.emacs
       self.nixosModules.keepassxc
       self.nixosModules.nix
       self.nixosModules.goofcord
       self.nixosModules.netbird
       self.nixosModules.niri
-      self.nixosModules.nvidiaGPU
       self.nixosModules.syncthing
       self.nixosModules.talosctl
     ];

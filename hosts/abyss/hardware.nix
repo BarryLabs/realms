@@ -8,19 +8,13 @@
     imports = [
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
+    users.users.${config.abyss.user}.extraGroups = ["networkmanager"];
     networking = {
       hostName = config.abyss.host;
-      interfaces = {
-        enp5s0 = {
-          useDHCP = true;
-        };
-        enp6s0 = {
-          useDHCP = true;
-        };
-      };
+      networkmanager.enable = true;
     };
     boot = {
-      kernelPackages = pkgs.linuxPackages_zen;
+      kernelPackages = pkgs.linuxPackages_cachyos;
       extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
       kernelModules = [
         "kvm-intel"

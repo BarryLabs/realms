@@ -2,6 +2,7 @@
   flake.nixosModules.steam = {
     pkgs,
     lib,
+    inputs,
     ...
   }: {
     environment.systemPackages = with pkgs; [
@@ -25,6 +26,7 @@
       gamescope = {
         enable = true;
         capSysNice = false;
+        # package = inputs.chaotic.gamescope_git;
       };
       steam = {
         enable = true;

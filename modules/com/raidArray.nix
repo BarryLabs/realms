@@ -1,5 +1,5 @@
 {config, ...}: {
-  flake.nixosModules.raidArray = {lib, ...}: {
+  flake.nixosModules.raidArray = {
     boot = {
       supportedFilesystems = ["zfs"];
       zfs = {

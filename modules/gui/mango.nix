@@ -1,15 +1,15 @@
 {config, ...}: {
   flake.nixosModules.mango = {pkgs, ...}: {
-    services.greetd = {
-      enable = true;
-      settings = rec {
-        default_session = initial_session;
-        initial_session = {
-          user = config.var.user;
-          command = "${pkgs.mangowc}/bin/mango";
-        };
-      };
-    };
+    # services.greetd = {
+    #   enable = true;
+    #   settings = rec {
+    #     default_session = initial_session;
+    #     initial_session = {
+    #       user = config.abyss.user;
+    #       command = "${pkgs.mangowc}/bin/mango";
+    #     };
+    #   };
+    # };
     environment.systemPackages = with pkgs; [
       wl-clipboard
       grim

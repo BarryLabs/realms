@@ -19,7 +19,7 @@ Realms aims to automate and reduce the operational footprint of my lab with a fe
 - _Hardening_:
   We can define our security posture prior to deployment. This is already beneficial because it directly refers to the above point but goes deeper provided conditional logic and options. For example, you have the choice to use doas or sudo-rs and both handle enabling apparmor.
 - _Modularity_:
-  Each module handles all necessary configurations. Modules have attempted to be sorted by use so if you want to see my hosts...it's probably in the hosts folder.
+  Each module handles all necessary configurations. Modules have been sorted by type so if you want to see my hosts...it's probably in the hosts folder. Machine specific configuration lies in the host configuration.
   
 ---
 

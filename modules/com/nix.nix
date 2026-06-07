@@ -1,10 +1,5 @@
 {lib, ...}: {
-  flake.nixosModules.nix = {pkgs, ...}: {
-    environment.systemPackages = with pkgs; [
-      alejandra
-      nil
-      nixd
-    ];
+  flake.nixosModules.nix = {
     nix = {
       settings = {
         auto-optimise-store = true;
@@ -31,20 +26,20 @@
     nixpkgs = {
       hostPlatform = lib.mkDefault "x86_64-linux";
       config = {
-        allowUnfree = true;
-        # allowUnfreePredicate = pkg:
-        #   builtins.elem (lib.getName pkg) [
-        #     "nvidia-x11"
-        #     "nvidia-settings"
-        #     "nvidia-kernel-modules"
-        #     "steam"
-        #     "steam-unwrapped"
-        #     "cuda_cudart"
-        #     "libcublas"
-        #     "cuda_cccl"
-        #     "cuda_nvcc"
-        #     "obsidian"
-        #   ];
+        # allowUnfree = true;
+        allowUnfreePredicate = pkg:
+          builtins.elem (lib.getName pkg) [
+            "nvidia-x11"
+            "nvidia-settings"
+            "nvidia-kernel-modules"
+            "steam"
+            "steam-unwrapped"
+            "cuda_cudart"
+            "libcublas"
+            "cuda_cccl"
+            "cuda_nvcc"
+            "obsidian"
+          ];
       };
     };
   };

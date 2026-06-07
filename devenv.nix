@@ -1,9 +1,14 @@
-{pkgs, config, ...}: {
-
+{
+  pkgs,
+  config,
+  ...
+}: {
   env = {
+    PROJECT = "Realms";
     VERSION = "0.4.0";
+    PATCH = "";
   };
-  
+
   packages = [
     pkgs.alejandra # Nix Formatter
     pkgs.git # Version Control
@@ -18,6 +23,7 @@
   enterShell = ''
     echo "Version Check:"
     echo "-------------------"
+    echo " "
     alejandra --version
     git --version
     jj --version
@@ -28,9 +34,8 @@
     exec = ''
       alejandra .
       jj bookmark set main
-      jj commit -m "${toString config.env.VERSION}"
+      jj commit -m "${toString config.env.PROJECT} | ${toString config.env.VERSION} | ${toString config.env.PATCH}"
       jj git push
     '';
   };
-
 }
