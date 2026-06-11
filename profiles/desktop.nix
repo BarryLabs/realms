@@ -18,7 +18,6 @@
       self.nixosModules.appimage
       self.nixosModules.coolercontrol
       self.nixosModules.fish
-      self.nixosModules.flatpak
       self.nixosModules.localsend
       self.nixosModules.nix-ld
       self.nixosModules.steam
@@ -26,7 +25,6 @@
     environment.systemPackages = with pkgs; [
       obsidian
       thunderbird
-      vesktop
     ];
   };
 }

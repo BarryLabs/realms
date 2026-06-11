@@ -51,6 +51,7 @@
         "uas"
         "sd_mod"
       ];
+      ### Rust Patches for Fun
       kernelPatches = [
         {
           name = "Rust Kernel Module";
@@ -81,12 +82,7 @@
         enable32Bit = true;
       };
       nvidia = {
-        open = false;
-        nvidiaSettings = true;
-        modesetting = {
-          enable = true;
-        };
-        package = config.boot.kernelPackages.nvidiaPackages.stable;
+        open = true;
       };
     };
     ### State

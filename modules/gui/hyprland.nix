@@ -1,5 +1,12 @@
-{config, ...}: {
+{
+  self,
+  inputs,
+  ...
+}: {
   flake.nixosModules.hyprland = {pkgs, ...}: {
+    imports = [
+      self.nixosModules.noctalia
+    ];
     services.greetd = {
       enable = true;
       settings = rec {
@@ -15,20 +22,14 @@
       grim
       slurp
       swappy
+      nautilus
+      inputs.matugen.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
+    programs.hyprland = {
+      enable = true;
+      xwayland.enable = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    };
   };
-  # perSystem = {
-  #   pkgs,
-  #   lib,
-  #   self',
-  #   ...
-  # }: {
-  #   package.myMango = inputs.wrapper-modules.wrappers.mangowc.wrap {
-  #     inherit pkgs;
-  #     configFile = {};
-  #     extraContent = ''
-
-  #     '';
-  #   };
-  # };
 }

@@ -16,6 +16,6 @@
     locale = "en_US.UTF-8";
     timezone = "America/New_York";
     ageFile = "/root/.config/sops/age/keys.txt";
-    state = "26.05";
+    state = "26.11";
   };
 }

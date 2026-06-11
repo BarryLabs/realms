@@ -3,5 +3,6 @@
     imports = [
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
+    networking.hostName = "orca";
   };
 }

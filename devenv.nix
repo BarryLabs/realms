@@ -5,8 +5,8 @@
 }: {
   env = {
     PROJECT = "Realms";
-    VERSION = "0.4.0";
-    PATCH = "";
+    VERSION = "0.4.1";
+    PATCH = "Can we call it cleaning? | Cachy Kernel | Zen Module | Fish Annoys Me | Hyprland is Best";
   };
 
   packages = [

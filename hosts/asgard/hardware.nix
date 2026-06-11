@@ -7,5 +7,6 @@
       device = "/dev/sde1";
       fsType = "xfs";
     };
+    networking.hostName = "asgard";
   };
 }

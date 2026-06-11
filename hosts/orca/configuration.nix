@@ -9,34 +9,27 @@
     ...
   }: {
     imports = [
-      # Variables
+      ### Variables
       ./variables.nix
 
-      # Hardware
+      ### Hardware
       inputs.disko.nixosModules.disko
       self.nixosModules.orcaHardware
 
-      # Sops
+      ### Sops
       self.nixosModules.sops
 
-      # Packages
+      ### Setup
       self.nixosModules.bootGRUB
       self.nixosModules.nix
       self.nixosModules.server
       self.nixosModules.sudo-rs
       self.nixosModules.qemuguest
 
-      # K3s
+      ### K3s
       self.nixosModules.orchestrator
     ];
-
-    # Hostname
-    networking.hostName = "orca";
-
-    # State
-    system.stateVersion = config.orca.state;
-
-    # User
+    ### Users
     users = {
       users = {
         ${config.orca.user} = {
@@ -71,5 +64,7 @@
         };
       };
     };
+    ### State
+    system.stateVersion = config.orca.state;
   };
 }

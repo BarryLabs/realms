@@ -1,6 +1,7 @@
 {self, ...}: {
   flake.nixosModules.shell = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
+      foot
       helix
       ghostty
       eza
@@ -12,7 +13,6 @@
       yazi
       zellij
       zoxide
-      zsh
 
       podman
       podman-compose

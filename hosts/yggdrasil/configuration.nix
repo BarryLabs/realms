@@ -9,52 +9,53 @@
     ...
   }: {
     imports = [
-      # Variables
+      ### Variables
       ./variables.nix
 
-      # Hardware
+      ### Hardware
       inputs.disko.nixosModules.disko
       self.nixosModules.yggdrasilHardware
 
-      # Sops
+      ### Sops
       self.nixosModules.sops
 
-      # Chaotic Packages
+      ### Chaotic Packages
       inputs.chaotic.nixosModules.default
 
-      # Profiles
+      ### Setup
+      self.nixosModules.bootLimine
       self.nixosModules.desktop
+      self.nixosModules.hyprland
+      self.nixosModules.nix
+
+      ### Profiled Packages
       self.nixosModules.content
       self.nixosModules.programming
       self.nixosModules.shell
       self.nixosModules.virtualisation
 
-      # Packages
-      self.nixosModules.bootLimine
-      self.nixosModules.keepassxc
-      self.nixosModules.nix
+      ### Packages
+      self.nixosModules.flatpak
       self.nixosModules.goofcord
+      self.nixosModules.keepassxc
       self.nixosModules.netbird
-      self.nixosModules.niri
       self.nixosModules.syncthing
       self.nixosModules.talosctl
+      self.nixosModules.zsh
     ];
-
-    # Packages
-    environment.systemPackages = with pkgs; [
-      monero-gui
-    ];
-
-    # User
+    ### Users
     users = {
       users = {
         ${config.client.user} = {
           isNormalUser = true;
           createHome = true;
-          shell = pkgs.fish;
+          shell = pkgs.zsh;
           home = config.client.home;
           description = config.client.desc;
           initialPassword = config.client.iniPass;
+          packages = with pkgs; [
+            monero-gui
+          ];
           extraGroups =
             [
             ]

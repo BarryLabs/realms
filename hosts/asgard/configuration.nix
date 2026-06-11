@@ -9,17 +9,17 @@
     ...
   }: {
     imports = [
-      # Variables
+      ### Variables
       ./variables.nix
 
-      # Hardware
+      ### Hardware
       inputs.disko.nixosModules.disko
       self.nixosModules.asgardHardware
 
-      # Sops
+      ### Sops
       self.nixosModules.sops
 
-      # Packages
+      ### Setup
       self.nixosModules.bootGRUB
       self.nixosModules.nix
       self.nixosModules.server
@@ -27,11 +27,9 @@
       self.nixosModules.qemuguest
       self.nixosModules.podman
       self.nixosModules.nfsv4
-
-      # Backup
       self.nixosModules.asgardBackup
 
-      # Containers
+      ### Containers
       self.nixosModules.pgadmin
       self.nixosModules.firefly
       self.nixosModules.forgejo
@@ -43,14 +41,7 @@
       self.nixosModules.syncthing
       self.nixosModules.vaultwarden
     ];
-
-    # Hostname
-    networking.hostName = "asgard";
-
-    # State
-    system.stateVersion = config.asgard.state;
-
-    # User
+    ### Users
     users = {
       users = {
         ${config.asgard.user} = {
@@ -85,5 +76,7 @@
         };
       };
     };
+    ### State
+    system.stateVersion = config.asgard.state;
   };
 }

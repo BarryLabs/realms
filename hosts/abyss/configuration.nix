@@ -22,32 +22,34 @@
       # Chaotic Packages
       inputs.chaotic.nixosModules.default
 
-      # Profiles
+      # Setup
+      self.nixosModules.bootLimine
       self.nixosModules.desktop
-      self.nixosModules.content
+      self.nixosModules.nix
       self.nixosModules.power
+
+      # Profiles
+      self.nixosModules.content
       self.nixosModules.programming
       self.nixosModules.shell
       self.nixosModules.virtualisation
 
       # Packages
-      self.nixosModules.bootLimine
-      self.nixosModules.keepassxc
-      self.nixosModules.nix
       self.nixosModules.goofcord
+      self.nixosModules.hyprland
+      self.nixosModules.keepassxc
       self.nixosModules.netbird
-      self.nixosModules.mango
-      self.nixosModules.nvidiaGPU-Sync
       self.nixosModules.syncthing
       self.nixosModules.talosctl
-      # self.nixosModules.zen
+      self.nixosModules.zsh
+      self.nixosModules.zen
     ];
     users = {
       users = {
         ${config.abyss.user} = {
           isNormalUser = true;
           createHome = true;
-          shell = pkgs.fish;
+          shell = pkgs.zsh;
           home = config.abyss.home;
           description = config.abyss.desc;
           initialPassword = config.abyss.iniPass;

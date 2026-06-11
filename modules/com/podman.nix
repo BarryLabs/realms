@@ -14,7 +14,7 @@
         podman-compose
       ];
     };
-    users.extraGroups.podman.members = [config.var.user];
+    users.extraGroups.podman.members = ["chandler"];
     virtualisation = {
       podman = {
         enable = true;
