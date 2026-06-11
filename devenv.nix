@@ -6,14 +6,13 @@
   env = {
     PROJECT = "Realms";
     VERSION = "0.4.1";
-    PATCH = "Can we call it cleaning? | Cachy Kernel | Zen Module | Fish Annoys Me | Hyprland is Best";
+    PATCH = "Remove Nixd from Packages since its already in languages.";
   };
 
   packages = [
     pkgs.alejandra # Nix Formatter
     pkgs.git # Version Control
     pkgs.jujutsu # Better Version Control
-    pkgs.nixd # Nix LSP
   ];
 
   difftastic.enable = true;
