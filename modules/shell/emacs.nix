@@ -1,6 +1,11 @@
 {
   flake.nixosModules.emacs = {pkgs, ...}: {
-    environment.systemPackages = [pkgs.emacs];
+    environment = {
+      sessionVariables = {
+        "PATH" = "$HOME/.config/emacs/bin:$PATH";
+      };
+      systemPackages = [pkgs.emacs];
+    };
   };
   flake.homeModules.emacs = {pkgs, ...}: {
     home.packages = with pkgs; [

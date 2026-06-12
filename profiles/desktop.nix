@@ -17,7 +17,6 @@
       # Programs
       self.nixosModules.appimage
       self.nixosModules.coolercontrol
-      self.nixosModules.fish
       self.nixosModules.localsend
       self.nixosModules.nix-ld
       self.nixosModules.steam

@@ -28,20 +28,24 @@
       self.nixosModules.hyprland
       self.nixosModules.nix
 
-      ### Profiled Packages
+      ### Ugly System Packages
       self.nixosModules.content
-      self.nixosModules.programming
       self.nixosModules.shell
-      self.nixosModules.virtualisation
 
       ### Packages
       self.nixosModules.flatpak
+      self.nixosModules.foot
+      self.nixosModules.ghostty
       self.nixosModules.goofcord
+      self.nixosModules.jujutsu
       self.nixosModules.keepassxc
       self.nixosModules.netbird
       self.nixosModules.syncthing
       self.nixosModules.talosctl
+      self.nixosModules.virt-manager
+      self.nixosModules.waydroid
       self.nixosModules.zsh
+      self.nixosModules.zen
     ];
     ### Users
     users = {

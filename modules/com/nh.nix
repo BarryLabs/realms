@@ -6,7 +6,7 @@
     ];
     programs.nh = {
       enable = true;
-      flake = "/etc/nixos";
+      flake = "/home/chandler/Projects/nix/realms";
       clean = {
         enable = true;
         extraArgs = "--keep-since 7d --keep 5";

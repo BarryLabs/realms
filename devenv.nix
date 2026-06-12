@@ -5,8 +5,8 @@
 }: {
   env = {
     PROJECT = "Realms";
-    VERSION = "0.4.1";
-    PATCH = "Remove Nixd from Packages since its already in languages.";
+    VERSION = "0.4.2";
+    PATCH = "";
   };
 
   packages = [
