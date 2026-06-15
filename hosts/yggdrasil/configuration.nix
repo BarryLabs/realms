@@ -33,6 +33,7 @@
       self.nixosModules.shell
 
       ### Packages
+      self.nixosModules.coolercontrol
       self.nixosModules.flatpak
       self.nixosModules.foot
       self.nixosModules.ghostty

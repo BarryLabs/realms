@@ -3,6 +3,7 @@
     imports = [
       self.nixosModules.base
       self.nixosModules.bash
+      self.nixosModules.jujutsu
     ];
   };
 }

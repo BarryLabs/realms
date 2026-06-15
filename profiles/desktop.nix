@@ -10,13 +10,13 @@
       # self.nixosModules.doas
       self.nixosModules.firejail
       self.nixosModules.gnupg
+      self.nixosModules.jujutsu
       self.nixosModules.pam
       self.nixosModules.sudo-rs
       self.nixosModules.yubikey
       self.nixosModules.mullvad
       # Programs
       self.nixosModules.appimage
-      self.nixosModules.coolercontrol
       self.nixosModules.localsend
       self.nixosModules.nix-ld
       self.nixosModules.steam
