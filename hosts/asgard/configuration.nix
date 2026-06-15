@@ -28,18 +28,18 @@
       self.nixosModules.podman
       self.nixosModules.nfsv4
       self.nixosModules.asgardBackup
+      self.nixosModules.intelGPU
 
       ### Containers
-      self.nixosModules.pgadmin
-      self.nixosModules.firefly
-      self.nixosModules.forgejo
-      self.nixosModules.immich
-      self.nixosModules.linkwarden
-      self.nixosModules.paperless
-      self.nixosModules.romm
-      self.nixosModules.rustfs
-      self.nixosModules.syncthing
-      self.nixosModules.vaultwarden
+      self.nixosModules.oci-pgadmin
+      self.nixosModules.oci-filebrowser
+      self.nixosModules.oci-firefly
+      self.nixosModules.oci-forgejo
+      self.nixosModules.oci-immich
+      self.nixosModules.oci-linkwarden
+      self.nixosModules.oci-paperless
+      self.nixosModules.oci-romm
+      self.nixosModules.oci-syncthing
     ];
     ### Users
     users = {
