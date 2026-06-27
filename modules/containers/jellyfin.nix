@@ -1,10 +1,10 @@
 {
+  flake.nixosModules.oci-jellyfin = {
   config,
   pkgs,
   lib,
   ...
 }: {
-  flake.nixosModules.oci-jellyfin = {
     virtualisation.podman = {
       enable = true;
       autoPrune.enable = true;

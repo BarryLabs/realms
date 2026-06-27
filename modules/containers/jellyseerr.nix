@@ -1,10 +1,10 @@
 {
+  flake.nixosModules.oci-jellyseerr = {
   config,
   pkgs,
   lib,
   ...
 }: {
-  flake.nixosModules.oci-jellyseerr = {
     virtualisation.podman = {
       enable = true;
       autoPrune.enable = true;

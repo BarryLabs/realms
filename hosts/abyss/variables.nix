@@ -10,7 +10,7 @@
   config.abyss = {
     host = "abyss";
     user = "chandler";
-    desc = "${config.abyss.host}'s user account";
+    desc = "${config.abyss.host}'s account.";
     home = "/home/${config.abyss.user}";
     iniPass = "password";
     locale = "en_US.UTF-8";

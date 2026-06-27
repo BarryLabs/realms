@@ -1,5 +1,5 @@
-{config, ...}: {
-  flake.nixosModules.security = {
+{
+  flake.nixosModules.security = {config, ...}: {
     security = {
       virtualisation = {
         flushL1DataCache = "always";

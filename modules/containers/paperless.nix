@@ -1,10 +1,10 @@
 {
+  flake.nixosModules.oci-paperless = {
   config,
   pkgs,
   lib,
   ...
 }: {
-  flake.nixosModules.oci-paperless = {
     sops = {
       secrets = {
         "services/paperless/admin_user" = {

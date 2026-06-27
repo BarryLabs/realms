@@ -8,56 +8,56 @@
       volumeGroup = lib.mkOption {
         default = "btrfs_vg";
         description = ''
-          Btrfs volume group name
+          Btrfs Volume Group Name
         '';
       };
 
       user = lib.mkOption {
         default = "username";
         description = ''
-          Main user
+          Main User
         '';
       };
 
       directories = lib.mkOption {
         default = [];
         description = ''
-          directories to persist
+          Folders to Persist
         '';
       };
 
       files = lib.mkOption {
         default = [];
         description = ''
-          files to persist
+          Files to Persist
         '';
       };
 
       data.directories = lib.mkOption {
         default = [];
         description = ''
-          directories to persist
+          Folders to Persist
         '';
       };
 
       data.files = lib.mkOption {
         default = [];
         description = ''
-          files to persist
+          Files to Persist
         '';
       };
 
       cache.directories = lib.mkOption {
         default = [];
         description = ''
-          directories to persist
+          Folders to Persist
         '';
       };
 
       cache.files = lib.mkOption {
         default = [];
         description = ''
-          files to persist
+          Files to Persist
         '';
       };
     };

@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.asgardConfiguration = {
+  flake.nixosModules.aegirConfiguration = {
     pkgs,
     config,
     ...
@@ -14,10 +14,10 @@
 
       ### Hardware
       inputs.disko.nixosModules.disko
-      self.nixosModules.asgardHardware
+      self.nixosModules.aegirHardware
 
       ### Sops
-      inputs.sops-nix.nixosModules.sops
+      self.nixosModules.sops
 
       ### Setup
       self.nixosModules.bootGRUB
@@ -26,41 +26,26 @@
       self.nixosModules.sudo-rs
       self.nixosModules.qemuguest
       self.nixosModules.podman
-      self.nixosModules.nfsv4
-      self.nixosModules.asgardBackup
       self.nixosModules.intelGPU
-      self.nixosModules.raidArray
-      self.nixosModules.zram
 
       ### Containers
-      self.nixosModules.oci-pgadmin
-      self.nixosModules.oci-filebrowser
-      self.nixosModules.oci-firefly
-      self.nixosModules.oci-forgejo
-      self.nixosModules.oci-immich
-      self.nixosModules.oci-linkwarden
-      self.nixosModules.oci-paperless
-      self.nixosModules.oci-romm
-      self.nixosModules.oci-syncthing
+      self.nixosModules.oci-jellyseerr
+      self.nixosModules.oci-jellyfin
+      self.nixosModules.oci-prowlarr
+      self.nixosModules.oci-radarr
+      self.nixosModules.oci-sonarr
+      self.nixosModules.oci-torrent
     ];
-    ### Sops
-    sops = {
-      age = {
-        keyFile = "/root/.config/sops/age/keys.txt";
-      };
-      defaultSopsFormat = "yaml";
-      defaultSopsFile = ../../secrets/${config.asgard.host}.yaml;
-    };
     ### Users
     users = {
       users = {
-        ${config.asgard.user} = {
+        ${config.aegir.user} = {
           isNormalUser = true;
           createHome = true;
           shell = pkgs.bash;
-          home = config.asgard.home;
-          description = config.asgard.desc;
-          initialPassword = config.asgard.iniPass;
+          home = config.aegir.home;
+          description = config.aegir.desc;
+          initialPassword = config.aegir.iniPass;
           extraGroups =
             [
             ]

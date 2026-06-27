@@ -22,9 +22,6 @@
       networkmanager.enable = true;
     };
     ### Bluetooth
-    environment.systemPackages = with pkgs; [
-      bluetui
-    ];
     hardware.bluetooth = {
       enable = true;
       powerOnBoot = true;
@@ -32,7 +29,7 @@
     ### Boot
     boot = {
       ### Kernel
-      kernelPackages = pkgs.linuxPackages_cachyos;
+      kernelPackages = pkgs.linuxPackages_latest;
       extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
       kernelModules = [
         "kvm-intel"

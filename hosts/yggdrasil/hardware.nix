@@ -29,7 +29,7 @@
     };
     ### Boot
     boot = {
-      kernelPackages = pkgs.linuxPackages_cachyos;
+      kernelPackages = pkgs.linuxPackages_latest;
       extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
       kernelModules = [
         "kvm-amd"
@@ -52,15 +52,15 @@
         "sd_mod"
       ];
       ### Rust Patches for Fun
-      kernelPatches = [
-        {
-          name = "Rust Kernel Module";
-          patch = null;
-          features = {
-            rust = true;
-          };
-        }
-      ];
+      # kernelPatches = [
+      #   {
+      #     name = "Rust Kernel Module";
+      #     patch = null;
+      #     features = {
+      #       rust = true;
+      #     };
+      #   }
+      # ];
     };
     ### CPU
     hardware.cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;

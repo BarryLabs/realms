@@ -10,7 +10,7 @@
   config.asgard = {
     host = "asgard";
     user = "vault";
-    desc = "${config.asgard.host}'s user account";
+    desc = "${config.asgard.host}'s account.";
     home = "/home/${config.asgard.user}";
     iniPass = "password";
     locale = "en_US.UTF-8";

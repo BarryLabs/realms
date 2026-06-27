@@ -3,15 +3,15 @@
   config,
   ...
 }: {
-  options.client = lib.mkOption {
+  options.aegir = lib.mkOption {
     type = lib.types.attrs;
     default = {};
   };
-  config.client = {
-    host = "yggdrasil";
-    user = "chandler";
-    desc = "${config.client.host}'s account.";
-    home = "/home/${config.client.user}";
+  config.aegir = {
+    host = "aegir";
+    user = "shiva";
+    desc = "${config.aegir.host}'s account.";
+    home = "/home/${config.aegir.user}";
     iniPass = "password";
     locale = "en_US.UTF-8";
     timezone = "America/New_York";

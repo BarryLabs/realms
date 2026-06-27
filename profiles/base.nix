@@ -6,6 +6,7 @@
       self.nixosModules.nh
       self.nixosModules.nix
       self.nixosModules.openssh
+      self.nixosModules.security
       self.nixosModules.settings
       self.nixosModules.timezone
     ];

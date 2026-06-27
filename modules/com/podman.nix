@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   ...
@@ -14,7 +13,6 @@
         podman-compose
       ];
     };
-    users.extraGroups.podman.members = ["chandler"];
     virtualisation = {
       podman = {
         enable = true;
@@ -45,35 +43,32 @@
         wantedBy = ["timers.target"];
       };
     };
-    systemd.services =
-      if config.networking.hostName != "yggdrasil"
-      then {
-        update-podman-containers = {
-          serviceConfig = {
-            Type = "oneshot";
-            ExecStart = lib.getExe (
-              pkgs.writeShellScriptBin "update-podman-containers" ''
-                images=$(${pkgs.podman}/bin/podman ps -a --format="{{.Image}}" | sort -u)
+    systemd.services = {
+      update-podman-containers = {
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = lib.getExe (
+            pkgs.writeShellScriptBin "update-podman-containers" ''
+              images=$(${pkgs.podman}/bin/podman ps -a --format="{{.image}}" | sort -u)
 
-                for image in $images; do
-                  ${pkgs.podman}/bin/podman pull "$image"
-                done
-              ''
-            );
-          };
+              for image in $images; do
+                ${pkgs.podman}/bin/podman pull "$image"
+              done
+            ''
+          );
         };
-        restart-podman-containers = {
-          serviceConfig = {
-            Type = "oneshot";
-            ExecStart = lib.getExe (
-              pkgs.writeShellScriptBin "restart-podman-containers" ''
-                ${pkgs.podman}/bin/podman restart -a
-              ''
-            );
-          };
+      };
+      restart-podman-containers = {
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = lib.getExe (
+            pkgs.writeShellScriptBin "restart-podman-containers" ''
+              ${pkgs.podman}/bin/podman restart -a
+            ''
+          );
         };
-      }
-      else {};
+      };
+    };
   };
   flake.homeModules.podman = {pkgs, ...}: {
     home.packages = with pkgs; [

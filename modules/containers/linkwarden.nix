@@ -1,10 +1,10 @@
 {
+  flake.nixosModules.oci-linkwarden = {
   config,
   pkgs,
   lib,
   ...
 }: {
-  flake.nixosModules.oci-linkwarden = {
     sops = {
       secrets = {
         "services/linkwarden/nextauth_key" = {

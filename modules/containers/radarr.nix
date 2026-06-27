@@ -1,10 +1,10 @@
 {
+  flake.nixosModules.oci-radarr = {
   config,
   pkgs,
   lib,
   ...
 }: {
-  flake.nixosModules.oci-radarr = {
     virtualisation.podman = {
       enable = true;
       autoPrune.enable = true;

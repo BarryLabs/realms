@@ -1,10 +1,10 @@
 {
+  flake.nixosModules.oci-filebrowser = {
   config,
   pkgs,
   lib,
   ...
 }: {
-  flake.nixosModules.oci-filebrowser = {
     virtualisation.podman = {
       enable = true;
       autoPrune.enable = true;

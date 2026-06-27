@@ -1,10 +1,10 @@
 {
+  flake.nixosModules.oci-firefly = {
   config,
   pkgs,
   lib,
   ...
 }: {
-  flake.nixosModules.oci-firefly = {
     sops = {
       secrets = {
         "services/firefly/owner" = {

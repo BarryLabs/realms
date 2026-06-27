@@ -1,10 +1,10 @@
 {
+  flake.nixosModules.oci-romm = {
   config,
   pkgs,
   lib,
   ...
 }: {
-  flake.nixosModules.romm = {
     sops = {
       secrets = {
         "services/romm/user" = {

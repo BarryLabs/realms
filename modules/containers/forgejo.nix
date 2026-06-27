@@ -1,10 +1,10 @@
 {
+  flake.nixosModules.oci-forgejo = {
   config,
   pkgs,
   lib,
   ...
 }: {
-  flake.nixosModules.oci-forgejo = {
     virtualisation.podman = {
       enable = true;
       autoPrune.enable = true;

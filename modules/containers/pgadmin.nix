@@ -1,10 +1,10 @@
 {
+  flake.nixosModules.oci-pgadmin = {
   config,
   pkgs,
   lib,
   ...
 }: {
-  flake.nixosModules.oci-pgadmin = {
     sops = {
       secrets = {
         "services/pgadmin/default_email" = {

@@ -1,10 +1,10 @@
 {
+  flake.nixosModules.oci-immich = {
   config,
   pkgs,
   lib,
   ...
 }: {
-  flake.nixosModules.oci-immich = {
     sops = {
       secrets = {
         "services/immich/db_name" = {

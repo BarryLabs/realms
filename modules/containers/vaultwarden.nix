@@ -1,10 +1,10 @@
 {
+  flake.nixosModules.oci-vaultwarden = {
   config,
   pkgs,
   lib,
   ...
 }: {
-  flake.nixosModules.oci-vaultwarden = {
     sops = {
       secrets = {
         "services/vaultwarden/token" = {
