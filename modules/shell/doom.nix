@@ -1,11 +1,11 @@
-{inputs, pkgs, ...}: {
-  flake.nixosModules.doom = {
+{
+  flake.nixosModules.doom = {inputs, pkgs, ...}: {
     nixpkgs.overlays = [ 
       inputs.nix-doom-emacs-unstraightened.overlays.default 
     ];
 
     environment.systemPackages = [
-      (pkgs.doomEmacs {
+      (pkgs.emacsWithDoom {
         doomDir = ./doom.d;
         doomLocalDir = "~/.local/share/nix-doom";
       })

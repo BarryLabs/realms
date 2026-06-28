@@ -8,9 +8,6 @@
       stow
       yazi
       zellij
-
-      podman
-      podman-compose
     ];
   };
 }
