@@ -34,15 +34,15 @@
 
       ### Packages
       self.nixosModules.coolercontrol
-      # self.nixosModules.docker
-      # self.nixosModules.doom
       self.nixosModules.flatpak
       self.nixosModules.foot
       self.nixosModules.ghostty
       self.nixosModules.goofcord
       self.nixosModules.jujutsu
+      self.nixosModules.kdeconnect
       self.nixosModules.keepassxc
       self.nixosModules.kubectl
+      self.nixosModules.mangohud
       self.nixosModules.netbird
       self.nixosModules.podman
       self.nixosModules.syncthing

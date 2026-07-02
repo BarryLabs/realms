@@ -25,6 +25,7 @@
       # Setup
       self.nixosModules.bootLimine
       self.nixosModules.desktop
+      self.nixosModules.hyprland
       self.nixosModules.nix
       self.nixosModules.power
 
@@ -36,9 +37,12 @@
       self.nixosModules.ghostty
       self.nixosModules.goofcord
       self.nixosModules.jujutsu
-      self.nixosModules.hyprland
+      self.nixosModules.kdeconnect
       self.nixosModules.keepassxc
+      self.nixosModules.kubectl
+      self.nixosModules.mangohud
       self.nixosModules.netbird
+      self.nixosModules.podman
       self.nixosModules.syncthing
       self.nixosModules.talosctl
       self.nixosModules.virt-manager

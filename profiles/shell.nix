@@ -5,9 +5,7 @@
       devenv
       helix
       fastfetch
-      stow
       yazi
-      zellij
     ];
   };
 }

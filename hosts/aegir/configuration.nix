@@ -36,6 +36,14 @@
       self.nixosModules.oci-sonarr
       self.nixosModules.oci-torrent
     ];
+    ### Sops
+    sops = {
+      age = {
+        keyFile = "/root/.config/sops/age/keys.txt";
+      };
+      defaultSopsFormat = "yaml";
+      defaultSopsFile = ../../secrets/${config.aegir.host}.yaml;
+    };
     ### Users
     users = {
       users = {
