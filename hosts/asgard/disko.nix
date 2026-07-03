@@ -3,14 +3,14 @@
     disko = {
       devices = {
         disk = {
-          zero = {
+          host = {
             type = "disk";
             device = "/dev/sda";
             content = {
               type = "gpt";
               partitions = {
                 boot = {
-                  size = "256M";
+                  size = "128M";
                   type = "EF02";
                 };
                 root = {

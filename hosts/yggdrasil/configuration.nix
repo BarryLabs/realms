@@ -34,6 +34,7 @@
 
       ### Packages
       self.nixosModules.coolercontrol
+      # self.nixosModules.docker
       self.nixosModules.flatpak
       self.nixosModules.foot
       self.nixosModules.ghostty

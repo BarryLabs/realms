@@ -2,13 +2,13 @@
   flake.nixosModules.podman = {pkgs, ... }: {
     boot = {
       kernel.sysctl."kernel.unprivileged_userns_clone" = 1;
-      kernelModules = [
-        "br_netfilter"
-        "bridge"
-        "veth"
-        "iptable_nat"
-        "xt_MASQUERADE"
-      ];
+      # kernelModules = [
+      #   "bridge"
+      #   "br_netfilter"
+      #   "veth"
+      #   "nf_nat"
+      #   "nf_conntrack"
+      # ];
     };
     users.users.chandler.extraGroups = ["podman"];
     environment = {
