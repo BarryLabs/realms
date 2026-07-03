@@ -49,6 +49,7 @@
       self.nixosModules.talosctl
       self.nixosModules.virt-manager
       self.nixosModules.waydroid
+      self.nixosModules.zathura
       self.nixosModules.zsh
       self.nixosModules.zen
     ];
