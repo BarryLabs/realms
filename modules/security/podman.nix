@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.podman = {pkgs, ... }: {
+  flake.nixosModules.podman = {pkgs, lib, ... }: {
     boot = {
       kernel.sysctl."kernel.unprivileged_userns_clone" = 1;
       # kernelModules = [
@@ -10,7 +10,6 @@
       #   "nf_conntrack"
       # ];
     };
-    users.users.chandler.extraGroups = ["podman"];
     environment = {
       variables = {
         DBX_CONTAINER_MANAGER = "podman";
@@ -33,47 +32,47 @@
         };
       };
     };
-    # systemd.timers = {
-    #   update-podman-containers = {
-    #     timerConfig = {
-    #       Unit = "update-podman-containers.service";
-    #       OnCalendar = "Mon 00:00";
-    #     };
-    #     wantedBy = ["timers.target"];
-    #   };
-    #   restart-podman-containers = {
-    #     timerConfig = {
-    #       Unit = "restart-podman-containers.service";
-    #       OnCalendar = "Mon 01:00";
-    #     };
-    #     wantedBy = ["timers.target"];
-    #   };
-    # };
-    # systemd.services = {
-    #   update-podman-containers = {
-    #     serviceConfig = {
-    #       Type = "oneshot";
-    #       ExecStart = lib.getExe (
-    #         pkgs.writeShellScriptBin "update-podman-containers" ''
-    #           images=$(${pkgs.podman}/bin/podman ps -a --format="{{.image}}" | sort -u)
+    systemd.timers = {
+      update-podman-containers = {
+        timerConfig = {
+          Unit = "update-podman-containers.service";
+          OnCalendar = "Mon 00:00";
+        };
+        wantedBy = ["timers.target"];
+      };
+      restart-podman-containers = {
+        timerConfig = {
+          Unit = "restart-podman-containers.service";
+          OnCalendar = "Mon 01:00";
+        };
+        wantedBy = ["timers.target"];
+      };
+    };
+    systemd.services = {
+      update-podman-containers = {
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = lib.getExe (
+            pkgs.writeShellScriptBin "update-podman-containers" ''
+              images=$(${pkgs.podman}/bin/podman ps -a --format="{{.image}}" | sort -u)
 
-    #           for image in $images; do
-    #             ${pkgs.podman}/bin/podman pull "$image"
-    #           done
-    #         ''
-    #       );
-    #     };
-    #   };
-    #   restart-podman-containers = {
-    #     serviceConfig = {
-    #       Type = "oneshot";
-    #       ExecStart = lib.getExe (
-    #         pkgs.writeShellScriptBin "restart-podman-containers" ''
-    #           ${pkgs.podman}/bin/podman restart -a
-    #         ''
-    #       );
-    #     };
-    #   };
-    # };
+              for image in $images; do
+                ${pkgs.podman}/bin/podman pull "$image"
+              done
+            ''
+          );
+        };
+      };
+      restart-podman-containers = {
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = lib.getExe (
+            pkgs.writeShellScriptBin "restart-podman-containers" ''
+              ${pkgs.podman}/bin/podman restart -a
+            ''
+          );
+        };
+      };
+    };
   };
 }

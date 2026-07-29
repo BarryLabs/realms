@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.asgardHardware = {modulesPath, ...}: {
+  flake.nixosModules.asgardHardware = {modulesPath, config, ...}: {
     imports = [
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
@@ -8,5 +8,6 @@
       fsType = "xfs";
     };
     networking.hostName = "asgard";
+    system.stateVersion = config.asgard.state;
   };
 }

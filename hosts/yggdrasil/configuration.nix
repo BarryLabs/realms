@@ -79,6 +79,11 @@
               if config.security.sudo-rs.enable
               then ["wheel"]
               else []
+            )
+            ++ (
+              if config.virtualisation.podman.enable
+              then ["podman"]
+              else []  
             );
           openssh = {
             authorizedKeys = {
