@@ -170,7 +170,7 @@
             ];
           };
           "ImmichDB" = {
-            image = "docker.io/tensorchord/pgvecto-rs:pg14-v0.2.0@sha256:90724186f0a3517cf6914295b5ab410db9ce23190a2d9d0b9dd6463e3fa298f0";
+            image = "ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0@sha256:bcf63357191b76a916ae5eb93464d65c07511da41e3bf7a8416db519b40b1c23";
             log-driver = "journald";
             environment = {
               "POSTGRES_INITDB_ARGS" = "--data-checksums";
@@ -182,21 +182,6 @@
             ];
             volumes = [
               "/srv/immich/data:/var/lib/postgresql/data:rw"
-            ];
-            cmd = [
-              "postgres"
-              "-c"
-              "shared_preload_libraries=vectors.so"
-              "-c"
-              "search_path=\"$user\", public, vectors"
-              "-c"
-              "logging_collector=on"
-              "-c"
-              "max_wal_size=2GB"
-              "-c"
-              "shared_buffers=512MB"
-              "-c"
-              "wal_compression=on"
             ];
             extraOptions = [
               "--network-alias=database"
@@ -217,7 +202,7 @@
             ];
           };
           "ImmichRedis" = {
-            image = "docker.io/redis:6.2-alpine@sha256:328fe6a5822256d065debb36617a8169dbfbd77b797c525288e465f56c1d392b";
+            image = "docker.io/valkey/valkey:9@sha256:8e8d64b405ce18f41b8e5ee20aa4687a8ed0022d1298f2ce31cdcf3a76e09411";
             volumes = [
               "/srv/immich/cache:/data:rw"
             ];
