@@ -17,7 +17,7 @@
       self.nixosModules.aegirHardware
 
       ### Sops
-      self.nixosModules.sops
+      inputs.sops-nix.nixosModules.sops
 
       ### Setup
       self.nixosModules.bootGRUB
@@ -66,6 +66,11 @@
               if config.security.sudo-rs.enable
               then ["wheel"]
               else []
+            )
+            ++ (
+              if config.virtualisation.podman.enable
+              then ["podman"]
+              else []  
             );
           openssh = {
             authorizedKeys = {

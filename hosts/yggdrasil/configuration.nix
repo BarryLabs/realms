@@ -46,6 +46,7 @@
       self.nixosModules.mangohud
       self.nixosModules.netbird
       self.nixosModules.podman
+      self.nixosModules.superfile
       self.nixosModules.syncthing
       self.nixosModules.talosctl
       self.nixosModules.virt-manager
