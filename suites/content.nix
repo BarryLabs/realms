@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.content = {pkgs, ...}: {
+  flake.nixosModules.suitesContent = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       blender
       gimp-with-plugins

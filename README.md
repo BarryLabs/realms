@@ -35,7 +35,7 @@ Realms aims to automate and reduce the operational footprint of my lab with a fe
 | Backup                | borg                              |
 | Bar                   | noctalia,waybar                   |
 | Blender               | blender                           |
-| Browser               | firefox,qutebrowser               |
+| Browser               | zen,firefox,qutebrowser           |
 | CLI                   | bat,eza,cava,fzf,fd,zoxide,dust   |
 | Email                 | thunderbird                       |
 | Fan Control           | coolercontrol                     |
@@ -62,5 +62,5 @@ Realms aims to automate and reduce the operational footprint of my lab with a fe
 | Video                 | mpv                               |
 | Virtualisation        | podman,kvm                        |
 | VR                    | alvr                              |
-| Wallpaper             | hyprpaper,wpaperd,mpvpaper        |
-| Window Manager        | mango,niri,hyprland               |
+| Wallpaper             | noctalia,wpaperd,mpvpaper         |
+| Window Manager        | hyprland,mango,niri               |

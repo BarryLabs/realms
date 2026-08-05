@@ -19,13 +19,12 @@
       ### Sops
       inputs.sops-nix.nixosModules.sops
 
+      ### Profile
+      self.nixosModules.server
+
       ### Setup
       self.nixosModules.bootGRUB
-      self.nixosModules.nix
-      self.nixosModules.server
-      self.nixosModules.sudo-rs
       self.nixosModules.qemuguest
-      self.nixosModules.podman
       self.nixosModules.intelGPU
 
       ### Containers

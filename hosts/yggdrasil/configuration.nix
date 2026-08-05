@@ -25,35 +25,29 @@
       ### Setup
       self.nixosModules.bootLimine
       self.nixosModules.desktop
-      self.nixosModules.hyprland
       self.nixosModules.nix
+      self.nixosModules.niri
 
-      ### Ugly System Packages
-      self.nixosModules.content
-      self.nixosModules.shell
+      ### Suites
+      self.nixosModules.suitesComm
+      self.nixosModules.suitesContent
+      self.nixosModules.suitesDevops
+      self.nixosModules.suitesMedia
+      self.nixosModules.suitesSecurity
+      self.nixosModules.suitesShell
+      self.nixosModules.suitesGaming
+      self.nixosModules.suitesVirtualization
 
       ### Packages
       self.nixosModules.coolercontrol
-      # self.nixosModules.docker
       self.nixosModules.flatpak
       self.nixosModules.foot
       self.nixosModules.ghostty
-      self.nixosModules.goofcord
-      self.nixosModules.jujutsu
       self.nixosModules.kdeconnect
-      self.nixosModules.keepassxc
-      self.nixosModules.kubectl
-      self.nixosModules.mangohud
-      self.nixosModules.netbird
-      self.nixosModules.podman
       self.nixosModules.superfile
       self.nixosModules.syncthing
-      self.nixosModules.talosctl
-      self.nixosModules.virt-manager
-      self.nixosModules.waydroid
-      self.nixosModules.zathura
-      self.nixosModules.zsh
       self.nixosModules.zen
+      self.nixosModules.zsh
     ];
     ### Users
     users = {
@@ -84,7 +78,7 @@
             ++ (
               if config.virtualisation.podman.enable
               then ["podman"]
-              else []  
+              else []
             );
           openssh = {
             authorizedKeys = {

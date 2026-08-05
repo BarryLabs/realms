@@ -1,5 +1,5 @@
-{pkgs, ...}: {
-  flake.nixosModules.udisks = {
+{
+  flake.nixosModules.udisks = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       usbutils
     ];

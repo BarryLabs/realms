@@ -5,10 +5,10 @@
     ### Unstable Packages
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    ### Chaotic
+    ### Chaotic Packages
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
-    ### Repo Setup
+    ### Setup
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";

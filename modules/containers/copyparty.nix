@@ -64,24 +64,24 @@
         backend = "podman";
         containers = {
           "Copyparty" = {
-            image = "copyparty/ac:latest";
+            image = "docker.io/copyparty/ac:latest";
             user = "1000:100";
-            log-driver = "journald";
             environment = {
               "LD_PRELOAD" = "/usr/lib/libmimalloc-secure.so.NOPE";
               "PYTHONUNBUFFERED" = "1";
             };
+            log-driver = "journald";
             extraOptions = [
-              "--network-alias=file"
-              "--network=file_File"
+              "--network-alias=copy"
+              "--network=copy_Copy"
               "--security-opt=no-new-privileges"
             ];
             ports = [
               "3923:3923/tcp"
             ];
             volumes = [
-              "/srv/copyparty/files:/w:rw"
-              "/srv/copyparty/config:/cfg:rw"
+              "/srv/copyparty/cfg:/cfg:rw,z"
+              "/srv/copyparty/files:/files:rw,z"
             ];
           };
         };

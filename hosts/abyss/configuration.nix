@@ -24,32 +24,24 @@
 
       # Setup
       self.nixosModules.bootLimine
-      self.nixosModules.desktop
-      self.nixosModules.hyprland
-      self.nixosModules.nix
-      self.nixosModules.power
+      self.nixosModules.laptop
+      self.nixosModules.mango
 
-      # Profiles
-      self.nixosModules.content
-      self.nixosModules.shell
+      # Suites
+      self.nixosModules.suitesContent
+      self.nixosModules.suitesComm
+      self.nixosModules.suitesDevops
+      self.nixosModules.suitesGaming
+      self.nixosModules.suitesMedia
+      self.nixosModules.suitesSecurity
+      self.nixosModules.suitesShell
+      self.nixosModules.suitesVirtualization
 
       # Packages
       self.nixosModules.ghostty
-      self.nixosModules.goofcord
-      self.nixosModules.jujutsu
       self.nixosModules.kdeconnect
-      self.nixosModules.keepassxc
-      self.nixosModules.kubectl
-      self.nixosModules.mangohud
-      self.nixosModules.netbird
-      self.nixosModules.podman
-      self.nixosModules.syncthing
-      self.nixosModules.talosctl
-      self.nixosModules.virt-manager
-      self.nixosModules.waydroid
-      self.nixosModules.zathura
-      self.nixosModules.zsh
       self.nixosModules.zen
+      self.nixosModules.zsh
     ];
     users = {
       users = {
@@ -76,7 +68,7 @@
             ++ (
               if config.virtualisation.podman.enable
               then ["podman"]
-              else []  
+              else []
             );
           openssh = {
             authorizedKeys = {

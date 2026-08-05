@@ -9,14 +9,14 @@
     ...
   }: {
     imports = [
-      self.nixosModules.noctalia
+      self.nixosModules.dms
     ];
     services.greetd = {
       enable = true;
       settings = rec {
         default_session = initial_session;
         initial_session = {
-          user = config.client.user;
+          user = "chandler";
           command =
             if config.programs.niri.enable
             then "${pkgs.niri}/bin/niri-session"
@@ -35,7 +35,6 @@
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.Niri;
     };
   };
-
   perSystem = {pkgs, ...}: {
     packages.Niri = pkgs.niri;
   };

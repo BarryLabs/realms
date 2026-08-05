@@ -6,14 +6,8 @@
     programs = {
       zoxide = {
         enable = true;
-        enableNushellIntegration =
-          if config.programs.nushell.enable
-          then true
-          else false;
-        enableZshIntegration =
-          if config.programs.zsh.enable
-          then true
-          else false;
+        enableNushellIntegration = config.programs.nushell.enable or false;
+        enableZshIntegration = config.programs.zsh.enable or false;
       };
     };
   };

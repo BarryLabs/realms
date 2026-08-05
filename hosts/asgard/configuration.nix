@@ -19,24 +19,24 @@
       ### Sops
       inputs.sops-nix.nixosModules.sops
 
+      ### Profile
+      self.nixosModules.server
+
       ### Setup
       self.nixosModules.bootGRUB
-      self.nixosModules.nix
-      self.nixosModules.server
-      self.nixosModules.sudo-rs
       self.nixosModules.qemuguest
-      self.nixosModules.podman
-      self.nixosModules.nfsv4
-      self.nixosModules.asgardBackup
       self.nixosModules.intelGPU
       self.nixosModules.raidArray
       self.nixosModules.zram
 
+      ### Services
+      self.nixosModules.nfsv4
+      self.nixosModules.asgardBackup
+
       ### Containers
       self.nixosModules.oci-pgadmin
-      self.nixosModules.oci-filebrowser
+      self.nixosModules.oci-copyparty
       self.nixosModules.oci-firefly
-      self.nixosModules.oci-forgejo
       self.nixosModules.oci-immich
       self.nixosModules.oci-linkwarden
       self.nixosModules.oci-paperless

@@ -5,22 +5,22 @@
 }: {
   flake.nixosModules.mango = {
     pkgs,
-    config,
     ...
   }: {
+    imports = [
+      self.nixosModules.dms
+    ];
     services.greetd = {
       enable = true;
       settings = rec {
         default_session = initial_session;
         initial_session = {
-          user = config.abyss.user;
-          command = "${pkgs.mangowc}/bin/mango";
+          user = "chandler";
+          command = "${pkgs.mango}/bin/mango";
         };
       };
     };
-    imports = [
-      self.nixosModules.noctalia
-    ];
+    xdg.portal.wlr.enable = true;
     environment.systemPackages = with pkgs; [
       wl-clipboard
       grim
@@ -30,24 +30,16 @@
       inputs.matugen.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
     programs = {
-      mangowc = {
+      mango = {
         enable = true;
-        # package = self.packages.${pkgs.stdenv.hostPlatform.system}.myMango;
+        package = self.packages.${pkgs.stdenv.hostPlatform.system}.Mango;
       };
     };
   };
-  # perSystem = {
-  #   pkgs,
-  #   lib,
-  #   self',
-  #   ...
-  # }: {
-  #   package.myMango = inputs.wrapper-modules.wrappers.mangowc.wrap {
-  #     inherit pkgs;
-  #     configFile = {};
-  #     extraContent = ''
-
-  #     '';
-  #   };
-  # };
+  perSystem = {
+    pkgs,
+    ...
+  }: {
+    package.Mango = pkgs.mango;
+  };
 }

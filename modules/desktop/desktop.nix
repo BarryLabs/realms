@@ -1,5 +1,5 @@
 {self, ...}: {
-  flake.nixosModules.desktop = {
+  flake.nixosModules.desktopEnvironment = {
     imports = [
       self.nixosModules.btop
     ];

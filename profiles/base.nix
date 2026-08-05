@@ -10,9 +10,12 @@
       self.nixosModules.settings
       self.nixosModules.timezone
     ];
+
     environment.systemPackages = with pkgs; [
       git
       htop
     ];
+
+    programs.bash.completion.enable = true;
   };
 }

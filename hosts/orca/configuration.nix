@@ -19,11 +19,11 @@
       ### Sops
       self.nixosModules.sops
 
+      ### Profile
+      self.nixosModules.server
+
       ### Setup
       self.nixosModules.bootGRUB
-      self.nixosModules.nix
-      self.nixosModules.server
-      self.nixosModules.sudo-rs
       self.nixosModules.qemuguest
 
       ### K3s
