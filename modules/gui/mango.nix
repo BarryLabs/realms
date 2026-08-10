@@ -40,6 +40,6 @@
     pkgs,
     ...
   }: {
-    package.Mango = pkgs.mango;
+    packages.Mango = pkgs.mango;
   };
 }

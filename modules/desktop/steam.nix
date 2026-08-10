@@ -1,8 +1,6 @@
 {
   flake.nixosModules.steam = {
     pkgs,
-    lib,
-    inputs,
     ...
   }: {
     environment.systemPackages = with pkgs; [
@@ -10,15 +8,6 @@
       protonup-qt
       adwsteamgtk
     ];
-    nixpkgs = {
-      config = {
-        allowUnfreePredicate = pkg:
-          builtins.elem (lib.getName pkg) [
-            "steam"
-            "steam-unwrapped"
-          ];
-      };
-    };
     programs = {
       gamemode = {
         enable = true;
