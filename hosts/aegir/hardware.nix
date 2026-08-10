@@ -10,9 +10,6 @@
       kernelModules = [ "dm-crypt" ];
       supportedFilesystems = [ "nfs" "xfs" ];
     };
-    # environment.etc.crypttab.text = ''
-    #   hdd UUID=0f0def17-09e3-41ff-bb64-2d2ffe23b8e4 /root/.config/secrets/hdd.key luks,discard
-    # '';
     fileSystems = {
       # "/hdd" = {
       #   device = "/dev/mapper/hdd";

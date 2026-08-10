@@ -26,6 +26,7 @@
       self.nixosModules.bootGRUB
       self.nixosModules.qemuguest
       self.nixosModules.intelGPU
+      self.nixosModules.podman
 
       ### Containers
       self.nixosModules.oci-jellyseerr

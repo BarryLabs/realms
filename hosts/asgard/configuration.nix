@@ -26,6 +26,7 @@
       self.nixosModules.bootGRUB
       self.nixosModules.qemuguest
       self.nixosModules.intelGPU
+      self.nixosModules.podman
       self.nixosModules.raidArray
       self.nixosModules.zram
 

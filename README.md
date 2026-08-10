@@ -27,7 +27,7 @@ Realms aims to automate and reduce the operational footprint of my lab with a fe
 
 | Tool Category         | Tool(s)                           |
 | --------------------- | --------------------------------- |
-| AI                    | ollama,opencode,goose             |
+| AI                    | ollama,goose                      |
 | Audio Development     | ardour                            |
 | Audio Effects         | easyeffects                       |
 | Authentication        | keepassxc,yubikey                 |
@@ -45,7 +45,7 @@ Realms aims to automate and reduce the operational footprint of my lab with a fe
 | Gaming                | steam,lutris                      |
 | Game Streaming        | steam,sunshine                    |
 | High-Availability     | podman,k3s                        |
-| Logout                | noctalia,wlogout                  |
+| Logout                | dms,noctalia,wlogout              |
 | Multiplexer           | zellij,tmux,wezterm,ghostty,kitty |
 | Notes                 | neorg,obsidian                    |
 | Notifications         | noctalia,dunst,eww                |
@@ -62,5 +62,5 @@ Realms aims to automate and reduce the operational footprint of my lab with a fe
 | Video                 | mpv                               |
 | Virtualisation        | podman,kvm                        |
 | VR                    | alvr                              |
-| Wallpaper             | noctalia,wpaperd,mpvpaper         |
+| Wallpaper             | dms,noctalia,wpaperd,mpvpaper     |
 | Window Manager        | hyprland,mango,niri               |
