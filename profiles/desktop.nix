@@ -12,7 +12,6 @@
       self.nixosModules.firejail
       self.nixosModules.gnupg
       self.nixosModules.pam
-      self.nixosModules.sudo-rs
       self.nixosModules.yubikey
     ];
 

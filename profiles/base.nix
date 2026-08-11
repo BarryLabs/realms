@@ -8,6 +8,7 @@
       self.nixosModules.openssh
       self.nixosModules.security
       self.nixosModules.settings
+      self.nixosModules.sudo-rs
       self.nixosModules.timezone
     ];
 
