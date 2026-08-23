@@ -7,7 +7,7 @@
       forcePageTableIsolation = true;
       lockKernelModules = true;
       protectKernelImage = true;
-      unprivilegedUsernsClone = config.virtualisation.containers.enable;
+      # unprivilegedUsernsClone = config.virtualisation.containers.enable;
     };
   };
 }

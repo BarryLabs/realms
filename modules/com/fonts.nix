@@ -3,12 +3,8 @@
     fonts = {
       enableDefaultPackages = true;
       packages = with pkgs; [
-        jetbrains-mono
+        nerd-fonts.iosevka
         source-code-pro
-        font-awesome
-        openmoji-color
-        nerd-font-patcher
-        noto-fonts-color-emoji
       ];
       fontconfig = {
         enable = true;

@@ -1,6 +1,6 @@
 {config, ...}: {
   flake.nixosModules.virt-manager = {
-    users.extraGroups.libvirtd.members = [config.client.user];
+    users.extraGroups.libvirtd.members = [config.yggdrasil.user];
     programs = {
       virt-manager = {
         enable = true;

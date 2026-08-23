@@ -3,7 +3,7 @@
     environment.systemPackages = with pkgs; [
       blender
       gimp-with-plugins
-      libreoffice-fresh
+      libreoffice-stable
       obs-studio
     ];
   };

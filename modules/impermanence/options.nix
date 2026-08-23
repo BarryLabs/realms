@@ -5,6 +5,13 @@
 
       nukeRoot.enable = lib.mkEnableOption "Destroy /root on every boot";
 
+      rootDevice = lib.mkOption {
+        default = "/dev/mapper/crypt";
+        description = ''
+          Block Device containing the BTRFS Root Filesystem
+        '';
+      };
+
       volumeGroup = lib.mkOption {
         default = "btrfs_vg";
         description = ''

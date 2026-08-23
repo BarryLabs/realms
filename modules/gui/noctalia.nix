@@ -4,10 +4,10 @@
   ...
 }: {
   flake.nixosModules.noctalia = {pkgs, ...}: {
-    environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.myNoctalia];
+    environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.noctalia];
   };
   perSystem = {pkgs, ...}: {
-    packages.myNoctalia = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
+    packages.noctalia = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
       inherit pkgs;
       settings = {
         bar = {

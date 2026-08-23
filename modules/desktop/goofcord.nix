@@ -1,17 +1,17 @@
-{
-  flake.nixosModules.goofcord = {pkgs, ...}: {
-    environment.systemPackages = with pkgs; [
-      goofcord
-    ];
+{ self, ... }: {
+  flake.nixosModules.goofcord = { pkgs, ... }: {
+    environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.goofcord ];
 
-    # persistance.data.directories = lib.mkIf config.persistance.enable [
+    # persistence.data.directories = [
     #   ".config/goofcord"
     # ];
   };
 
-  flake.homeModules.goofcord = {pkgs, ...}: {
-    home.packages = with pkgs; [
-      goofcord
-    ];
+  flake.homeModules.goofcord = { pkgs, ... }: {
+    home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.goofcord ];
+  };
+
+  perSystem = { pkgs, ... }: {
+    packages.goofcord = pkgs.goofcord;
   };
 }

@@ -3,15 +3,15 @@
   config,
   ...
 }: {
-  options.client = lib.mkOption {
+  options.yggdrasil = lib.mkOption {
     type = lib.types.attrs;
     default = {};
   };
-  config.client = {
+  config.yggdrasil = {
     host = "yggdrasil";
     user = "chandler";
-    desc = "${config.client.host}'s account.";
-    home = "/home/${config.client.user}";
+    desc = "${config.yggdrasil.host}'s account.";
+    home = "/home/${config.yggdrasil.user}";
     iniPass = "password";
     locale = "en_US.UTF-8";
     timezone = "America/New_York";

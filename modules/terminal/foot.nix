@@ -1,13 +1,14 @@
-{
-  self,
-  inputs,
-  ...
-}: {
-  flake.nixosModules.foot = {pkgs, ...}: {
-    environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.myFoot];
+{ self, inputs, ... }: {
+  flake.nixosModules.foot = { pkgs, ... }: {
+    environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.foot ];
   };
-  perSystem = {pkgs, ...}: {
-    packages.myFoot = inputs.wrapper-modules.wrappers.foot.wrap {
+
+  flake.homeModules.foot = { pkgs, ... }: {
+    home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.foot ];
+  };
+
+  perSystem = { pkgs, ... }: {
+    packages.foot = inputs.wrapper-modules.wrappers.foot.wrap {
       inherit pkgs;
       settings = {
         main = {

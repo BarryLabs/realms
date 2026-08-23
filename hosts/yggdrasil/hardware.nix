@@ -17,7 +17,7 @@
     };
     ### Networking
     networking = {
-      hostName = config.client.host;
+      hostName = config.yggdrasil.host;
       firewall.enable = true;
       interfaces = {
         enp5s0 = {
@@ -27,6 +27,7 @@
           useDHCP = true;
         };
       };
+      ### For GTAV Online
       extraHosts = ''
         0.0.0.0 test-s1.battleye.com
         0.0.0.0 paradiseenhanced-s1.battleye.com
@@ -91,6 +92,6 @@
       };
     };
     ### State
-    system.stateVersion = config.client.state;
+    system.stateVersion = config.yggdrasil.state;
   };
 }

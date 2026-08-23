@@ -1,17 +1,22 @@
-{
-  flake.nixosModules.lutris = {pkgs, ...}: {
-    environment.systemPackages = [pkgs.lutris];
+{ self, ... }: {
+  flake.nixosModules.lutris = { pkgs, ... }: {
+    environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.lutris ];
+
+    # persistence.data.directores = [
+    #   ".config/lutris"
+    # ];
   };
-  flake.homeModules.lutris = {pkgs, ...}: {
+
+  flake.homeModules.lutris = { pkgs, ... }: {
     home.sessionVariables = {
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "$HOME/.steam/root/compatibilitytools.d";
     };
-    home.packages = with pkgs; [
-      (lutris.override {
-        extraPkgs = pkgs: [
-          adwaita-icon-theme
-        ];
-      })
-    ];
+    home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.lutris ];
+  };
+
+  perSystem = { pkgs, ... }: {
+    packages.lutris = pkgs.lutris.override {
+      extraPkgs = p: [ p.adwaita-icon-theme ];
+    };
   };
 }

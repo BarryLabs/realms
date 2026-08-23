@@ -4,13 +4,13 @@
       activationScripts = {
         "fhsBuilder" = {
           text = ''
-            install -d -m 755 /mnt/USB -o ${config.client.user} -g users
-            install -d -m 755 /home/${config.client.user}/Documents -o ${config.client.user} -g users
-            install -d -m 755 /home/${config.client.user}/Downloads -o ${config.client.user} -g users
-            install -d -m 755 /home/${config.client.user}/Music -o ${config.client.user} -g users
-            install -d -m 755 /home/${config.client.user}/Pictures -o ${config.client.user} -g users
-            install -d -m 755 /home/${config.client.user}/Projects -o ${config.client.user} -g users
-            install -d -m 755 /home/${config.client.user}/Videos -o ${config.client.user} -g users
+            install -d -m 755 /mnt/USB -o ${config.yggdrasil.user} -g users
+            install -d -m 755 /home/${config.yggdrasil.user}/Documents -o ${config.yggdrasil.user} -g users
+            install -d -m 755 /home/${config.yggdrasil.user}/Downloads -o ${config.yggdrasil.user} -g users
+            install -d -m 755 /home/${config.yggdrasil.user}/Music -o ${config.yggdrasil.user} -g users
+            install -d -m 755 /home/${config.yggdrasil.user}/Pictures -o ${config.yggdrasil.user} -g users
+            install -d -m 755 /home/${config.yggdrasil.user}/Projects -o ${config.yggdrasil.user} -g users
+            install -d -m 755 /home/${config.yggdrasil.user}/Videos -o ${config.yggdrasil.user} -g users
           '';
         };
       };

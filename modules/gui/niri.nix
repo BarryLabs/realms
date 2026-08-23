@@ -32,10 +32,10 @@
     ];
     programs.niri = {
       enable = true;
-      package = self.packages.${pkgs.stdenv.hostPlatform.system}.Niri;
+      package = self.packages.${pkgs.stdenv.hostPlatform.system}.niri;
     };
   };
   perSystem = {pkgs, ...}: {
-    packages.Niri = pkgs.niri;
+    packages.niri = pkgs.niri;
   };
 }

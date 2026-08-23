@@ -1,5 +1,5 @@
-{
-  flake.nixosModules.ollama = {
+{ self, ... }: {
+  flake.nixosModules.ollama = { pkgs, ... }: {
     services = {
       open-webui = {
         enable = true;
@@ -7,6 +7,7 @@
       };
       ollama = {
         enable = true;
+        package = self.packages.${pkgs.stdenv.hostPlatform.system}.ollama;
         acceleration = "cuda";
         loadModels = [
           "llama3.2:3b"
@@ -15,10 +16,14 @@
         ];
       };
     };
+    environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.ollama ];
   };
-  flake.homeModules.ollama = {pkgs, ...}: {
-    home.packages = with pkgs; [
-      ollama
-    ];
+
+  flake.homeModules.ollama = { pkgs, ... }: {
+    home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.ollama ];
+  };
+
+  perSystem = { pkgs, ... }: {
+    packages.ollama = pkgs.ollama;
   };
 }

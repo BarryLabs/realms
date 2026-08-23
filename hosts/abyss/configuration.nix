@@ -22,6 +22,10 @@
       # Chaotic Packages
       inputs.chaotic.nixosModules.default
 
+      # Persistence
+      self.nixosModules.impermanence
+      self.nixosModules.imperm-options
+
       # Setup
       self.nixosModules.bootLimine
       self.nixosModules.laptop
@@ -43,6 +47,14 @@
       self.nixosModules.zen
       self.nixosModules.zsh
     ];
+    ### Impermanence
+    persistence = {
+      enable = true;
+      user = config.abyss.user;
+      nukeRoot.enable = true;
+      rootDevice = "/dev/mapper/crypt";
+    };
+    ### Users
     users = {
       users = {
         ${config.abyss.user} = {

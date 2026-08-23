@@ -21,7 +21,7 @@
           settings = {
             cue = true;
             debug = false;
-            authFile = "${config.client.user}/.config/Yubico/u2f_keys";
+            authFile = "${config.yggdrasil.user}/.config/Yubico/u2f_keys";
           };
         };
         services = {

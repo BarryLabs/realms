@@ -22,6 +22,10 @@
       ### Chaotic Packages
       inputs.chaotic.nixosModules.default
 
+      ### Persistence
+      self.nixosModules.impermanence
+      self.nixosModules.imperm-options
+
       ### Setup
       self.nixosModules.bootLimine
       self.nixosModules.desktop
@@ -44,21 +48,28 @@
       self.nixosModules.foot
       self.nixosModules.ghostty
       self.nixosModules.kdeconnect
-      self.nixosModules.superfile
+      self.nixosModules.pandora
       self.nixosModules.syncthing
       self.nixosModules.zen
       self.nixosModules.zsh
     ];
+    ### Impermanence
+    persistence = {
+      enable = true;
+      user = config.yggdrasil.user;
+      nukeRoot.enable = true;
+      rootDevice = "/dev/mapper/crypt";
+    };
     ### Users
     users = {
       users = {
-        ${config.client.user} = {
+        ${config.yggdrasil.user} = {
           isNormalUser = true;
           createHome = true;
           shell = pkgs.zsh;
-          home = config.client.home;
-          description = config.client.desc;
-          initialPassword = config.client.iniPass;
+          home = config.yggdrasil.home;
+          description = config.yggdrasil.desc;
+          initialPassword = config.yggdrasil.iniPass;
           packages = with pkgs; [
             monero-gui
           ];
