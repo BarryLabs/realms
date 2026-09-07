@@ -78,7 +78,7 @@
             ++ (
               if config.virtualisation.podman.enable
               then ["podman"]
-              else []  
+              else []
             );
           openssh = {
             authorizedKeys = {

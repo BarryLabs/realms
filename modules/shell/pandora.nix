@@ -1,13 +1,13 @@
-{ self, ... }: {
-  flake.nixosModules.pandora = { pkgs, ... }: {
-    environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.pandora ];
+{self, ...}: {
+  flake.nixosModules.pandora = {pkgs, ...}: {
+    environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.pandora];
   };
 
-  flake.homeModules.pandora = { pkgs, ... }: {
-    home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.pandora ];
+  flake.homeModules.pandora = {pkgs, ...}: {
+    home.packages = [self.packages.${pkgs.stdenv.hostPlatform.system}.pandora];
   };
 
-  perSystem = { pkgs, ... }: {
+  perSystem = {pkgs, ...}: {
     packages.pandora = pkgs.rustPlatform.buildRustPackage rec {
       pname = "pandora";
       version = "0.5.2";
@@ -29,7 +29,7 @@
         description = "A CLI/TUI Game Emulator Save-State Manager.";
         homepage = "https://github.com/BarryLabs/pandora";
         license = licenses.agpl3Plus;
-        maintainers = [ "BarryLabs" ];
+        maintainers = ["BarryLabs"];
         mainProgram = "pandora";
       };
     };

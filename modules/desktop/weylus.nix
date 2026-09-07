@@ -1,5 +1,5 @@
-{ self, ... }: {
-  flake.nixosModules.weylus = { pkgs, ... }: {
+{self, ...}: {
+  flake.nixosModules.weylus = {pkgs, ...}: {
     programs.weylus = {
       enable = true;
       openFirewall = true;
@@ -10,11 +10,11 @@
     # ];
   };
 
-  flake.homeModules.weylus = { pkgs, ... }: {
-    home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.weylus ];
+  flake.homeModules.weylus = {pkgs, ...}: {
+    home.packages = [self.packages.${pkgs.stdenv.hostPlatform.system}.weylus];
   };
 
-  perSystem = { pkgs, ... }: {
+  perSystem = {pkgs, ...}: {
     packages.weylus = pkgs.weylus;
   };
 }

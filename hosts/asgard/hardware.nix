@@ -1,5 +1,9 @@
 {
-  flake.nixosModules.asgardHardware = {modulesPath, config, ...}: {
+  flake.nixosModules.asgardHardware = {
+    modulesPath,
+    config,
+    ...
+  }: {
     imports = [
       (modulesPath + "/installer/scan/not-detected.nix")
     ];

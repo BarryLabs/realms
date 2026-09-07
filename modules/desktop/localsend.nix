@@ -1,5 +1,5 @@
-{ self, ... }: {
-  flake.nixosModules.localsend = { pkgs, ... }: {
+{self, ...}: {
+  flake.nixosModules.localsend = {pkgs, ...}: {
     programs.localsend = {
       enable = true;
       openFirewall = true;
@@ -11,11 +11,11 @@
     # ];
   };
 
-  flake.homeModules.localsend = { pkgs, ... }: {
-    home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.localsend ];
+  flake.homeModules.localsend = {pkgs, ...}: {
+    home.packages = [self.packages.${pkgs.stdenv.hostPlatform.system}.localsend];
   };
 
-  perSystem = { pkgs, ... }: {
+  perSystem = {pkgs, ...}: {
     packages.localsend = pkgs.localsend;
   };
 }

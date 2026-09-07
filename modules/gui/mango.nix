@@ -3,10 +3,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.mango = {
-    pkgs,
-    ...
-  }: {
+  flake.nixosModules.mango = {pkgs, ...}: {
     imports = [
       self.nixosModules.dms
     ];
@@ -36,10 +33,7 @@
       };
     };
   };
-  perSystem = {
-    pkgs,
-    ...
-  }: {
+  perSystem = {pkgs, ...}: {
     packages.Mango = pkgs.mango;
   };
 }

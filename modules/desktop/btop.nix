@@ -7,7 +7,7 @@
     environment.systemPackages = [
       self.packages.${pkgs.stdenv.hostPlatform.system}.myBtop
     ];
-    
+
     # persistence.data.directories = [
     #   ".config/btop"
     # ];

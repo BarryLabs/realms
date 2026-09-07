@@ -1,10 +1,10 @@
 {
   flake.nixosModules.oci-torrent = {
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+    config,
+    pkgs,
+    lib,
+    ...
+  }: {
     sops = {
       secrets = {
         "vpn/provider" = {

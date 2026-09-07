@@ -1,9 +1,9 @@
-{ self, ... }: {
-  flake.nixosModules.ghostty = { pkgs, ... }: {
-    environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.ghostty ];
+{self, ...}: {
+  flake.nixosModules.ghostty = {pkgs, ...}: {
+    environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.ghostty];
   };
 
-  flake.homeModules.ghostty = { pkgs, ... }: {
+  flake.homeModules.ghostty = {pkgs, ...}: {
     programs.ghostty = {
       enable = true;
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.ghostty;
@@ -15,7 +15,7 @@
     };
   };
 
-  perSystem = { pkgs, ... }: {
+  perSystem = {pkgs, ...}: {
     packages.ghostty = pkgs.ghostty;
   };
 }

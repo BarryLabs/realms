@@ -1,6 +1,6 @@
-{ self, ... }: {
-  flake.nixosModules.easyeffects = { pkgs, ... }: {
-    environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.easyeffects ];
+{self, ...}: {
+  flake.nixosModules.easyeffects = {pkgs, ...}: {
+    environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.easyeffects];
 
     # persistence.data.directories = [
     #   ".config/easyeffects"
@@ -8,11 +8,11 @@
     # ];
   };
 
-  flake.homeModules.easyeffects = { pkgs, ... }: {
-    home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.easyeffects ];
+  flake.homeModules.easyeffects = {pkgs, ...}: {
+    home.packages = [self.packages.${pkgs.stdenv.hostPlatform.system}.easyeffects];
   };
 
-  perSystem = { pkgs, ... }: {
+  perSystem = {pkgs, ...}: {
     packages.easyeffects = pkgs.easyeffects;
   };
 }

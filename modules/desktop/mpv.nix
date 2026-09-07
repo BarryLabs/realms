@@ -1,13 +1,13 @@
-{ self, ... }: {
-  flake.nixosModules.mpv = { pkgs, ... }: {
-    environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.mpv ];
+{self, ...}: {
+  flake.nixosModules.mpv = {pkgs, ...}: {
+    environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.mpv];
 
     # persistence.data.directores = [
     #   ".config/mpv"
     # ];
   };
 
-  flake.homeModules.mpv = { pkgs, ... }: {
+  flake.homeModules.mpv = {pkgs, ...}: {
     programs.mpv = {
       enable = true;
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.mpv;
@@ -28,7 +28,7 @@
     };
   };
 
-  perSystem = { pkgs, ... }: {
+  perSystem = {pkgs, ...}: {
     packages.mpv = pkgs.mpv;
   };
 }

@@ -1,4 +1,4 @@
-{ self, ... }: {
+{self, ...}: {
   flake.nixosModules.direnv = {
     nixpkgs.overlays = [
       (final: prev: {
@@ -24,7 +24,7 @@
     };
   };
 
-  perSystem = { pkgs, ... }: {
+  perSystem = {pkgs, ...}: {
     packages.direnv = pkgs.direnv;
   };
 }

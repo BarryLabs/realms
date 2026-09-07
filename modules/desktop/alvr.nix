@@ -1,5 +1,5 @@
-{ self, ... }: {
-  flake.nixosModules.alvr = { pkgs, ... }: {
+{self, ...}: {
+  flake.nixosModules.alvr = {pkgs, ...}: {
     nixpkgs.overlays = [
       (final: prev: {
         alvr = self.packages.${pkgs.stdenv.hostPlatform.system}.alvr;
@@ -17,11 +17,11 @@
     # ];
   };
 
-  flake.homeModules.alvr = { pkgs, ... }: {
-    home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.alvr ];
+  flake.homeModules.alvr = {pkgs, ...}: {
+    home.packages = [self.packages.${pkgs.stdenv.hostPlatform.system}.alvr];
   };
 
-  perSystem = { pkgs, ... }: {
+  perSystem = {pkgs, ...}: {
     packages.alvr = pkgs.alvr;
   };
 }

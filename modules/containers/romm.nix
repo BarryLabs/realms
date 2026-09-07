@@ -1,10 +1,10 @@
 {
   flake.nixosModules.oci-romm = {
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+    config,
+    pkgs,
+    lib,
+    ...
+  }: {
     sops = {
       secrets = {
         "services/romm/user" = {
@@ -23,6 +23,12 @@
           mode = "0400";
         };
         "services/romm/steamgrid_key" = {
+          mode = "0400";
+        };
+        "services/romm/screen_user" = {
+          mode = "0400";
+        };
+        "services/romm/screen_pass" = {
           mode = "0400";
         };
         "services/romm/db/user" = {
@@ -95,13 +101,15 @@
         backend = "podman";
         containers = {
           "Romm" = {
-            image = "rommapp/romm:latest";
+            image = "docker.io/rommapp/romm:latest";
             log-driver = "journald";
             environment = {
-              "DB_HOST" = "Romm-DB";
-              "HASHEOUS_API_ENABLED" = "true";
               "ROMM_DB_DRIVER" = "postgresql";
+              "DB_HOST" = "Romm-DB";
               "DB_PORT" = "5432";
+              "HASHEOUS_API_ENABLED" = "true";
+              "HLTB_API_ENABLED" = "true";
+              "PLAYMATCH_API_ENABLED" = "true";
             };
             environmentFiles = [
               /run/secrets/services/romm/name
@@ -110,6 +118,8 @@
               /run/secrets/services/romm/auth-key
               /run/secrets/services/romm/retroachievements_key
               /run/secrets/services/romm/steamgrid_key
+              /run/secrets/services/romm/screen_user
+              /run/secrets/services/romm/screen_pass
             ];
             extraOptions = [
               "--device=/dev/dri:/dev/dri:rwm"

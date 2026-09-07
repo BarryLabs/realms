@@ -1,13 +1,13 @@
-{ self, ... }: {
-  flake.nixosModules.qutebrowser = { pkgs, ... }: {
-    environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.qutebrowser ];
+{self, ...}: {
+  flake.nixosModules.qutebrowser = {pkgs, ...}: {
+    environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.qutebrowser];
     # persistence.data.directories = [
     #   ".config/qutebrowser"
     #   ".local/share/qutebrowser"
     # ];
   };
 
-  flake.homeModules.qutebrowser = { pkgs, ... }: {
+  flake.homeModules.qutebrowser = {pkgs, ...}: {
     programs.qutebrowser = {
       enable = true;
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.qutebrowser;
@@ -39,7 +39,7 @@
     };
   };
 
-  perSystem = { pkgs, ... }: {
+  perSystem = {pkgs, ...}: {
     packages.qutebrowser = pkgs.qutebrowser;
   };
 }

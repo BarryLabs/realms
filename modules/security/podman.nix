@@ -1,5 +1,9 @@
 {
-  flake.nixosModules.podman = {pkgs, lib, ... }: {
+  flake.nixosModules.podman = {
+    pkgs,
+    lib,
+    ...
+  }: {
     boot = {
       kernel.sysctl."kernel.unprivileged_userns_clone" = 1;
       # kernelModules = [

@@ -7,8 +7,8 @@
     environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.myOpencode];
   };
 
-  flake.homeModules.opencode = { pkgs, ... }: {
-    home.packages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.myOpencode ];
+  flake.homeModules.opencode = {pkgs, ...}: {
+    home.packages = [self.packages.${pkgs.stdenv.hostPlatform.system}.myOpencode];
   };
 
   perSystem = {pkgs, ...}: {

@@ -1,10 +1,10 @@
 {
   flake.nixosModules.oci-prowlarr = {
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+    config,
+    pkgs,
+    lib,
+    ...
+  }: {
     virtualisation.podman = {
       enable = true;
       autoPrune.enable = true;

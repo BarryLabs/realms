@@ -1,10 +1,10 @@
 {
   flake.nixosModules.oci-rustfs = {
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+    config,
+    pkgs,
+    lib,
+    ...
+  }: {
     sops = {
       secrets = {
         "services/rustfs/access" = {

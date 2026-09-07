@@ -1,6 +1,6 @@
-{ self, ... }: {
-  flake.nixosModules.firefox = { pkgs, ... }: {
-    environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.firefox ];
+{self, ...}: {
+  flake.nixosModules.firefox = {pkgs, ...}: {
+    environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.firefox];
 
     # persistence = {
     #   data.directories = [
@@ -12,7 +12,7 @@
     # };
   };
 
-  flake.homeModules.firefox = { pkgs, ... }: {
+  flake.homeModules.firefox = {pkgs, ...}: {
     programs.firefox = let
       lock-zero = {
         Value = 0;
@@ -29,7 +29,7 @@
     in {
       enable = true;
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.qutebrowser;
-      languagePacks = [ "en-US" ];
+      languagePacks = ["en-US"];
       policies = {
         DisableTelemetry = true;
         DisableFirefoxStudies = true;
@@ -181,7 +181,7 @@
     };
   };
 
-  perSystem = { pkgs, ... }: {
+  perSystem = {pkgs, ...}: {
     packages.firefox = pkgs.firefox;
   };
 }

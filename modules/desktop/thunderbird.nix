@@ -1,12 +1,12 @@
-{ self, ... }: {
-  flake.nixosModules.thunderbird = { pkgs, ... }: {
-    environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.thunderbird ];
+{self, ...}: {
+  flake.nixosModules.thunderbird = {pkgs, ...}: {
+    environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.thunderbird];
     # persistence.data.directories = [
     #   ".thunderbird"
     # ];
   };
 
-  flake.homeModules.thunderbird = { pkgs, ... }: {
+  flake.homeModules.thunderbird = {pkgs, ...}: {
     programs.thunderbird = {
       enable = true;
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.thunderbird;
@@ -36,7 +36,7 @@
     };
   };
 
-  perSystem = { pkgs, ... }: {
+  perSystem = {pkgs, ...}: {
     packages.thunderbird = pkgs.thunderbird;
   };
 }

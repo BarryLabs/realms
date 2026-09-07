@@ -1,7 +1,11 @@
 {
-  flake.nixosModules.doom = {inputs, pkgs, ...}: {
-    nixpkgs.overlays = [ 
-      inputs.nix-doom-emacs-unstraightened.overlays.default 
+  flake.nixosModules.doom = {
+    inputs,
+    pkgs,
+    ...
+  }: {
+    nixpkgs.overlays = [
+      inputs.nix-doom-emacs-unstraightened.overlays.default
     ];
 
     environment.systemPackages = [

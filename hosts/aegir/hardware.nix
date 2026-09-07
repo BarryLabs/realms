@@ -1,5 +1,10 @@
 {
-  flake.nixosModules.aegirHardware = {modulesPath, config, pkgs, ...}: {
+  flake.nixosModules.aegirHardware = {
+    modulesPath,
+    config,
+    pkgs,
+    ...
+  }: {
     imports = [
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
@@ -7,8 +12,8 @@
     # HDD
     boot = {
       initrd.systemd.enable = true;
-      kernelModules = [ "dm-crypt" ];
-      supportedFilesystems = [ "nfs" "xfs" ];
+      kernelModules = ["dm-crypt"];
+      supportedFilesystems = ["nfs" "xfs"];
     };
     fileSystems = {
       # "/hdd" = {
@@ -16,7 +21,7 @@
       #   fsType = "xfs";
       #   options = [ "defaults" "noatime" ];
       # };
-    };    
+    };
     # Network Share
     fileSystems = {
       # "/srv" = {

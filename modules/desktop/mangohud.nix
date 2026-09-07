@@ -1,13 +1,13 @@
-{ self, ... }: {
-  flake.nixosModules.mangohud = { pkgs, ... }: {
-    environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.mangohud ];
+{self, ...}: {
+  flake.nixosModules.mangohud = {pkgs, ...}: {
+    environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.mangohud];
 
     # persistence.data.directores = [
     #   ".config/MangoHud"
     # ];
   };
 
-  flake.homeModules.mangohud = { pkgs, ... }: {
+  flake.homeModules.mangohud = {pkgs, ...}: {
     programs.mangohud = {
       enable = true;
       enableSessionWide = true;
@@ -21,7 +21,7 @@
     };
   };
 
-  perSystem = { pkgs, ... }: {
+  perSystem = {pkgs, ...}: {
     packages.mangohud = pkgs.mangohud;
   };
 }

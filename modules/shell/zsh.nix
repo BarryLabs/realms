@@ -34,39 +34,38 @@
         gp = "git push";
         gl = "git pull";
       };
-    
+
       # interactiveShellInit = ''
       #   # Environment
       #   export EDITOR="hx"
       #   export VISUAL="hx"
       #   export TERMINAL="ghostty"
-      
+
       #   # History
       #   HISTFILE="$HOME/.zsh_history"
       #   HISTSIZE=20000
       #   SAVEHIST=20000
-      
+
       #   setopt EXTENDED_HISTORY
       #   setopt SHARE_HISTORY
       #   setopt HIST_IGNORE_SPACE
       #   setopt HIST_IGNORE_ALL_DUPS
       #   setopt APPEND_HISTORY
-      #   setopt AUTOCD    
-      
+      #   setopt AUTOCD
+
       #   ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#663399,standout"
       #   ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
       #   ZSH_AUTOSUGGEST_USE_ASYNC=1
       #   ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-     
+
       #   starship init zsh
       #   zoxide init zsh
-      
+
       #   if command -v devenv >/dev/null 2>&1; then
       #     devenv hook zsh
-      #   fi   
+      #   fi
       # '';
     };
-  
   };
   flake.homeModules.zsh = {lib, ...}: {
     programs = {

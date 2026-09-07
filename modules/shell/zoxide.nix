@@ -1,9 +1,13 @@
-{ self, ... }: {
-  flake.nixosModules.zoxide = { pkgs, ... }: {
-    environment.systemPackages = [ self.packages.${pkgs.stdenv.hostPlatform.system}.zoxide ];
+{self, ...}: {
+  flake.nixosModules.zoxide = {pkgs, ...}: {
+    environment.systemPackages = [self.packages.${pkgs.stdenv.hostPlatform.system}.zoxide];
   };
 
-  flake.homeModules.zoxide = { config, pkgs, ... }: {
+  flake.homeModules.zoxide = {
+    config,
+    pkgs,
+    ...
+  }: {
     programs.zoxide = {
       enable = true;
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.zoxide;
@@ -12,7 +16,7 @@
     };
   };
 
-  perSystem = { pkgs, ... }: {
+  perSystem = {pkgs, ...}: {
     packages.zoxide = pkgs.zoxide;
   };
 }
