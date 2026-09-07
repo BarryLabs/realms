@@ -13,6 +13,7 @@
     pkgs.alejandra # Nix Formatter
     pkgs.git # Version Control
     pkgs.jujutsu # Better Version Control
+    # pkgs.sops # Secrets Management
   ];
 
   difftastic.enable = true;
@@ -32,6 +33,9 @@
   tasks."realms:upload" = {
     exec = ''
       alejandra .
+      pkill ssh-agent
+      eval $(ssh-agent)
+      ssh-add ~/.ssh/nosk-BarryLabs
       jj bookmark set main
       jj commit -m "${toString config.env.PROJECT} | ${toString config.env.VERSION} | ${toString config.env.PATCH}"
       jj git push

@@ -5,7 +5,7 @@
 }: {
   flake.nixosModules.hyprland = {pkgs, ...}: {
     imports = [
-      self.nixosModules.noctalia
+      self.nixosModules.dms
     ];
     services.greetd = {
       enable = true;

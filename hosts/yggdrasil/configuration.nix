@@ -30,7 +30,7 @@
       self.nixosModules.bootLimine
       self.nixosModules.desktop
       self.nixosModules.nix
-      self.nixosModules.niri
+      self.nixosModules.hyprland
 
       ### Suites
       self.nixosModules.suitesComm
