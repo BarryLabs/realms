@@ -5,9 +5,24 @@
         exporters = {
           node = {
             enable = true;
-            port = 9002;
+            port = 9100;
             openFirewall = true;
-            enabledCollectors = ["systemd"];
+            enabledCollectors = [
+              "cpu"
+              "meminfo"
+              "diskstats"
+              "filesystem"
+              "loadavg"
+              "netdev"
+              "stat"
+              "time"
+              "timex"
+              "vmstat"
+              "systemd"
+            ];
+            disabledCollectors = [
+              "rapl"
+            ];
           };
         };
       };

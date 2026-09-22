@@ -10,8 +10,8 @@
   config.bifrost = {
     host = "bifrost";
     user = "heimdall";
-    desc = "${config.beluga.host}'s User Account.";
-    home = "/home/${config.beluga.user}";
+    desc = "${config.bifrost.host}'s User Account.";
+    home = "/home/${config.bifrost.user}";
     iniPass = "password";
     locale = "en_US.UTF-8";
     timezone = "America/New_York";

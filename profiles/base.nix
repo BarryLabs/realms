@@ -10,6 +10,8 @@
       self.nixosModules.settings
       self.nixosModules.sudo-rs
       self.nixosModules.timezone
+
+      self.nixosModules.node-exporter
     ];
 
     environment.systemPackages = with pkgs; [

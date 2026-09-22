@@ -13,13 +13,29 @@
       self.nixosModules.bifrostUsers
 
       self.nixosModules.sops
+
+      {
+        home-manager = {
+          backupFileExtension = "bak";
+          extraSpecialArgs = { inherit inputs self; };
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          users.heimdall = import ./_home.nix;
+        };
+      }
     ];
   };
 
-  flake.homeConfigurations."heimdall@bifrost" = inputs.home-manager.lib.homeManagerConfiguration {
+  flake.homeConfigurations."heimdall@bifrost" = let
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-    modules = [
-      ./home.nix
-    ];
-  };
+  in
+    inputs.home-manager.lib.homeManagerConfiguration {
+      pkgs = pkgs.extend (final: prev: {
+        buildGo125Module = final.buildGoModule;
+      });
+      extraSpecialArgs = { inherit inputs self; };
+      modules = [
+        ./_home.nix
+      ];
+    };
 }

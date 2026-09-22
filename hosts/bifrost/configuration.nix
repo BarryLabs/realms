@@ -20,15 +20,10 @@
       self.nixosModules.qemuguest
     ];
 
-    home-manager = {
-      useGlobalPkgs = true;
-      users.${config.bifrost.user} = import ./home.nix;
-    };
-
     ### Users
     users = {
       users = {
-        ${config.beluga.user} = {
+        ${config.bifrost.user} = {
           isNormalUser = true;
           createHome = true;
           shell = pkgs.bash;

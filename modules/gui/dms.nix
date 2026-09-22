@@ -10,10 +10,6 @@
         enable = true;
         restartIfChanged = true;
       };
-      enableAudioWavelength = true;
-      enableCalendarEvents = true;
-      enableDynamicTheming = true;
-      enableVPN = true;
     };
   };
 }

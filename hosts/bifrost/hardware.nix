@@ -8,6 +8,6 @@
     networking.hostName = "bifrost";
     
     ### State
-    system.stateVersion = config.beluga.state;
+    system.stateVersion = config.bifrost.state;
   };
 }
