@@ -11,6 +11,7 @@
       self.nixosModules.sudo-rs
       self.nixosModules.timezone
 
+      self.nixosModules.alloy
       self.nixosModules.node-exporter
     ];
 
